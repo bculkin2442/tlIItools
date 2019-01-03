@@ -616,10 +616,10 @@ public class AffixLister {
 					} else {
 						curList  = fNames.get(curGroup);
 					}
+				} else {
+					numFiles += 1;
+					curList.add(ln);
 				}
-
-				numFiles += 1;
-				curList.add(ln);
 			}
 		} catch (IOException ioex) {
 			System.err.printf("Error reading names from file %s\n", from);

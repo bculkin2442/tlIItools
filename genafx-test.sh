@@ -5,7 +5,7 @@ set -e
 baseout="$1"
 shift 1
 fileset="$@"
-listopts="-z -n named"
+listopts="-z -n named -r synfiles"
 
 cd src;
 
