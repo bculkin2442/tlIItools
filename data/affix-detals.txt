@@ -1,0 +1,281 @@
+DEGRADE ARMOR
+<CID> enemy armor by <0R> on hit
+
+DEXTERITY BONUS
+<RPM|0|Dexterity>
+
+DODGE CHANCE BONUS
+<RLM|1|Dodge Chance>
+
+# This is actually execute chance
+PERCENT DUAL WIELDING ATTACK
+<RLM|1|Execute Chance>
+
+DUAL WIELDING BONUS
+<RLM|1|Damage while Dual Wielding>
+
+MAX HP
+<RPM|1|Max HP>
+
+HP RECHARGE PLAYER
+<RPM|1|HP/Second>
+
+LIFE STEAL
+<RPM|1|Life Stolen>
+
+# Need to add ability to handle damage of reflected missiles
+MISSILE REFLECT
+<RLM|1|Missile Reflect Chance>
+
+PERCENT ARMOR BONUS
+<RLMD|1|Armor>
+
+PERCENT DAMAGE TAKEN
+<RLMD|1|Damage Taken>
+
+PERCENT KNOCK BACK RESISTANCE
+<CPM><RST>%% knockback resistance
+
+PERCENT PET ARMOR
+<RLM|1|Minion/Pet Armor>
+
+PERCENT PET DAMAGE
+<RLM|1|Minion/Pet Damage>
+
+POTION EFFICIENCY
+<RLM|1|Effectiveness of Potions>
+
+PERCENT SPEED
+<RLM|1|Movement Speed>
+
+PERCENT ATTACK SPEED
+<RLM|1|Attack Speed>
+
+PERCENT CAST SPEED
+<RLM|1|Cast Speed>
+
+CRITICAL CHANCE
+<RLM|1|Critical Chance>
+
+PERCENT CRITICAL DAMAGE
+<RLM|1|Critical Damage>
+
+MISSILE RANGE BONUS
+<CPM><1R> meters <C|from|to> ranged weapon range
+
+DAMAGE BONUS SECONDARY
+<RLM|1|Damage to Secondary Targets>
+
+ARMOR BONUS
+<RPMD|1|Armor>
+
+MELEEDAMAGEBONUS
+<RPMD|1|Damage with Melee Weapons>
+
+RANGEDDAMAGEBONUS
+<CPM><1R> <DT> damage with ranged weapons
+
+DAMAGE BONUS
+<CPM><1R> <DT> damage
+
+PERCENT LIFE STOLEN
+<1R>%% <CLM> HP stolen
+
+MAX MANA
+<CPM><1R> Mana
+
+MANA RECHARGE PLAYER
+<CPM><1R> Mana/s
+
+MANA STEAL
+<CPM><1R> Mana stolen
+
+DAMAGE REFLECTION
+<1R>%% <DT> damage reflected
+
+FUMBLE CHANCE REDUCTION
+<1R>%% <CML> chance to fumble
+
+# Not sure this is 100% accurate
+PERCENT MAGIC ITEM DAMAGE BONUS
+<1R>%% <CLM> damage with wands & staves
+
+PERCENT MELEEDAMAGE
+<1R>%% <CLM> melee damage
+
+PERCENT RANGEDDAMAGE
+<1R>%% <CLM> ranged damage
+
+REDUCED ITEM REQUIREMENTS
+<CPM><0R> item requirements
+
+PERCENT CHARGING BONUS
+<1R>%% <CLM> charge rate
+
+PERCENT DAMAGE BONUS
+<1R>%% <CLM> <DT> damage
+
+POISON
+<1R>%% chance to poison enemies
+
+BURN
+<1R>%% chance to burn enemies
+
+FIRE DEFENSE
+<CPM><1R> fire armor
+
+POISON DEFENSE
+<CPM><1R> poison armor
+
+SHOCK
+<1R>%% chance to shock enemies
+
+ELECTRICAL DEFENSE
+<CPM><1R> electrical armor
+
+FREEZE
+<1R>%% chance to freeze enemies
+
+ICE DEFENSE
+<CPM><1R> ice armor
+
+FISHING LUCK
+<1R>%% <CLM> fishing luck
+
+XP GAIN BONUS
+<1R>%% <CLM> XP gained
+
+PERCENT GOLD DROP
+<1R>%% <CLM> Gold Find
+
+PERCENT MAGICAL DROP
+<1R>%% <CLM> Magic Find
+
+DEFENSE
+<CPM><0R> Vitality
+
+MAGIC
+<CPM><0R> Focus
+
+STRENGTH BONUS
+<CPM><0R> Strength
+
+KNOCK BACK
+<CPM><RST> knockback
+
+CAST SKILL ON KILL AT TARGET
+<1R>%% chance to cast <NME> on kill at target
+
+ADD TRIGGERABLE
+Add triggerable <NME> to owner
+
+CAST SKILL ON STRIKE FROM TARGET
+<1R>%% chance to cast <NME> on strike from target
+
+CAST SKILL ON STRUCK
+<1R>%% chance to cast <NME> when struck
+
+CAST SKILL ON KILL
+<1R>%% chance to cast <NME> on kill
+
+PERCENT BLOCK CHANCE
+<1R>%% <CLM> chance to block
+
+PERCENT CHARGE BAR DECAY RATE
+<1R>%% <CLM> charge bar decay rate
+
+PERCENT DAMAGE TAKEN BY MONSTER COUNT
+<1RM>%% <MCLM> <DT> damage taken/monster within <RNG> meters (Up to <MAXC>)
+
+DRAW HEALTH
+<1RM>%% <MCLM> HP/<PUL>s/monster within <RNG> meters (Up to <MAXC>)
+
+DRAW MANA
+<1RM>%% <MCLM> Mana/<PUL>s/monster within <RNG> meters (Up to <MAXC>)
+
+PERCENT PET HEALTH
+<1R>%% <CLM> Minion/Pet Health
+
+IMMOBILIZE RESISTANCE
+<1R>%% <CLM> resistance to Immobilize
+
+SLOW RESISTANCE
+<1R>%% <CLM> resistance to Slow
+
+SHIELD BREAK
+<1R>%% <CLM> chance to break shields
+
+LIFE STEAL MASTER
+<CPM><1R> HP stolen to master
+
+SKILL BONUS
+<CPM><0R> levels to <NME> skill
+
+PERCENT HP
+<1R>%% <CLM> HP
+
+PERCENT MANA
+<1R>%% <CLM> Mana
+
+PERCENT BLOCK CHANCE BASE
+<1R>%% <CLM> base chance to block
+
+PET DEPARTURE TIME
+Pet Travel Duration is <1R>%% as long
+
+PERCENT PET VELOCITY
+<1R>%% <CLM> Pet Speed
+
+PRICE REDUCTION
+<1R>%% <CML> shop prices
+
+CAST SKILL
+<1R>%% chance to cast <NME> on swing
+
+CAST SKILL ON STRIKE
+<1R>%% chance to cast <NME> on strike
+
+ADD CHARGES
+<1R>%% chance to add a charge
+
+ADD CHARGE PERCENT
+Add <1R>%% Charge
+
+ELEMENTAL EFFECT DURATION BONUS
+<0R> second increased duration of elemental effects
+
+FUMBLE PENALTY REDUCTION
+<1R>%% <CLM> fumble penalty
+
+KNOCK BACK EFFECT
+<CPM><RST> Knockback
+
+ADD STAT
+<CPM><2R> to stat <NME>
+
+CAST SKILL ON DEATH FROM EFFECT OWNER
+<1R>%% chance to cast <NME> on kill
+
+MINIONDAMAGE
+<1R>%% <CLM> pet/minion <DT> damage
+
+DAMAGE
+<CPM><1R> <DT> damage
+
+SHIELD BUFFER
+<CPM><1R> <DT> shield
+
+PERCENT MANA STOLEN
+<1R>%% <CLM> Mana stolen
+
+STUN RESISTANCE
+<1R>%% <CLM> Stun resistance
+
+INTERRUPT RESISTANCE
+<1R>%% <CLM> Interrupt resistance
+
+INTERRUPT
+<1R>%% chance to Interrupt enemies
+
+PERCENT BLOCK CHANCE BASE
+<RLM|1|Base Block Chance>

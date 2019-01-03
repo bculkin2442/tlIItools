@@ -1,0 +1,83 @@
+# Choose increase/degrade
+<CID>
+<C|Increase|Degrade>
+
+# Monster choose less/more
+<MCLM>
+<MC|less|more>
+
+# Monster choose more/less
+<MCML>
+<MC|more|less>
+
+# General percent less/more w/ damage type
+# 'Replace less/more damage'
+<RPMD\|(\d+)\|([^>]+)>
+<CPM><$1R> <DT> $2
+
+# General flat less/more w/ damage type
+# 'Replace less/more damage'
+<RLMD\|(\d+)\|([^>]+)>
+<$1R>%% <CLM> <DT> $2
+
+# General percent less/more
+# 'Replace less/more'
+<RLM\|(\d+)\|([^>]+)>
+<$1R>%% <CLM> $2
+
+# General flat less/more
+# 'Replace plus/minus'
+<RPM\|(\d+)\|([^>]+)>
+<CPM><$1R> $2
+
+# Choose less/more
+<CLM>      
+<C|less|more>
+
+# Choose more/less
+<CML>
+<C|more|less>
+
+# Choose plus/minus
+<CPM>
+<C|-|+>
+
+# Monster choose plus/minus
+<MCPM>
+<MC|-|+>
+
+# Min-max Range
+<(\d+)R>
+(%1\$.$1f-%2\$.$1f)
+
+# Damage type
+<DT>
+%4\$s
+
+# Effect Name
+<NME>
+%7\$s
+
+# Min-max monster range
+<(\d+)RM>
+(%8\$.$1f-%9\$.$1f)
+
+# Knockback resist
+<RST>
+%6\$.1f
+
+# Pulse rate
+<PUL>
+%11\$.1f
+
+# Duration
+<DUR>
+%3\$,.1f
+
+# Range
+<RNG>
+%9\$.1f
+
+# Max count
+<MAXC>
+%10\$.0f

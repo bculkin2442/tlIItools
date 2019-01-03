@@ -1,0 +1,19 @@
+Add gem affix groups
+	Essentially, things with names that differ only in a trailing
+	number get arranged into a common group that displays together for
+	ease of reading.
+
+Add option to display zero-weight affixes
+
+Add tagging of things w/ custom internal names w/ their file name
+
+Add some sort of GUI?
+	Add some more sorting/filtration abilities
+
+	Add DB support
+		Load/save to a SQLite database file instead of from .DAT
+		files. This means having some kind of 'Import .DAT Files..'
+		option.
+
+		SQLite is chosen for being able to easily pass around data
+		files.

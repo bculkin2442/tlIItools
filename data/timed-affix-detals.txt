@@ -1,0 +1,65 @@
+KNOCK BACK
+<CPM><RST> knockback
+
+DAMAGE
+Does <0R> <DT> damage over %3$.2f seconds
+
+SILENCE
+<1R>%% chance to Silence for <DUR> seconds.
+
+IMMOBILIZE
+<1R>%% chance to Immobilize for <DUR> seconds
+
+PERCENT BLIND
+<1R>%% chance to Blind for <DUR> seconds
+
+FLEE EFFECT
+<1R>%% chance to Fear for <DUR> seconds
+
+STUN
+<1R>%% chance to Stun for <DUR> seconds
+
+BURN
+<1R>%% chance to Burn for <DUR> seconds
+
+FREEZE
+<1R>%% chance to Freeze for <DUR> seconds
+
+POISON
+<1R>%% chance to Poison for <DUR> seconds
+
+SHOCK
+<1R>%% chance to Shock for <DUR> seconds
+
+EXPLODE ON DEATH
+<1R>%% chance to explode on death for <DUR> seconds
+
+TURN ALIGNMENT
+<1R>%% chance to Charm for <DUR> seconds
+
+MINIONDAMAGE
+<1R>%% <CLM> pet/minion <DT> damage for <DUR> seconds
+
+PERCENT CAST SPEED
+<1R>%% <CLM> cast speed for <DUR> seconds
+
+PERCENT ATTACK SPEED
+<1R>%% <CLM> attack speed for <DUR> seconds
+
+PERCENT SPEED
+<1R>%% <CLM> movement speed for <DUR> seconds
+
+CAST SKILL ON DEATH FROM EFFECT OWNER
+<1R>%% chance to cast <NME> on kill for <DUR> seconds
+
+CRITICAL CHANCE
+<1R>%% <CLM> critical chance for <DUR> seconds
+
+PERCENT DAMAGE BONUS
+<1R>%% <CLM> <DT> damage for <DUR> seconds
+
+ARMOR BONUS
+<RPMD|1|Armor> for <DUR> seconds
+
+PERCENT ARMOR BONUS
+<RLMD|1|Armor> for <DUR> seconds
