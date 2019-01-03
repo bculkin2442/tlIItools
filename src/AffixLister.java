@@ -596,7 +596,7 @@ public class AffixLister {
 		NAMED;
 	}
 
-	private static int readNamesFromFile(Map<String, List<String>> fNames, String from, String defGroup) {
+	private static int readNamesFromFile(Map<String, List<String>> fNames, String from, String defGroup, boolean guessGroups) {
 		int numFiles = 0;
 		try (FileReader fr = new FileReader(from)) {
 			Scanner scn = new Scanner(fr);
@@ -609,6 +609,15 @@ public class AffixLister {
 
 				if (ln.startsWith("#")) {
 					curGroup = ln.substring(1);
+
+					if (!fNames.containsKey(curGroup)) {
+						curList = new ArrayList<>();
+						fNames.put(curGroup, curList);
+					} else {
+						curList  = fNames.get(curGroup);
+					}
+				} else if (guessGroups && ln.contains("/mods/")) {
+					curGroup = ln.replaceAll(".*/mods/([^/]+)/*", "$1");
 
 					if (!fNames.containsKey(curGroup)) {
 						curList = new ArrayList<>();
@@ -637,8 +646,9 @@ public class AffixLister {
 	public static void main(String[] args) {
 		boolean doingArgs  = true;
 
-		boolean omitZeros  = false;
-		boolean listZeros  = false;
+		boolean omitZeros   = false;
+		boolean listZeros   = false;
+		boolean guessGroups = false;
 
 		NameMode nameMode = NameMode.ALL;
 
@@ -727,6 +737,12 @@ public class AffixLister {
 						fGroups.put(curGroup, fNames);
 					}
 					break;
+				case "--guess-groups":
+					guessGroups = true;
+					break;
+				case "--no-guess-groups":
+					guessGroups = false;
+					break;
 				case "--read-names-from-file":
 				case "-r":
 					if (i + 1 >= args.length) {
@@ -734,7 +750,7 @@ public class AffixLister {
 						break;
 					}
 
-					fCount += readNamesFromFile(fGroups, args[++i], curGroup);
+					fCount += readNamesFromFile(fGroups, args[++i], curGroup, guessGroups);
 					break;
 				default:
 					isArg = false;
