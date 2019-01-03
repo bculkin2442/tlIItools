@@ -596,6 +596,19 @@ public class AffixLister {
 		NAMED;
 	}
 
+	private static void readNamesFromFile(List<String> fNames, String from) {
+		try (FileReader fr = new FileReader(from)) {
+			Scanner scn = new Scanner(fr);
+
+			while (scn.hasNextLine()) {
+				fNames.add(scn.nextLine());
+			}
+		} catch (IOException ioex) {
+			System.err.printf("Error reading names from file %s\n", from);
+			ioex.printStackTrace();
+			System.err.println();
+		}
+	}
 	/**
 	 * Main method.
 	 *
@@ -621,6 +634,8 @@ public class AffixLister {
 		List<String> nonGroupContents = new ArrayList<>();
 
 		int argCount = 0;
+
+		List<String> fNames = new ArrayList<>();
 
 		for(int i = 0; i < args.length; i++) {
 			String fName = args[i];
@@ -667,9 +682,19 @@ public class AffixLister {
 				case "-n":
 					if (i + 1 >= args.length) {
 						System.err.printf("ERROR: name mode argument requires the mode to use be specified (all, unnamed or named)\n");
+						break;
 					}
 
 					nameMode = NameMode.valueOf(args[++i].toUpperCase());
+					break;
+				case "--read-names-from-file":
+				case "-r":
+					if (i + 1 >= args.length) {
+						System.err.printf("ERROR: name mode argument requires the mode to use be specified (all, unnamed or named)\n");
+						break;
+					}
+
+					readNamesFromFile(fNames, args[++i]);
 					break;
 				default:
 					isArg = false;
@@ -679,14 +704,20 @@ public class AffixLister {
 					argCount += 1;
 					continue;
 				}
-			}
 
+				fNames.add(fName);
+			} else {
+				fNames.add(fName);
+			}
+		}
+
+		for (String fName : fNames) {
 			try (FileReader fr = new FileReader(fName)) {
 				Scanner sc = new Scanner(fr);
 
 				Affix afx = processFile(sc, fName);
 
-				if (afx.intName != null && afx.weight != 0 {
+				if (afx.intName != null && afx.weight != 0) {
 					String groupRx = "(.*_?)\\d+\\Z";
 					boolean hasGroup = afx.intName.matches(groupRx);
 					String groupName = afx.intName.replaceAll(groupRx, "$1");
@@ -742,7 +773,7 @@ public class AffixLister {
 		System.err.println();
 
 		long endTime = System.nanoTime();
-		System.err.printf("\nProcessed %,d affixes (%,d named, %,d unnamed, %,d zero-weight) (%,d effects) (%,d distinct groups, %,d actual groups, %,d nongrouped affixes) out of %,d files in %,d nanoseconds (%.2f seconds)\n", args.length, namedCount, unnamedCount, zeroCount, effectCount, groupCount, groupContents.size(), nonGroupContents.size(), args.length - argCount, endTime - startTime, ((double)(endTime - startTime) / 1000000000));
+		System.err.printf("\nProcessed %,d affixes (%,d named, %,d unnamed, %,d zero-weight) (%,d effects) (%,d distinct groups, %,d actual groups, %,d nongrouped affixes) out of %,d files in %,d nanoseconds (%.2f seconds)\n", fNames.size(), namedCount, unnamedCount, zeroCount, effectCount, groupCount, groupContents.size(), nonGroupContents.size(), fNames.size(), endTime - startTime, ((double)(endTime - startTime) / 1000000000));
 		System.err.printf("\tOptions: Name Mode: %s, Special-case zero weight: %s, Noting zero-weight in special case: %s\n", nameMode, !listZeros, !omitZeros);
 	}
 
