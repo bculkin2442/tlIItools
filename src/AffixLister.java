@@ -596,18 +596,38 @@ public class AffixLister {
 		NAMED;
 	}
 
-	private static void readNamesFromFile(List<String> fNames, String from) {
+	private static int readNamesFromFile(Map<String, List<String>> fNames, String from, String defGroup) {
+		int numFiles = 0;
 		try (FileReader fr = new FileReader(from)) {
 			Scanner scn = new Scanner(fr);
 
+			String curGroup      = defGroup;
+			List<String> curList = fNames.get(curGroup);
+
 			while (scn.hasNextLine()) {
-				fNames.add(scn.nextLine());
+				String ln = scn.nextLine();
+
+				if (ln.startsWith("#")) {
+					curGroup = ln.substring(1);
+
+					if (!fNames.containsKey(curGroup)) {
+						curList = new ArrayList<>();
+						fNames.put(curGroup, curList);
+					} else {
+						curList  = fNames.get(curGroup);
+					}
+				}
+
+				numFiles += 1;
+				curList.add(ln);
 			}
 		} catch (IOException ioex) {
 			System.err.printf("Error reading names from file %s\n", from);
 			ioex.printStackTrace();
 			System.err.println();
 		}
+
+		return numFiles;
 	}
 	/**
 	 * Main method.
@@ -624,6 +644,8 @@ public class AffixLister {
 
 		long startTime = System.nanoTime();
 
+		int fCount = 0;
+
 		int namedCount   = 0;
 		int unnamedCount = 0;
 		int zeroCount    = 0;
@@ -635,8 +657,11 @@ public class AffixLister {
 
 		int argCount = 0;
 
+		Map<String, List<String>> fGroups = new HashMap<>();
 		List<String> fNames = new ArrayList<>();
 
+		String curGroup = "default";
+		fGroups.put(curGroup, fNames);
 		for(int i = 0; i < args.length; i++) {
 			String fName = args[i];
 
@@ -687,14 +712,29 @@ public class AffixLister {
 
 					nameMode = NameMode.valueOf(args[++i].toUpperCase());
 					break;
-				case "--read-names-from-file":
-				case "-r":
+				case "--file-group":
+				case "-g":
 					if (i + 1 >= args.length) {
-						System.err.printf("ERROR: name mode argument requires the mode to use be specified (all, unnamed or named)\n");
+						System.err.printf("ERROR: file group argument requires the group name to use be specified\n");
 						break;
 					}
 
-					readNamesFromFile(fNames, args[++i]);
+					curGroup = args[++i];
+					if (fGroups.containsKey(curGroup)) {
+						fNames = fGroups.get(curGroup);
+					} else {
+						fNames = new ArrayList<>();
+						fGroups.put(curGroup, fNames);
+					}
+					break;
+				case "--read-names-from-file":
+				case "-r":
+					if (i + 1 >= args.length) {
+						System.err.printf("ERROR: read name file argument requires the file to use be specified\n");
+						break;
+					}
+
+					fCount += readNamesFromFile(fGroups, args[++i], curGroup);
 					break;
 				default:
 					isArg = false;
@@ -705,13 +745,17 @@ public class AffixLister {
 					continue;
 				}
 
+				fCount += 1;
 				fNames.add(fName);
 			} else {
+				fCount += 1;
 				fNames.add(fName);
 			}
 		}
 
-		for (String fName : fNames) {
+		for (Entry<String, List<String>> fGroup : fGroups.entrySet()) {
+			System.out.printf("\nFile Group '%s' starting\n", fGroup.getKey());
+		for (String fName : fGroup.getValue()) {
 			try (FileReader fr = new FileReader(fName)) {
 				Scanner sc = new Scanner(fr);
 
@@ -764,6 +808,8 @@ public class AffixLister {
 				System.err.println();
 			}
 		}
+			System.out.printf("\nFile Group '%s' ending\n", fGroup.getKey());
+		}
 
 		System.err.println("\nGroup Contents: ");
 		for (Entry<String, List<String>> ent: groupContents.entrySet()) {
@@ -773,7 +819,7 @@ public class AffixLister {
 		System.err.println();
 
 		long endTime = System.nanoTime();
-		System.err.printf("\nProcessed %,d affixes (%,d named, %,d unnamed, %,d zero-weight) (%,d effects) (%,d distinct groups, %,d actual groups, %,d nongrouped affixes) out of %,d files in %,d nanoseconds (%.2f seconds)\n", fNames.size(), namedCount, unnamedCount, zeroCount, effectCount, groupCount, groupContents.size(), nonGroupContents.size(), fNames.size(), endTime - startTime, ((double)(endTime - startTime) / 1000000000));
+		System.err.printf("\nProcessed %,d affixes (%,d named, %,d unnamed, %,d zero-weight) (%,d effects) (%,d distinct groups, %,d actual groups, %,d nongrouped affixes) out of %,d files (%,d groups) in %,d nanoseconds (%.2f seconds)\n", fCount, namedCount, unnamedCount, zeroCount, effectCount, groupCount, groupContents.size(), nonGroupContents.size(), fCount, fGroups.size(), endTime - startTime, ((double)(endTime - startTime) / 1000000000));
 		System.err.printf("\tOptions: Name Mode: %s, Special-case zero weight: %s, Noting zero-weight in special case: %s\n", nameMode, !listZeros, !omitZeros);
 	}
 
