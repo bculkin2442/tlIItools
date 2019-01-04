@@ -187,6 +187,9 @@ PERCENT CHARGE BAR DECAY RATE
 PERCENT DAMAGE TAKEN BY MONSTER COUNT
 <1RM>%% <MCLM> <DT> damage taken/monster within <RNG> meters (Up to <MAXC>)
 
+PERCENT DAMAGE BONUS BY MONSTER COUNT
+<1RM>%% <MCLM> <DT> damage/monster within <RNG> meters (Up to <MAXC>)
+
 DRAW HEALTH
 <1RM>%% <MCLM> HP/<PUL>s/monster within <RNG> meters (Up to <MAXC>)
 
@@ -279,3 +282,21 @@ INTERRUPT
 
 PERCENT BLOCK CHANCE BASE
 <RLM|1|Base Block Chance>
+
+PERCENT DEFENSE
+<RLM|0|Vitality>
+
+FAME GAIN BONUS
+<RLM|1|Fame Gain>
+
+PERCENT DAMAGE REFLECTED
+<RLMD|1|Damage Reflected>
+
+INTERRUPT CHANCE
+<RLM|1|chance to Interrupt Enemies>
+
+DAMAGE CHANCE
+<RST>%% <RLMD|1|Damage>
+
+PERCENT MANA COST BONUS
+<RLM|1|Mana Cost of Skills>

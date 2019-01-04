@@ -272,8 +272,14 @@ public class AffixLister {
 
 			Map<String, String> detMap = hasDuration ? timeDetals : detals;
 
-			if (detMap.containsKey(type)) {
-				String fmt = detMap.get(type);
+			if (detMap.containsKey(type) || (hasDuration && !timeDetals.containsKey(type) && detals.containsKey(type))) {
+				String fmt;
+				if (hasDuration && !timeDetals.containsKey(type) && detals.containsKey(type)) {
+					System.err.printf("Improvised details for timed %s\n", type);
+					fmt = detals.get(type) + "for <DUR> seconds";
+				} else {
+					fmt = detMap.get(type);
+				}
 
 				// Expand aliases first.
 
@@ -770,6 +776,7 @@ public class AffixLister {
 		}
 
 		for (Entry<String, List<String>> fGroup : fGroups.entrySet()) {
+			if (fGroup.getValue().size() == 0) continue;
 			System.out.printf("\nFile Group '%s' starting\n", fGroup.getKey());
 		for (String fName : fGroup.getValue()) {
 			try (FileReader fr = new FileReader(fName)) {
@@ -995,6 +1002,9 @@ public class AffixLister {
 				efct.maxCount = Double.parseDouble(splits[1]);
 			} else if (ln.contains("PULSE_RATE")) {
 				efct.pulse = Double.parseDouble(splits[1]);
+			} else if (ln.contains("CHANCE:")) {
+				// NOTE: Should really use its own field
+				efct.resist = Double.parseDouble(splits[1]);
 			}
 		}
 

@@ -63,3 +63,9 @@ ARMOR BONUS
 
 PERCENT ARMOR BONUS
 <RLMD|1|Armor> for <DUR> seconds
+
+PERCENT ARMOR BONUS
+<RLMD|1|Damage Taken> for <DUR> seconds
+
+PERCENT BLOCK CHANCE BASE
+<RLM|1|Base Block Chance> for <DUR> seconds
