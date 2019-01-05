@@ -3,4 +3,5 @@ bin/
 output/
 tags
 synfiles
+basefiles
 target/
