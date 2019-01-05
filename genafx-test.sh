@@ -5,7 +5,7 @@ set -e
 baseout="$1"
 shift 1
 fileset="$@"
-listopts="-z -n named -r synfiles"
+listopts="-z -n named"
 
 cd src;
 
@@ -15,7 +15,7 @@ mv -t .. *.class
 
 cd ..
 
-java AffixLister $listopts -- $fileset > output/"$baseout".txt 2> output/"$baseout".err
+java AffixLister $listopts $fileset > output/"$baseout".txt 2> output/"$baseout".err
 
 tail -n 2 output/"$baseout".err
 
