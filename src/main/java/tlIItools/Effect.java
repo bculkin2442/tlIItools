@@ -12,13 +12,27 @@ import java.util.Scanner;
 
 /**
  * Represents an effect attached to an affix.
+ *
+ * @author Ben Culkin
  */
 public class Effect {
+	/**
+	 * The list of detail strings for skills.
+	 */
 	private static Map<String, String> detals;
+	/**
+	 * The list of detail strings for timed skills.
+	 */
 	private static Map<String, String> timeDetals;
 
+	/**
+	 * The list of replacements for detail strings.
+	 */
 	private static List<ReplPair> replList;
 
+	/*
+	 * Init. lists from files.
+	 */
 	static {
 		try (FileReader detalReader = new FileReader("data/affix-detals.txt")) {
 			detals = readDetails(new Scanner(detalReader));
@@ -81,7 +95,10 @@ public class Effect {
 		return detals;
 	}
 
-	private static void sanityCheckFormats() {
+	/**
+	 * Sanity check the loaded format strings.
+	 */
+	public static void sanityCheckFormats() {
 		for (Entry<String, String> detal : detals.entrySet()) {
 			String fmt = detal.getValue();
 
@@ -90,12 +107,16 @@ public class Effect {
 				String tmp = fmt;
 				fmt = fmt.replaceAll(repl.find, repl.replace);
 				if (!fmt.equals(tmp)) {
-					AffixLister.errOut.printf("\t\tTRACE: Replaced %s with %s: \n\t\t%s\n\t\t%s\n", repl.find, repl.replace, tmp, fmt);
+					String outFmt = "\t\tTRACE: Replaced %s with %s: \n\t\t%s\n\t\t%s\n";
+
+					AffixLister.errOut.printf(outFmt, repl.find, repl.replace, tmp, fmt);
 				}
 			}
 
 			if (fmt.contains("<") || fmt.contains(">")) {
-				AffixLister.errOut.printf("WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n", detal.getKey(), fmt);
+				String warnFmt = "WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n";
+
+				AffixLister.errOut.printf(warnFmt, detal.getKey(), fmt);
 			}
 		}
 
@@ -107,10 +128,12 @@ public class Effect {
 			}
 
 			if (fmt.contains("<") || fmt.contains(">")) {
-				AffixLister.errOut.printf("WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n", detal.getKey(), fmt);
+				String warnFmt = "WARN: Details for timed effect %s are malformatted (contains < or >):\n\t%s\n";
+				AffixLister.errOut.printf(warnFmt, detal.getKey(), fmt);
 			}
 		}
 	}
+
 	/**
 	 * The file name this effect came from.
 	 */
@@ -230,6 +253,7 @@ public class Effect {
 	 * The rate at which the effect fires.
 	 */
 	public double pulse;
+
 	/**
 	 * Create a new blank effect.
 	 */

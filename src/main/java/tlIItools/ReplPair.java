@@ -44,6 +44,8 @@ public class ReplPair {
 	 *
 	 * @param scn
 	 * 	The source to read the replacements from.
+	 * @return
+	 * 	The list of replacements.
 	 */
 	public static List<ReplPair> readList(Scanner scn) {
 		return ReplPair.readList(new ArrayList<>(), scn);
@@ -57,6 +59,8 @@ public class ReplPair {
 	 * 	The list to add the replacements to.
 	 * @param scn
 	 * 	The source to read the replacements from.
+	 * @return
+	 * 	The list of replacements.
 	 */
 	public static List<ReplPair> readList(List<ReplPair> detals, Scanner scn) {
 		while (scn.hasNextLine()) {
