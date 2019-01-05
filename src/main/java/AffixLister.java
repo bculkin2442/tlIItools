@@ -25,38 +25,6 @@ public class AffixLister {
 	public static PrintStream normOut = System.out;
 	public static PrintStream errOut = System.err;
 
-	public static class ReplPair {
-		public String find;
-		public String replace;
-
-		public ReplPair() {
-
-		}
-
-		public ReplPair(String f, String r) {
-			find = f;
-			replace = r;
-		}
-	}
-
-	private static List<ReplPair> readReplList(Scanner scn) {
-		List<ReplPair> detals = new ArrayList<>();
-
-		while (scn.hasNextLine()) {
-			String name = scn.nextLine().trim();
-			if (name.equals("")) continue;
-			if (name.startsWith("#")) continue;
-
-			String body;
-			do {
-				body = scn.nextLine().trim();
-			} while (body.startsWith("#"));
-
-			detals.add(new ReplPair(name, body));
-		}
-
-		return detals;
-	}
 	private static Map<String, String> readEffectDetails(Scanner scn) {
 		Map<String, String> detals = new HashMap<>();
 
@@ -104,7 +72,7 @@ public class AffixLister {
 			}
 
 			try (FileReader replListReader = new FileReader("data/replace-list.txt")) {
-				replList = readReplList(new Scanner(replListReader));
+				replList = ReplPair.readList(new Scanner(replListReader));
 			} catch (IOException ioex) {
 				errOut.println("Error loading replacement lists");
 			}
