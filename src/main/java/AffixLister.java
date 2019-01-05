@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.FileReader;
+import java.io.PrintStream;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +21,9 @@ public class AffixLister {
 
 	private static boolean doTiming = false;
 	private static boolean addFileName = false;
+
+	public static PrintStream normOut = System.out;
+	public static PrintStream errOut = System.err;
 
 	public static class ReplPair {
 		public String find;
@@ -90,19 +94,19 @@ public class AffixLister {
 			try (FileReader detalReader = new FileReader("data/affix-detals.txt")) {
 				detals = readEffectDetails(new Scanner(detalReader));
 			} catch (IOException ioex) {
-				System.err.println("Error loading affix detail text");
+				errOut.println("Error loading affix detail text");
 			}
 
 			try (FileReader timedDetalReader = new FileReader("data/timed-affix-detals.txt")) {
 				timeDetals = readEffectDetails(new Scanner(timedDetalReader));
 			} catch (IOException ioex) {
-				System.err.println("Error loading timed affix detail text");
+				errOut.println("Error loading timed affix detail text");
 			}
 
 			try (FileReader replListReader = new FileReader("data/replace-list.txt")) {
 				replList = readReplList(new Scanner(replListReader));
 			} catch (IOException ioex) {
-				System.err.println("Error loading replacement lists");
+				errOut.println("Error loading replacement lists");
 			}
 		}
 
@@ -110,17 +114,17 @@ public class AffixLister {
 			for (Entry<String, String> detal : detals.entrySet()) {
 				String fmt = detal.getValue();
 
-				System.err.printf("\tTRACE: Applying replacements for %s\n", detal.getKey());
+				errOut.printf("\tTRACE: Applying replacements for %s\n", detal.getKey());
 				for (ReplPair repl : replList) {
 					String tmp = fmt;
 					fmt = fmt.replaceAll(repl.find, repl.replace);
 					if (!fmt.equals(tmp)) {
-						System.err.printf("\t\tTRACE: Replaced %s with %s: \n\t\t%s\n\t\t%s\n", repl.find, repl.replace, tmp, fmt);
+						errOut.printf("\t\tTRACE: Replaced %s with %s: \n\t\t%s\n\t\t%s\n", repl.find, repl.replace, tmp, fmt);
 					}
 				}
 
 				if (fmt.contains("<") || fmt.contains(">")) {
-					System.err.printf("WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n", detal.getKey(), fmt);
+					errOut.printf("WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n", detal.getKey(), fmt);
 				}
 			}
 
@@ -132,7 +136,7 @@ public class AffixLister {
 				}
 
 				if (fmt.contains("<") || fmt.contains(">")) {
-					System.err.printf("WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n", detal.getKey(), fmt);
+					errOut.printf("WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n", detal.getKey(), fmt);
 				}
 			}
 		}
@@ -275,7 +279,7 @@ public class AffixLister {
 			if (detMap.containsKey(type) || (hasDuration && !timeDetals.containsKey(type) && detals.containsKey(type))) {
 				String fmt;
 				if (hasDuration && !timeDetals.containsKey(type) && detals.containsKey(type)) {
-					System.err.printf("Improvised details for timed %s\n", type);
+					errOut.printf("Improvised details for timed %s\n", type);
 					fmt = detals.get(type) + "for <DUR> seconds";
 				} else {
 					fmt = detMap.get(type);
@@ -304,7 +308,7 @@ public class AffixLister {
 				}
 
 				if (fmt.contains("<") || fmt.contains(">")) {
-					System.err.printf("WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n", type, fmt);
+					errOut.printf("WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n", type, fmt);
 				}
 
 				sb.append(String.format(fmt, Math.abs(minValue), Math.abs(maxValue), duration, damageType.toLowerCase(), level, resist, name, Math.abs(minPer), Math.abs(maxPer), range, maxCount, pulse));
@@ -318,8 +322,8 @@ public class AffixLister {
 					sb.append(fName);
 				}
 
-				if (hasDuration) System.err.print("TIMED: ");
-				System.err.println(sb.toString());
+				if (hasDuration) errOut.print("TIMED: ");
+				errOut.println(sb.toString());
 			}
 
 			if (name != null) {
@@ -637,9 +641,9 @@ public class AffixLister {
 				}
 			}
 		} catch (IOException ioex) {
-			System.err.printf("Error reading names from file %s\n", from);
-			ioex.printStackTrace();
-			System.err.println();
+			errOut.printf("Error reading names from file %s\n", from);
+			ioex.printStackTrace(errOut);
+			errOut.println();
 		}
 
 		return numFiles;
@@ -722,7 +726,7 @@ public class AffixLister {
 				case "--name-mode":
 				case "-n":
 					if (i + 1 >= args.length) {
-						System.err.printf("ERROR: name mode argument requires the mode to use be specified (all, unnamed or named)\n");
+						errOut.printf("ERROR: name mode argument requires the mode to use be specified (all, unnamed or named)\n");
 						break;
 					}
 
@@ -731,7 +735,7 @@ public class AffixLister {
 				case "--file-group":
 				case "-g":
 					if (i + 1 >= args.length) {
-						System.err.printf("ERROR: file group argument requires the group name to use be specified\n");
+						errOut.printf("ERROR: file group argument requires the group name to use be specified\n");
 						break;
 					}
 
@@ -752,11 +756,39 @@ public class AffixLister {
 				case "--read-names-from-file":
 				case "-r":
 					if (i + 1 >= args.length) {
-						System.err.printf("ERROR: read name file argument requires the file to use be specified\n");
+						errOut.printf("ERROR: read name file argument requires the file to use be specified\n");
 						break;
 					}
 
 					fCount += readNamesFromFile(fGroups, args[++i], curGroup, guessGroups);
+					break;
+				case "--output":
+				case "-o":
+					if (i + 1 >= args.length) {
+						errOut.printf("ERROR: output file argument requires the file to use be specified\n");
+						break;
+					}
+					try {
+						normOut = new PrintStream(args[++i]);
+					} catch (IOException ioex) {
+						errOut.printf("Could not open output file %s\n", args[i]);
+
+						ioex.printStackTrace(errOut);
+					}
+					break;
+				case "--output-errors":
+				case "-e":
+					if (i + 1 >= args.length) {
+						errOut.printf("ERROR: error output file argument requires the file to use be specified\n");
+						break;
+					}
+					try {
+						errOut = new PrintStream(args[++i]);
+					} catch (IOException ioex) {
+						errOut.printf("Could not open error output file %s\n", args[i]);
+
+						ioex.printStackTrace(errOut);
+					}
 					break;
 				default:
 					isArg = false;
@@ -777,7 +809,7 @@ public class AffixLister {
 
 		for (Entry<String, List<String>> fGroup : fGroups.entrySet()) {
 			if (fGroup.getValue().size() == 0) continue;
-			System.out.printf("\nFile Group '%s' starting\n", fGroup.getKey());
+			normOut.printf("\nFile Group '%s' starting\n", fGroup.getKey());
 		for (String fName : fGroup.getValue()) {
 			try (FileReader fr = new FileReader(fName)) {
 				Scanner sc = new Scanner(fr);
@@ -791,10 +823,10 @@ public class AffixLister {
 					
 					if (!groupContents.containsKey(groupName)) {
 						groupCount += 1;
-						// System.err.printf("\tTRACE: Counted distinct group %s from %s\n", groupName, afx.intName);
+						// errOut.printf("\tTRACE: Counted distinct group %s from %s\n", groupName, afx.intName);
 
 						if (hasGroup) {
-							// System.err.printf("\tTRACE: Counted actual group %s from %s\n", groupName, afx.intName);
+							// errOut.printf("\tTRACE: Counted actual group %s from %s\n", groupName, afx.intName);
 
 							groupContents.put(groupName, new ArrayList<>());
 						} else {
@@ -811,7 +843,7 @@ public class AffixLister {
 
 				if (afx.weight == 0 && !listZeros) {
 					if (!omitZeros)
-						System.out.printf("\nAffix %s has zero spawn weight\n", afx.intName);
+						normOut.printf("\nAffix %s has zero spawn weight\n", afx.intName);
 				} else {
 					boolean isNamed = (afx.affixSuffix != null) || (afx.affixPrefix != null);
 
@@ -821,29 +853,29 @@ public class AffixLister {
 					if (nameMode == NameMode.UNNAMED && isNamed) continue;
 					if (nameMode == NameMode.NAMED   && !isNamed) continue;
 
-					System.out.printf("\n%s\n", afx.toString());
+					normOut.printf("\n%s\n", afx.toString());
 				}
 			} catch (Exception ex) {
-				System.err.printf("Something bad happened for file %s:%s\n", fName, ex.getMessage());
+				errOut.printf("Something bad happened for file %s:%s\n", fName, ex.getMessage());
 
-				ex.printStackTrace();
+				ex.printStackTrace(errOut);
 
-				System.err.println();
+				errOut.println();
 			}
 		}
-			System.out.printf("\nFile Group '%s' ending\n", fGroup.getKey());
+			normOut.printf("\nFile Group '%s' ending\n", fGroup.getKey());
 		}
 
-		System.err.println("\nGroup Contents: ");
+		errOut.println("\nGroup Contents: ");
 		for (Entry<String, List<String>> ent: groupContents.entrySet()) {
-			System.err.printf("\t%s: %s\n", ent.getKey(), ent.getValue());
+			errOut.printf("\t%s: %s\n", ent.getKey(), ent.getValue());
 		}
-		System.err.println();
-		System.err.println();
+		errOut.println();
+		errOut.println();
 
 		long endTime = System.nanoTime();
-		System.err.printf("\nProcessed %,d affixes (%,d named, %,d unnamed, %,d zero-weight) (%,d effects) (%,d distinct groups, %,d actual groups, %,d nongrouped affixes) out of %,d files (%,d groups) in %,d nanoseconds (%.2f seconds)\n", fCount, namedCount, unnamedCount, zeroCount, effectCount, groupCount, groupContents.size(), nonGroupContents.size(), fCount, fGroups.size(), endTime - startTime, ((double)(endTime - startTime) / 1000000000));
-		System.err.printf("\tOptions: Name Mode: %s, Special-case zero weight: %s, Noting zero-weight in special case: %s\n", nameMode, !listZeros, !omitZeros);
+		errOut.printf("\nProcessed %,d affixes (%,d named, %,d unnamed, %,d zero-weight) (%,d effects) (%,d distinct groups, %,d actual groups, %,d nongrouped affixes) out of %,d files (%,d groups) in %,d nanoseconds (%.2f seconds)\n", fCount, namedCount, unnamedCount, zeroCount, effectCount, groupCount, groupContents.size(), nonGroupContents.size(), fCount, fGroups.size(), endTime - startTime, ((double)(endTime - startTime) / 1000000000));
+		errOut.printf("\tOptions: Name Mode: %s, Special-case zero weight: %s, Noting zero-weight in special case: %s\n", nameMode, !listZeros, !omitZeros);
 	}
 
 	// Process an affix file
@@ -876,7 +908,7 @@ public class AffixLister {
 						afx.affixPrefix = splits[1];
 						break;
 					default:
-						System.err.printf("Misformed affix translation: (%s) (%s) (%s)\n", splits[0], splits[1], fName);
+						errOut.printf("Misformed affix translation: (%s) (%s) (%s)\n", splits[0], splits[1], fName);
 				}
 			} else if (ln.contains("MIN_SPAWN_RANGE")) {
 				afx.minLevel = Integer.parseInt(splits[1]);
@@ -888,11 +920,11 @@ public class AffixLister {
 				afx.weight = Integer.parseInt(splits[1]);
 			} else if (ln.contains("UNITTYPE") && !ln.contains("/")) {
 				if (splits.length == 1)
-					System.err.printf("Malformed equip type: (%s) (%s)\n", splits[0], fName);
+					errOut.printf("Malformed equip type: (%s) (%s)\n", splits[0], fName);
 				afx.addEquipType(splits[1]);
 			} else if (splits[0].equals("<STRING>NAME")) {
 				if (splits.length == 1)
-					System.err.printf("Malformed name: (%s) (%s)\n", splits[0], fName);
+					errOut.printf("Malformed name: (%s) (%s)\n", splits[0], fName);
 				afx.intName = splits[1];
 			} else if (ln.contains("[EFFECT]")) {
 				afx.effects.add(parseEffect(afx, scn, fName));
@@ -900,7 +932,7 @@ public class AffixLister {
 		}
 
 		long endTime = System.nanoTime();
-		if (doTiming) System.err.printf("\tProcessed affix %s from %s in %d nanoseconds (%.2f seconds)\n\n", afx.intName, fName, endTime - startTime, ((double)(endTime - startTime) / 1000000000));
+		if (doTiming) errOut.printf("\tProcessed affix %s from %s in %d nanoseconds (%.2f seconds)\n\n", afx.intName, fName, endTime - startTime, ((double)(endTime - startTime) / 1000000000));
 
 		return afx;
 	}
@@ -941,7 +973,7 @@ public class AffixLister {
 						efct.isTransfer = true;
 						break;
 					default:
-						System.err.printf("Malformed activation type: (%s) (%s) (%s)\n", splits[1], efct.name, afx.intName);
+						errOut.printf("Malformed activation type: (%s) (%s) (%s)\n", splits[1], efct.name, afx.intName);
 				}
 			} else if (ln.contains("DURATION")) {
 				if (splits[1].equals("ALWAYS")) {
@@ -957,7 +989,7 @@ public class AffixLister {
 
 					efct.duration = Double.NaN;
 
-					System.err.printf("WARN: Punting on DURATION:PERCENT for %s\n", fName);
+					errOut.printf("WARN: Punting on DURATION:PERCENT for %s\n", fName);
 				} else if (splits[1].equals("0")) {
 					efct.hasDuration = false;
 					efct.duration = 0.0;
@@ -1009,7 +1041,7 @@ public class AffixLister {
 		}
 
 		long endTime = System.nanoTime();
-		if (doTiming) System.err.printf("\t\tProcessed effect %s from %s in %d nanoseconds (%.2f seconds)\n", efct.name, fName, endTime - startTime, ((double)((endTime - startTime) / 1000000000)));
+		if (doTiming) errOut.printf("\t\tProcessed effect %s from %s in %d nanoseconds (%.2f seconds)\n", efct.name, fName, endTime - startTime, ((double)((endTime - startTime) / 1000000000)));
 
 		effectCount += 1;
 

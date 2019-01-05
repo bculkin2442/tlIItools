@@ -6,20 +6,16 @@ baseout="$1"
 shift 1
 fileset="$@"
 listopts="-z -n named"
+outputfle=output/"$baseout".txt
+errfle=output/"$baseout".err
+outputopts="-o $outputfle -e $errfle"
 
-cd src;
+mvn clean compile exec:java -Dexec.args="$outputopts $listopts $fileset"
+#java AffixLister $listopts $fileset > output/"$baseout".txt 2> output/"$baseout".err
 
-javac -g AffixLister.java
+tail -n 2 "$errfle"
 
-mv -t .. *.class
-
-cd ..
-
-java AffixLister $listopts $fileset > output/"$baseout".txt 2> output/"$baseout".err
-
-tail -n 2 output/"$baseout".err
-
-a2ps --file-align=virtual --header="Affixes" --tabsize=2 -E -g -o output/"$baseout".ps output/"$baseout".txt
+a2ps --file-align=virtual --header="Affixes" --tabsize=2 -E -g -o output/"$baseout".ps "$outputfle"
 
 ps2pdf output/"$baseout".ps output/"$baseout".pdf
 
