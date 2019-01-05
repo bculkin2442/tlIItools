@@ -296,7 +296,7 @@ INTERRUPT CHANCE
 <RLM|1|chance to Interrupt Enemies>
 
 DAMAGE CHANCE
-<RST>%% <RLMD|1|Damage>
+<RST>%% chance to deal <RPMD|1|Damage>
 
 PERCENT MANA COST BONUS
 <RLM|1|Mana Cost of Skills>
