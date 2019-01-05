@@ -1,9 +1,14 @@
-Add gem affix groups
-	Essentially, things with names that differ only in a trailing
-	number get arranged into a common group that displays together for
-	ease of reading.
+Add support for displaying by groups
+	This means arranging all of the affixes in a group
+	together.
 
-Add option to display zero-weight affixes
+	This also probably means subordinating affix groups to file
+	groups.
+
+Add effect name tracking
+	Essentially, I want a list of all of the effects with names
+	attached to them, what the effect is, and the affix that it
+	is attached to.
 
 Add tagging of things w/ custom internal names w/ their file name
 
