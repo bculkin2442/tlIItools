@@ -5,7 +5,7 @@ set -e
 baseout="$1"
 shift 1
 fileset="$@"
-listopts="-z -n named"
+listopts="-l -z -n named"
 outputfle=output/"$baseout".txt
 errfle=output/"$baseout".err
 outputopts="-o $outputfle -e $errfle"

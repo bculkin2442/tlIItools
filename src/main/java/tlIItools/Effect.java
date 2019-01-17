@@ -17,6 +17,15 @@ import java.util.Scanner;
  */
 public class Effect {
 	/**
+	 * Count of all loaded effects.
+	 */
+	public static int effectCount = 0;
+	/**
+	 * Do timing analysis when loading effects.
+	 */
+	public static boolean doTiming;
+
+	/**
 	 * The list of detail strings for skills.
 	 */
 	private static Map<String, String> detals;
@@ -360,5 +369,125 @@ public class Effect {
 		if (!useGraph) sb.append(" (Ignoring graph)");
 
 		return sb.toString();
+	}
+
+	public static Effect parseEffect(Affix afx, Scanner scn, String scnSource) {
+		return parseEffect(afx, scn, scnSource, new ArrayList<>());
+	}
+
+	public static Effect parseEffect(Affix afx, Scanner scn, String scnSource, List<String> errs) {
+		Effect efct = new Effect();
+
+		long startTime = System.nanoTime();
+
+		efct.fName = scnSource;
+
+		while (scn.hasNextLine()) {
+			String ln = scn.nextLine();
+			ln = ln.replaceAll("\\p{Cntrl}", "");
+
+			if (ln.contains("[/EFFECT]")) break;
+
+			String[] splits = ln.split(":");
+
+			// Empty field
+			if (splits.length == 1) continue;
+
+			if (ln.contains("NAME")) {
+				efct.name = splits[1];
+			} else if (ln.contains("DAMAGE_TYPE")) {
+				efct.damageType = splits[1];
+			} else if (ln.contains("TYPE")) {
+				efct.type = splits[1];
+			} else if (ln.contains("ACTIVATION")) {
+				switch (splits[1]) {
+					case "DYNAMIC":
+					case "PASSIVE":
+						// Passive is the default, and
+						// dynamic doesn't have much
+						// actual difference.
+						break;
+					case "TRANSFER":
+						efct.isTransfer = true;
+						break;
+					default:
+						errs.add(String.format("Malformed activation type: (%s) (%s) (%s)\n", splits[1], efct.name, afx.intName));
+				}
+			} else if (ln.contains("DURATION")) {
+				if (splits[1].equals("ALWAYS")) {
+					efct.hasDuration = false;
+
+					efct.duration = Double.POSITIVE_INFINITY;
+				} else if (splits[1].equals("INSTANT")) {
+					efct.hasDuration = false;
+
+					efct.duration = Double.NaN;
+				} else if (splits[1].equals("PERCENT")) {
+					efct.hasDuration = false;
+
+					efct.duration = Double.NaN;
+
+					errs.add(String.format("WARN: Punting on DURATION:PERCENT for %s\n", scnSource));
+				} else if (splits[1].equals("0")) {
+					efct.hasDuration = false;
+					efct.duration = 0.0;
+				} else {
+					efct.hasDuration = true;
+
+					efct.duration = Double.parseDouble(splits[1]);
+				}
+			} else if (ln.contains("<FLOAT>MIN:")) {
+				efct.minValue = Double.parseDouble(splits[1]);
+			} else if (ln.contains("<FLOAT>MAX:")) {
+				efct.maxValue = Double.parseDouble(splits[1]);
+			} else if (ln.contains("USEOWNERLEVEL")) {
+				// We don't care about this, for now
+			} else if (ln.contains("LEVEL:")) {
+				efct.level = Integer.parseInt(splits[1]);
+			} else if (ln.contains("EXCLUSIVE")) {
+				efct.exclusive = Boolean.parseBoolean(splits[1]);
+			} else if (ln.contains("GRAPHOVERRIDE")) {
+				efct.graphOverride = splits[1];
+			} else if (ln.contains("USEOWNERLEVEL")) {
+				efct.ownerLevel = Boolean.parseBoolean(splits[1]);
+			} else if (ln.contains("NOGRAPH")) {
+				efct.useGraph = Boolean.parseBoolean(splits[1]);
+			} else if (ln.contains("STATNAME")) {
+				efct.statName = splits[1];
+			} else if (ln.contains("STATPERCENT")) {
+				efct.statPercent = Double.parseDouble(splits[1]);
+			} else if (ln.contains("STATMODIFIERISBONUS")) {
+				efct.isStatBonus = Boolean.parseBoolean(splits[1]);
+			} else if (ln.contains("RESISTANCE:")) {
+				efct.resist = Double.parseDouble(splits[1]);
+			} else if (ln.contains("FORCE:")) {
+				efct.resist = Double.parseDouble(splits[1]);
+			} else if (ln.contains("MIN_PER")) {
+				efct.minPer = Double.parseDouble(splits[1]);
+			} else if (ln.contains("MAX_PER")) {
+				efct.maxPer = Double.parseDouble(splits[1]);
+			} else if (ln.contains("RANGE:") || ln.contains("RADIUS")) {
+				efct.range = Double.parseDouble(splits[1]);
+			} else if (ln.contains("MAX_COUNT:") || ln.contains("MAX_TARGETS")) {
+				efct.maxCount = Double.parseDouble(splits[1]);
+			} else if (ln.contains("PULSE_RATE")) {
+				efct.pulse = Double.parseDouble(splits[1]);
+			} else if (ln.contains("CHANCE:")) {
+				// NOTE: Should really use its own field
+				efct.resist = Double.parseDouble(splits[1]);
+			}
+		}
+
+		long endTime = System.nanoTime();
+		if (doTiming) {
+			String fmt = "\t\tProcessed effect %s from %s in %d nanoseconds (%.2f seconds)\n";
+
+			double seconds = ((double)((endTime - startTime) / 1000000000));
+			errs.add(String.format(fmt, efct.name, scnSource, endTime - startTime, seconds));
+		}
+
+		effectCount += 1;
+
+		return efct;
 	}
 }

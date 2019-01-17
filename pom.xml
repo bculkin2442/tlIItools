@@ -43,7 +43,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<main.class>AffixLister</main.class>
+		<main.class>tlIItools.AffixLister</main.class>
 	</properties>
 
 	<dependencies>

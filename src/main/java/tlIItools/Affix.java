@@ -2,11 +2,16 @@ package tlIItools;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Represents a Torchlight II affix.
  */
 public class Affix {
+	/**
+	 * Whether or not to record timing info.
+	 */
+	public static boolean doTiming;
 	/**
 	 * Internal name of the affix.
 	 */
@@ -18,7 +23,7 @@ public class Affix {
 	 * In general, only one of these is set for a given affix.
 	 *
 	 * NOTE: Some affixes have a mis-set suffix/prefix ordering, and
-	 * may need to be changed.
+	 * may need to be changed in their files.
 	 */
 	public String affixSuffix;
 	public String affixPrefix;
@@ -129,6 +134,10 @@ public class Affix {
 
 	@Override
 	public String toString() {
+		return intName;
+	}
+
+	public String toLongString() {
 		StringBuilder sb = new StringBuilder();
 		if (isSocketable)  sb.append("Socketable ");
 		else if (isPerson || (intName != null && intName.startsWith("HERO_"))) sb.append("Personal ");
@@ -165,8 +174,7 @@ public class Affix {
 			sb.append("Max Level: ");
 			sb.append(maxLevel);
 		} else if (maxLevel == 999) {
-			sb.append("Minimum Level: ");
-			sb.append(minLevel);
+			sb.append("Minimum Level: "); sb.append(minLevel);
 		}
 
 		sb.append("\n");
@@ -220,5 +228,89 @@ public class Affix {
 		}
 
 		return sb.toString();
+	}
+
+	/**
+	 * Load an affix from an input source.
+	 *
+	 * @param scn
+	 * 	The input source to load from.
+	 *
+	 * @param fName
+	 * 	The name of the input source in question.
+	 *
+	 * @return
+	 * 	The loaded affix.
+	 */
+	public static Affix loadAffix(Scanner scn, String fName) {
+		return loadAffix(scn, fName, new ArrayList<>());
+	}
+
+	public static Affix loadAffix(Scanner scn, String scnName, List<String> errors) {
+		Affix afx = new Affix();
+
+		long startTime = System.nanoTime();
+
+		while (scn.hasNextLine())  {
+			String ln = scn.nextLine();
+			ln = ln.replaceAll("\\p{Cntrl}", "");
+
+			if (ln.contains("[NOT_UNITTYPES]")) {
+				afx.setEquipType(true);
+				continue;
+			} else if (ln.contains("[UNITTYPES]")) {
+				afx.setEquipType(false);
+				continue;
+			} 
+
+			String[] splits = ln.split(":");
+			if (ln.contains("<TRANSLATE>")) {
+				splits[0] = splits[0].substring(11);
+
+				switch (splits[0]) {
+					case "SUFFIX":
+						afx.affixSuffix = splits[1];
+						break;
+					case "PREFIX":
+						afx.affixPrefix = splits[1];
+						break;
+					default:
+						errors.add(String.format("Misformed affix translation: (%s) (%s) (%s)\n", splits[0], splits[1], scnName));
+				}
+			} else if (ln.contains("MIN_SPAWN_RANGE")) {
+				afx.minLevel = Integer.parseInt(splits[1]);
+			} else if (ln.contains("MAX_SPAWN_RANGE")) {
+				afx.maxLevel = Integer.parseInt(splits[1]);
+			} else if (ln.contains("WEIGHT:")) {
+				afx.weight = Integer.parseInt(splits[1]);
+			} else if (ln.contains("SLOTS_OCCUPY")) {
+				afx.weight = Integer.parseInt(splits[1]);
+			} else if (ln.contains("UNITTYPE") && !ln.contains("/")) {
+				if (splits.length == 1)
+					errors.add(String.format("Malformed equip type: (%s) (%s)\n", splits[0], scnName));
+				afx.addEquipType(splits[1]);
+			} else if (splits[0].equals("<STRING>NAME")) {
+				if (splits.length == 1)
+					errors.add(String.format("Malformed name: (%s) (%s)\n", splits[0], scnName));
+				afx.intName = splits[1];
+			} else if (ln.contains("[EFFECT]")) {
+				List<String> eftErrs = new ArrayList<>();
+
+				Effect eft = Effect.parseEffect(afx, scn, scnName, errors);
+				errors.addAll(eftErrs);
+
+				afx.effects.add(eft);
+			}
+		}
+
+		long endTime = System.nanoTime();
+		if (doTiming) {
+			String fmt = "\tProcessed affix %s from %s in %d nanoseconds (%.2f seconds)\n\n";
+			double seconds = ((double)(endTime - startTime) / 1000000000);
+
+			errors.add(String.format(fmt, afx.intName, scnName, endTime - startTime, seconds));
+		}
+
+		return afx;
 	}
 }
