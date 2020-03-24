@@ -111,8 +111,6 @@ public class NameFileReader {
 	 * @return The number of files read.
 	 */
 	public void readFrom(String from) {
-		int ret;
-
 		try (FileReader fr = new FileReader(from)) {
 			readFrom(fr);
 		} catch (IOException ioex) {
@@ -131,8 +129,6 @@ public class NameFileReader {
 	 * @return The number of files read.
 	 */
 	public void readFrom(Reader r) {
-		int numFiles = 0;
-
 		Scanner scn = new Scanner(r);
 
 		while (scn.hasNextLine()) {
@@ -156,6 +152,8 @@ public class NameFileReader {
 
 			skipAdd = false;
 		}
+		
+		scn.close();
 	}
 
 	/**

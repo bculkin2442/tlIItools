@@ -5,13 +5,10 @@ import java.io.FileReader;
 import java.io.PrintStream;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  * Lists randomly generated affixes for Torchlight II gear.
@@ -80,7 +77,6 @@ public class AffixLister {
 
 		boolean omitZeros   = false;
 		boolean listZeros   = false;
-		boolean guessGroups = false;
 
 		NameMode nameMode = NameMode.ALL;
 
@@ -92,8 +88,6 @@ public class AffixLister {
 		Map<String, List<Affix>> groupContents = afst.affixGroups;
 
 		List<Affix> nonGroupContents = afst.ungroupedAffixes;
-
-		int argCount = 0;
 
 		NameFileReader nfr = new NameFileReader(false);
 		nfr.groupRx = ".*/mods/([^/]+)/*";
@@ -231,8 +225,6 @@ public class AffixLister {
 				}
 
 				if (isArg) {
-					argCount += 1;
-
 					continue;
 				}
 
