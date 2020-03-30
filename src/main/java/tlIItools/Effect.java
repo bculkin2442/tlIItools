@@ -291,10 +291,10 @@ public class Effect {
 
 			// Expand aliases first.
 
-			for (ReplPair repl : replList) {
+			for (ReplPair repl : replList) {				
 				fmt = fmt.replaceAll(repl.find, repl.replace);
 			}
-
+			
 			if (minValue <= 0 && maxValue <= 0) {
 				fmt = fmt.replaceAll("<C\\|([^|>]+)\\|([^|>]+)>", "$1");
 			}
@@ -310,9 +310,9 @@ public class Effect {
 			if (minPer >= 0 && maxPer >= 0) {
 				fmt = fmt.replaceAll("<MC\\|([^|>]+)\\|([^|>]+)>", "$2");
 			}
-
+			
 			if (fmt.contains("<") || fmt.contains(">")) {
-				AffixLister.errOut.printf("WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n", type, fmt);
+				AffixLister.errOut.printf("WARN: Details for effect %s are malformatted (contains < or >):\n\t%s\n", type, fmt);
 			}
 
 			sb.append(String.format(fmt, Math.abs(minValue), Math.abs(maxValue), duration, damageType.toLowerCase(), level, resist, name, Math.abs(minPer), Math.abs(maxPer), range, maxCount, pulse));
@@ -434,7 +434,11 @@ public class Effect {
 				} else {
 					efct.hasDuration = true;
 
-					efct.duration = Double.parseDouble(splits[1]);
+					if (splits[1].equalsIgnoreCase("instant")) {
+						efct.duration = -1;
+					} else {
+						efct.duration = Double.parseDouble(splits[1]);
+					}
 				}
 			} else if (ln.contains("<FLOAT>MIN:")) {
 				efct.minValue = Double.parseDouble(splits[1]);

@@ -5,3 +5,6 @@ tags
 synfiles
 basefiles
 target/
+/allafxs.err
+/afxsocket.err
+/afxsocket.out
