@@ -525,7 +525,7 @@ public class ReplPair implements Comparable<ReplPair> {
 				}
 			} else {
 				stageList = new ArrayList<>();
-				stages.set(stage, stageList);
+				stages.add(stage, stageList);
 			}
 
 			stageList.add(rp);

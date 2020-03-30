@@ -1,0 +1,104 @@
+.TH TLIITools 1 2020-03-24
+.SH NAME
+tlIItools \- tools for dealing with Torchlight II data files
+.SH SYNOPSIS
+\fBtlIItools\fP [\fIOPTION\fP]... [\fIFILE\fP]...
+.SH DESCRIPTION
+\fBtlIItools\fP is a collection of various tools for dealing with the data files
+that are created during the course of modding Torchlight II.
+.P
+Currently, the main function is providing a list of available affixes in an
+easy to browse format; but there are plans to add several other functions.
+.SS Affix listing
+Currently, this is the only mode, and it is the one that is invoked by default.
+It requires that at least one file name be provided, and file names/arguments
+may be freely intermixed (some require that).
+.P
+The output it provides is a text listing of each affix you provided in a
+condensed format that can be more easily read.
+.SS File groups
+File groups are a concept that was introduced to group together similar items.
+Currently, there isn't much mechanical support they offer, but they help with
+grouping things together in the output, and will likely be used for more in the
+future.
+.SH OPTIONS
+.TP 
+\fB--\fP
+This follows the general convention where '\fB--\fP' indicates the end of argument
+processing. All further arguments will be interpreted as file names.
+.TP
+.BR "-z" ", " "--omit-zero"
+This will omit the notes about 'Affix ... has zero spawn weight' that are
+printed if the 'don't list zeroes option' (controlled by the \fB-L\fP and
+\fB--no-list-zeroes\fP arguments) is enabled. If those flags are turned off,
+this won't do much.
+.TP
+.BR "-Z" ", " "--no-omit-zero"
+Enable the 'Affix ... has zero spawn weight' messages that \fB-z\fP turns off.
+These are enabled by default.
+.TP
+.BR "-l" ", " "--list-zero"
+This causes zero-weight affixes to be included in the affixes that are printed
+out.
+.TP
+.BR "-L" ", " "--no-list-zero"
+Exclude zero-weight affixes from the printed affix listing. This is the default
+setting.
+.TP
+.BR "-t" ", " "--timing"
+Track and output additional timing information. This is mostly of interest while
+doing development to see how much time is being consumed, and giving a vague
+idea of where it's being taken up.
+.TP
+.BR "-T" ", " "--no-timing"
+Turn off additional timing info. This is the default.
+.TP
+.BR "-f" ", " "--file-names"
+Output the file names that affixes were sourced from as well.
+.TP
+.BR "-F" ", " "--no-file-names"
+Don't output the file names we got each affix from.
+.TP
+.BR "-n \fR[\fIall|unnamed|named\fR]\fP" ", " "--name-mode \fR[\fIall|unnamed|named\fR]\fP"
+Controls the way that affixes being named/unnamed controls whether or not they
+are output in the listings. The following are the valid modes, and what they do.
+.RS
+.TP
+.I all
+Names don't have any affect on which affixes are/aren't output.
+.TP
+.I unnamed
+Only output unnamed affixes
+.TP
+.I named
+Only output named affixes
+.RE
+.TP
+.BR "-g \fIgroup-name\fP" ", " "--file-group \fIgroup-name\fP"
+Place every file that comes after this into file group \fIgroup-name\fP
+.TP
+.BR "--guess-groups"
+Turn on attempting to guess which file group a given file should go into.
+.TP
+.BR "--no-guess-groups"
+Turn off attempting to guess which file group a given file should go into. This
+is the default.
+.TP
+.BR "-r \fIfile-name\fP" ", " "--read-names-from-file \fIfile-name\fP"
+Specify that all of the files listed in \fIfile-name\fP (one per line) should
+have their affixes scanned as well.
+.TP
+.BR "-o \fIfile-name\fP" ", " "--output \fIfile-name\fP"
+Specify that the affixes should be printed out to \fIfile-name\fP instead of to
+the standard output stream.
+.TP
+.BR "-e \fIfile-name\fP" ", " "--output-errors \fIfile-name\fP"
+Specify that errors should be printed out to \fIfile-name\fP instead of to
+the standard error stream.
+.TP
+.BR "--guess-regex \fIregex\fP"
+Specify the regular expression that should guide any attempts to guess file
+groups. The regular expression should match the file name, with a single
+capture-group that will specify the name of the file group.
+.SH EXAMPLES
+.SH SEE ALSO

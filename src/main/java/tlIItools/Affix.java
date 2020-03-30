@@ -139,12 +139,19 @@ public class Affix {
 
 	public String toLongString() {
 		StringBuilder sb = new StringBuilder();
-		if (isSocketable)  sb.append("Socketable ");
-		else if (isPerson || (intName != null && intName.startsWith("HERO_"))) sb.append("Personal ");
-		else if (intName != null & intName.startsWith("MAP_")) sb.append("Area ");
+		if (isSocketable) {
+			sb.append("Socketable ");
+		} else if (isPerson || (intName != null && intName.startsWith("HERO_"))) {
+			sb.append("Personal ");
+		} else if (intName != null & intName.startsWith("MAP_")) {
+			sb.append("Area ");
+		}
 
-		if (isEnchantment) sb.append("Enchantment: ");
-		else               sb.append("Affix: ");
+		if (isEnchantment) {
+			sb.append("Enchantment: ");
+		} else {
+			sb.append("Affix: ");
+		}
 
 		sb.append(intName);
 		sb.append("\n");
