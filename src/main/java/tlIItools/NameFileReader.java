@@ -107,8 +107,6 @@ public class NameFileReader {
 	 *
 	 * @param from
 	 * 	The name of the file to read from.
-	 *
-	 * @return The number of files read.
 	 */
 	public void readFrom(String from) {
 		try (FileReader fr = new FileReader(from)) {
@@ -126,7 +124,6 @@ public class NameFileReader {
 	 * @param r
 	 * 	The input source to read from.
 	 *
-	 * @return The number of files read.
 	 */
 	public void readFrom(Reader r) {
 		Scanner scn = new Scanner(r);

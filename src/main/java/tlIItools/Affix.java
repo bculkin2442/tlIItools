@@ -81,6 +81,43 @@ public class Affix {
 	 */
 	public List<Effect> effects;
 
+	public boolean isInAffixGroup(Affix afx) {
+		if (effects == null) {
+			if (afx.effects != null)
+				return false;
+		} else if (!effects.equals(afx.effects))
+			return false;
+		if (enchantSources == null) {
+			if (afx.enchantSources != null)
+				return false;
+		} else if (!enchantSources.equals(afx.enchantSources))
+			return false;
+		if (equipTypes == null) {
+			if (afx.equipTypes != null)
+				return false;
+		} else if (!equipTypes.equals(afx.equipTypes))
+			return false;
+		if (inNonEquip != afx.inNonEquip)
+			return false;
+		if (isEnchantment != afx.isEnchantment)
+			return false;
+		if (isPerson != afx.isPerson)
+			return false;
+		if (isSocketable != afx.isSocketable)
+			return false;
+		if (nonequipTypes == null) {
+			if (afx.nonequipTypes != null)
+				return false;
+		} else if (!nonequipTypes.equals(afx.nonequipTypes))
+			return false;
+		if (socketableTypes == null) {
+			if (afx.socketableTypes != null)
+				return false;
+		} else if (!socketableTypes.equals(afx.socketableTypes))
+			return false;
+		return true;
+	}
+
 	/*
 	 * Are invalid equip types being added?
 	 */
@@ -320,4 +357,6 @@ public class Affix {
 
 		return afx;
 	}
+	
+	
 }
