@@ -17,7 +17,7 @@ public class Affix {
 	 */
 	public String intName;
 
-	/**
+	/*
 	 * The prefix/suffix attached to the affix.
 	 *
 	 * In general, only one of these is set for a given affix.
