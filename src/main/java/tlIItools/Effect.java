@@ -443,10 +443,25 @@ public class Effect {
 		return true;
 	}
 
+	/**
+	 * Parse an effect.
+	 * @param afx The affix the effect belongs to.
+	 * @param scn The scanner to read from.
+	 * @param scnSource The name of the scanner.
+	 * @return An effect, read from the scanner.
+	 */
 	public static Effect parseEffect(Affix afx, Scanner scn, String scnSource) {
 		return parseEffect(afx, scn, scnSource, new ArrayList<>());
 	}
 
+	/**
+	 * Parse an effect.
+	 * @param afx The affix the effect belongs to.
+	 * @param scn The scanner to read from.
+	 * @param scnSource The name of the scanner.
+	 * @param errs Repository for errors found while parsing.
+	 * @return An effect, read from the scanner.
+	 */
 	public static Effect parseEffect(Affix afx, Scanner scn, String scnSource, List<String> errs) {
 		Effect efct = new Effect();
 

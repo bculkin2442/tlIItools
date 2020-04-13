@@ -22,16 +22,39 @@ public class Affix {
 	 *
 	 * In general, only one of these is set for a given affix.
 	 *
-	 * NOTE: Some affixes have a mis-set suffix/prefix ordering, and
-	 * may need to be changed in their files.
+	 * NOTE: Some affixes have a mis-set suffix/prefix ordering, and may need to be
+	 * changed in their files.
+	 */
+	/**
+	 * The 'suffix name' attached to this affix.
+	 * 
+	 * Include the word [ITEM] to indicate where the item name should go.
+	 * 
+	 * Note that it is not guaranteed that this is actually a suffix; it could be a
+	 * prefix.
 	 */
 	public String affixSuffix;
-	public String affixPrefix;
 
 	/**
+	 * The 'prefix name' attached to this affix.
+	 * 
+	 * Include the word [ITEM] to indicate where the item name should go.
+	 * 
+	 * Note that it is not guaranteed that this is actually a prefix; it could be a
+	 * suffix.
+	 */
+	public String affixPrefix;
+
+	/*
 	 * The min/max levels the affix can spawn at.
 	 */
+	/**
+	 * The minimum level of an item this affix can spawn on.
+	 */
 	public int minLevel;
+	/**
+	 * The maximum level of an item this affix can spawn on.
+	 */
 	public int maxLevel;
 
 	/**
@@ -81,11 +104,28 @@ public class Affix {
 	 */
 	public List<Effect> effects;
 
+	/**
+	 * Is this affix in an 'affix group' with another affix?
+	 * 
+	 * By 'affix group', what we mean is that it is essentially the same affix, with
+	 * generally just differing levels/values.
+	 * 
+	 * For instance, an affix that granted +2 strength, and one that granted +4
+	 * strength would be considered to be in the same affix group (assuming that
+	 * both of those strength bonuses had the same effect name.
+	 * 
+	 * @param afx
+	 *            The affix to check if we are in an affix group with.
+	 * 
+	 * @return Whether or now we are in an affix group with the specified affix.
+	 */
 	public boolean isInAffixGroup(Affix afx) {
 		if (effects == null) {
 			if (afx.effects != null)
 				return false;
-		} else if (!effects.equals(afx.effects))
+		} else if (!effects.equals(afx.effects)) // TODO this isn't actually an equals;
+													// maybe make this a 'isEquivalent' or
+													// 'isSimilarEffect'?
 			return false;
 		if (enchantSources == null) {
 			if (afx.enchantSources != null)
@@ -127,19 +167,19 @@ public class Affix {
 	 * Create a new blank affix.
 	 */
 	public Affix() {
-		equipTypes      = new ArrayList<>();
-		nonequipTypes   = new ArrayList<>();
-		enchantSources  = new ArrayList<>();
+		equipTypes = new ArrayList<>();
+		nonequipTypes = new ArrayList<>();
+		enchantSources = new ArrayList<>();
 		socketableTypes = new ArrayList<>();
-		effects         = new ArrayList<>();
+		effects = new ArrayList<>();
 	}
 
 	/**
 	 * Sets the set of equip types that is added to.
 	 *
-	 * @param nonequip 
-	 * 	True if the equip types being added are prohibited, or
-	 * 	false if they are allowed.
+	 * @param nonequip
+	 *                 True if the equip types being added are prohibited, or false
+	 *                 if they are allowed.
 	 */
 	public void setEquipType(boolean nonequip) {
 		inNonEquip = nonequip;
@@ -149,7 +189,7 @@ public class Affix {
 	 * Add an equip type to the right set of equip types.
 	 *
 	 * @param type
-	 * 	The equip type to add.
+	 *             The equip type to add.
 	 */
 	public void addEquipType(String type) {
 		if (inNonEquip) {
@@ -161,7 +201,7 @@ public class Affix {
 			} else if (type.startsWith("ENCHANTER")) {
 				isEnchantment = true;
 				enchantSources.add(type.substring(10));
-			} else if (type.equals("MONSTER") || type.equals("PLAYER"))  {
+			} else if (type.equals("MONSTER") || type.equals("PLAYER")) {
 				isPerson = true;
 			} else {
 				equipTypes.add(type);
@@ -174,6 +214,11 @@ public class Affix {
 		return intName;
 	}
 
+	/**
+	 * Print out the full details of this affix.
+	 * 
+	 * @return The full details of the affix.
+	 */
 	public String toLongString() {
 		StringBuilder sb = new StringBuilder();
 		if (isSocketable) {
@@ -218,7 +263,8 @@ public class Affix {
 			sb.append("Max Level: ");
 			sb.append(maxLevel);
 		} else if (maxLevel == 999) {
-			sb.append("Minimum Level: "); sb.append(minLevel);
+			sb.append("Minimum Level: ");
+			sb.append(minLevel);
 		}
 
 		sb.append("\n");
@@ -236,9 +282,12 @@ public class Affix {
 		}
 
 		if (equipTypes.size() != 0) {
-			if (isSocketable) sb.append("\tSocketable Into: ");
-			else if (isEnchantment) sb.append("\tEnchants Onto: ");
-			else sb.append("\tSpawns On: ");
+			if (isSocketable)
+				sb.append("\tSocketable Into: ");
+			else if (isEnchantment)
+				sb.append("\tEnchants Onto: ");
+			else
+				sb.append("\tSpawns On: ");
 			sb.append(equipTypes);
 			sb.append("\n");
 		}
@@ -278,24 +327,34 @@ public class Affix {
 	 * Load an affix from an input source.
 	 *
 	 * @param scn
-	 * 	The input source to load from.
+	 *              The input source to load from.
 	 *
 	 * @param fName
-	 * 	The name of the input source in question.
+	 *              The name of the input source in question.
 	 *
-	 * @return
-	 * 	The loaded affix.
+	 * @return The loaded affix.
 	 */
 	public static Affix loadAffix(Scanner scn, String fName) {
 		return loadAffix(scn, fName, new ArrayList<>());
 	}
 
+	/**
+	 * Load an affix from an input source.
+	 * 
+	 * @param scn
+	 *                The input source to read from.
+	 * @param scnName
+	 *                The name of the input source.
+	 * @param errors
+	 *                A list to stick errors encountered during loading the affix.
+	 * @return The affix, loaded from the file.
+	 */
 	public static Affix loadAffix(Scanner scn, String scnName, List<String> errors) {
 		Affix afx = new Affix();
 
 		long startTime = System.nanoTime();
 
-		while (scn.hasNextLine())  {
+		while (scn.hasNextLine()) {
 			String ln = scn.nextLine();
 			ln = ln.replaceAll("\\p{Cntrl}", "");
 
@@ -305,21 +364,23 @@ public class Affix {
 			} else if (ln.contains("[UNITTYPES]")) {
 				afx.setEquipType(false);
 				continue;
-			} 
+			}
 
 			String[] splits = ln.split(":");
 			if (ln.contains("<TRANSLATE>")) {
 				splits[0] = splits[0].substring(11);
 
 				switch (splits[0]) {
-					case "SUFFIX":
-						afx.affixSuffix = splits[1];
-						break;
-					case "PREFIX":
-						afx.affixPrefix = splits[1];
-						break;
-					default:
-						errors.add(String.format("Misformed affix translation: (%s) (%s) (%s)\n", splits[0], splits[1], scnName));
+				case "SUFFIX":
+					afx.affixSuffix = splits[1];
+					break;
+				case "PREFIX":
+					afx.affixPrefix = splits[1];
+					break;
+				default:
+					errors.add(
+							String.format("Misformed affix translation: (%s) (%s) (%s)\n",
+									splits[0], splits[1], scnName));
 				}
 			} else if (ln.contains("MIN_SPAWN_RANGE")) {
 				afx.minLevel = Integer.parseInt(splits[1]);
@@ -331,11 +392,13 @@ public class Affix {
 				afx.weight = Integer.parseInt(splits[1]);
 			} else if (ln.contains("UNITTYPE") && !ln.contains("/")) {
 				if (splits.length == 1)
-					errors.add(String.format("Malformed equip type: (%s) (%s)\n", splits[0], scnName));
+					errors.add(String.format("Malformed equip type: (%s) (%s)\n",
+							splits[0], scnName));
 				afx.addEquipType(splits[1]);
 			} else if (splits[0].equals("<STRING>NAME")) {
 				if (splits.length == 1)
-					errors.add(String.format("Malformed name: (%s) (%s)\n", splits[0], scnName));
+					errors.add(String.format("Malformed name: (%s) (%s)\n", splits[0],
+							scnName));
 				afx.intName = splits[1];
 			} else if (ln.contains("[EFFECT]")) {
 				List<String> eftErrs = new ArrayList<>();
@@ -349,14 +412,15 @@ public class Affix {
 
 		long endTime = System.nanoTime();
 		if (doTiming) {
-			String fmt = "\tProcessed affix %s from %s in %d nanoseconds (%.2f seconds)\n\n";
-			double seconds = ((double)(endTime - startTime) / 1000000000);
+			String fmt
+					= "\tProcessed affix %s from %s in %d nanoseconds (%.2f seconds)\n\n";
+			double seconds = ((double) (endTime - startTime) / 1000000000);
 
-			errors.add(String.format(fmt, afx.intName, scnName, endTime - startTime, seconds));
+			errors.add(String.format(fmt, afx.intName, scnName, endTime - startTime,
+					seconds));
 		}
 
 		return afx;
 	}
-	
-	
+
 }

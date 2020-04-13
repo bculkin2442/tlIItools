@@ -16,7 +16,7 @@ import java.util.Scanner;
  * @author Ben Culkin
  */
 public class AffixLister {
-	/**
+	/*
 	 * Count of effects this class has loaded.
 	 */
 	private static int effectCount = 0;
@@ -31,10 +31,16 @@ public class AffixLister {
 	 */
 	public static boolean addFileName = false;
 
-	/**
+	/*
 	 * Output streams to use.
 	 */
+	/**
+	 * The normal output to use.
+	 */
 	public static PrintStream normOut = System.out;
+	/**
+	 * The error output to use.
+	 */
 	public static PrintStream errOut = System.err;
 
 	/**
