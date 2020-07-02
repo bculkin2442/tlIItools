@@ -363,7 +363,11 @@ public class Affix {
 		}
 		
 		sb.append("Affix Group: ");
-		sb.append(getAffixGroupName());
+		String afxGroupName = getAffixGroupName();
+		sb.append(afxGroupName);
+		sb.append(" (ID: ");
+		sb.append(afxGroupName.hashCode());
+		sb.append(")");
 		sb.append("\n");
 		
 		return sb.toString();
