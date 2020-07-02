@@ -1,6 +1,7 @@
 package tlIItools;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -112,7 +113,7 @@ public class Affix {
 	 * 
 	 * For instance, an affix that granted +2 strength, and one that granted +4
 	 * strength would be considered to be in the same affix group (assuming that
-	 * both of those strength bonuses had the same effect name.
+	 * both of those strength bonuses had the same effect name).
 	 * 
 	 * @param afx
 	 *            The affix to check if we are in an affix group with.
@@ -137,8 +138,6 @@ public class Affix {
 				return false;
 		} else if (!equipTypes.equals(afx.equipTypes))
 			return false;
-		if (inNonEquip != afx.inNonEquip)
-			return false;
 		if (isEnchantment != afx.isEnchantment)
 			return false;
 		if (isPerson != afx.isPerson)
@@ -158,8 +157,51 @@ public class Affix {
 		return true;
 	}
 
+	/**
+	 * Gets the name of the 'affix group' that this affix is in.
+	 * 
+	 * By 'affix group', what we mean is that it is essentially the same affix, with
+	 * generally just differing levels/values.
+	 * 
+	 * For instance, an affix that granted +2 strength, and one that granted +4
+	 * strength would be considered to be in the same affix group (assuming that
+	 * both of those strength bonuses had the same effect name, and applied to the
+	 * same sorts of items).
+	 * 
+	 * @return The name of the affix group
+	 */
+	public String getAffixGroupName() {
+		StringBuilder sb = new StringBuilder();
+
+		for (Effect eft : effects) {
+			sb.append(eft.getEffectGroup());
+		}
+		
+		for (String enchantSource : enchantSources) {
+			sb.append(enchantSource);
+		}
+		
+		for (String equipType : equipTypes) {
+			sb.append(equipType);
+		}
+		
+		for (String nonEquipType : nonequipTypes) {
+			sb.append(nonEquipType);
+		}
+		
+		for (String socketableType : socketableTypes) {
+			sb.append(socketableType);
+		}
+
+		return sb.toString();
+	}
+
 	/*
 	 * Are invalid equip types being added?
+	 * 
+	 * NOTE: This is kinda bad practice. It should really be handled via two
+	 * separate affix methods, one to add a valid affix, one to add an invalid, w/
+	 * the caller keeping tracking/calling the right one.
 	 */
 	private boolean inNonEquip;
 
@@ -319,7 +361,11 @@ public class Affix {
 			}
 			sb.append("\n");
 		}
-
+		
+		sb.append("Affix Group: ");
+		sb.append(getAffixGroupName());
+		sb.append("\n");
+		
 		return sb.toString();
 	}
 
@@ -409,6 +455,9 @@ public class Affix {
 				afx.effects.add(eft);
 			}
 		}
+		// Sort effects, so that they are in a stable order, even if specified out of
+		// order
+		afx.effects.sort(Comparator.comparingInt((val) -> val.hashCode()));
 
 		long endTime = System.nanoTime();
 		if (doTiming) {

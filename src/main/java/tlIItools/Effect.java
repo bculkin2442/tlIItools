@@ -147,6 +147,34 @@ public class Effect {
 
 	}
 
+	/**
+	 * Gets the 'effect group' this effect belongs to.
+	 * 
+	 * An 'effect group is essentially any other effect that is the same general sort of effect, just with different details.
+	 * 
+	 * For instance, an effect that grants +4 strength would group with one granting +8 strength,
+	 * assuming that most other details were equal.
+	 * 
+	 * @return The 'effect group' this effect belongs to.
+	 */
+	public String getEffectGroup() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(name);
+		sb.append(type);
+		sb.append(damageType);
+		sb.append(hasDuration);
+		sb.append(statName);
+		sb.append(isStatBonus);
+		sb.append(ownerLevel);
+		sb.append(graphOverride);
+		sb.append(useGraph);
+		sb.append(exclusive);
+		sb.append(isTransfer);
+		
+		return sb.toString();
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -247,23 +275,45 @@ public class Effect {
 
 		return sb.toString();
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((damageType == null) ? 0 : damageType.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(duration);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + (exclusive ? 1231 : 1237);
-		result = prime * result + ((graphOverride == null) ? 0 : graphOverride.hashCode());
+		result = prime * result
+				+ ((graphOverride == null) ? 0 : graphOverride.hashCode());
 		result = prime * result + (hasDuration ? 1231 : 1237);
 		result = prime * result + (isStatBonus ? 1231 : 1237);
 		result = prime * result + (isTransfer ? 1231 : 1237);
+		result = prime * result + level;
+		temp = Double.doubleToLongBits(maxCount);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(maxPer);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(maxValue);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(minPer);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(minValue);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + (ownerLevel ? 1231 : 1237);
-		long temp;
+		temp = Double.doubleToLongBits(pulse);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(range);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(resist);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(soakScale);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((statName == null) ? 0 : statName.hashCode());
+		temp = Double.doubleToLongBits(statPercent);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + (useGraph ? 1231 : 1237);
 		return result;
@@ -283,6 +333,8 @@ public class Effect {
 				return false;
 		} else if (!damageType.equals(other.damageType))
 			return false;
+		if (Double.doubleToLongBits(duration) != Double.doubleToLongBits(other.duration))
+			return false;
 		if (exclusive != other.exclusive)
 			return false;
 		if (graphOverride == null) {
@@ -296,6 +348,18 @@ public class Effect {
 			return false;
 		if (isTransfer != other.isTransfer)
 			return false;
+		if (level != other.level)
+			return false;
+		if (Double.doubleToLongBits(maxCount) != Double.doubleToLongBits(other.maxCount))
+			return false;
+		if (Double.doubleToLongBits(maxPer) != Double.doubleToLongBits(other.maxPer))
+			return false;
+		if (Double.doubleToLongBits(maxValue) != Double.doubleToLongBits(other.maxValue))
+			return false;
+		if (Double.doubleToLongBits(minPer) != Double.doubleToLongBits(other.minPer))
+			return false;
+		if (Double.doubleToLongBits(minValue) != Double.doubleToLongBits(other.minValue))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -303,12 +367,22 @@ public class Effect {
 			return false;
 		if (ownerLevel != other.ownerLevel)
 			return false;
-		if (Double.doubleToLongBits(soakScale) != Double.doubleToLongBits(other.soakScale))
+		if (Double.doubleToLongBits(pulse) != Double.doubleToLongBits(other.pulse))
+			return false;
+		if (Double.doubleToLongBits(range) != Double.doubleToLongBits(other.range))
+			return false;
+		if (Double.doubleToLongBits(resist) != Double.doubleToLongBits(other.resist))
+			return false;
+		if (Double.doubleToLongBits(soakScale)
+				!= Double.doubleToLongBits(other.soakScale))
 			return false;
 		if (statName == null) {
 			if (other.statName != null)
 				return false;
 		} else if (!statName.equals(other.statName))
+			return false;
+		if (Double.doubleToLongBits(statPercent)
+				!= Double.doubleToLongBits(other.statPercent))
 			return false;
 		if (type == null) {
 			if (other.type != null)

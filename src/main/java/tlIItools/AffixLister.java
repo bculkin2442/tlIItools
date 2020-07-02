@@ -4,11 +4,12 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.PrintStream;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Lists randomly generated affixes for Torchlight II gear.
@@ -77,7 +78,7 @@ public class AffixLister {
 	 * 	The names of the files to read affix data from.
 	 */
 	public static AffixSet listAffixes(String[] args) {
-		AffixSet afst = new AffixSet();
+		AffixSet affixSetByName = new AffixSet();
 
 		boolean doingArgs  = true;
 
@@ -91,9 +92,9 @@ public class AffixLister {
 		int zeroCount    = 0;
 		int groupCount   = 0;
 
-		Map<String, List<Affix>> groupContents = afst.affixGroups;
+		Map<String, Set<Affix>> groupContents = affixSetByName.affixGroups;
 
-		List<Affix> nonGroupContents = afst.ungroupedAffixes;
+		Set<Affix> nonGroupContents = affixSetByName.ungroupedAffixes;
 
 		NameFileReader nfr = new NameFileReader(false);
 		nfr.groupRx = ".*/mods/([^/]+)/*";
@@ -240,6 +241,8 @@ public class AffixLister {
 			}
 		}
 
+		AffixSet affixSetByContents = new AffixSet();
+		
 		for (Entry<String, List<String>> fGroup : nfr.fNames.entrySet()) {
 			if (fGroup.getValue().size() == 0) continue;
 			normOut.printf("\nFile Group '%s' starting\n", fGroup.getKey());
@@ -248,6 +251,8 @@ public class AffixLister {
 					Scanner sc = new Scanner(fr);
 
 					Affix afx = Affix.loadAffix(sc, fName);
+					affixSetByContents.addAffixByContents(afx);
+					
 					effectCount += afx.effects.size();
 
 					if (afx.intName != null && afx.weight != 0) {
@@ -262,7 +267,7 @@ public class AffixLister {
 							if (hasGroup) {
 								// errOut.printf("\tTRACE: Counted actual group %s from %s\n", groupName, afx.intName);
 
-								groupContents.put(groupName, new ArrayList<>());
+								groupContents.put(groupName, new HashSet<>());
 							} else {
 								nonGroupContents.add(afx);
 							}
@@ -301,7 +306,7 @@ public class AffixLister {
 		}
 
 		errOut.println("\nGroup Contents: ");
-		for (Entry<String, List<Affix>> ent: groupContents.entrySet()) {
+		for (Entry<String, Set<Affix>> ent: groupContents.entrySet()) {
 			errOut.printf("\t%s: %s\n", ent.getKey(), ent.getValue());
 		}
 		errOut.println();
@@ -311,6 +316,6 @@ public class AffixLister {
 		errOut.printf("\nProcessed %,d affixes (%,d named, %,d unnamed, %,d zero-weight) (%,d effects) (%,d distinct groups, %,d actual groups, %,d nongrouped affixes) out of %,d files (%,d groups) in %,d nanoseconds (%.2f seconds)\n", nfr.fCount, namedCount, unnamedCount, zeroCount, effectCount, groupCount, groupContents.size(), nonGroupContents.size(), nfr.fCount, nfr.fNames.size(), endTime - startTime, ((double)(endTime - startTime) / 1000000000));
 		errOut.printf("\tOptions: Name Mode: %s, Special-case zero weight: %s, Noting zero-weight in special case: %s\n", nameMode, !listZeros, !omitZeros);
 
-		return afst;
+		return affixSetByName;
 	}
 }
