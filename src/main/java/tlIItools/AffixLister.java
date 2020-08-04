@@ -1,15 +1,9 @@
 package tlIItools;
 
-import java.io.IOException;
-import java.io.FileReader;
-import java.io.PrintStream;
+import java.io.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Scanner;
-import java.util.Set;
 
 /**
  * Lists randomly generated affixes for Torchlight II gear.
@@ -92,6 +86,9 @@ public class AffixLister {
 		int zeroCount    = 0;
 		int groupCount   = 0;
 
+		boolean outputAffixGroups = false;
+		OutputStream affixGroupDest = null;
+
 		Map<String, Set<Affix>> groupContents = affixSetByName.affixGroups;
 
 		Set<Affix> nonGroupContents = affixSetByName.ungroupedAffixes;
@@ -110,40 +107,49 @@ public class AffixLister {
 					case "--":
 						doingArgs = false;
 						break;
+
 					case "--omit-zero":
 					case "-z":
 						omitZeros = true;
 						break;
+
 					case "--no-omit-zero":
 					case "-Z":
 						omitZeros = false;
 						break;
+
 					case "--list-zero":
 					case "-l":
 						listZeros = true;
 						break;
+
 					case "--no-list-zero":
 					case "-L":
 						listZeros = false;
 						break;
+
 					case "--timing":
 					case "-t":
 						doTiming = true;
 						Effect.doTiming = true;
 						break;
+
 					case "--no-timing":
 					case "-T":
 						doTiming = false;
 						Effect.doTiming = false;
 						break;
+
 					case "--file-names":
 					case "-f":
 						addFileName = true;
 						break;
+
 					case "--no-file-names":
 					case "-F":
 						addFileName = true;
 						break;
+
 					case "--name-mode":
 					case "-n":
 						if (i + 1 >= args.length) {
@@ -154,6 +160,7 @@ public class AffixLister {
 						nameMode = NameMode.valueOf(args[++i].toUpperCase());
 
 						break;
+
 					case "--file-group":
 					case "-g":
 						if (i + 1 >= args.length) {
@@ -164,14 +171,17 @@ public class AffixLister {
 						nfr.swapGroup(args[++i]);
 
 						break;
+
 					case "--guess-groups":
 						nfr.guessGroups = true;
 
 						break;
+
 					case "--no-guess-groups":
 						nfr.guessGroups = false;
 
 						break;
+
 					case "--read-names-from-file":
 					case "-r":
 						if (i + 1 >= args.length) {
@@ -182,6 +192,7 @@ public class AffixLister {
 						nfr.readFrom(args[++i]);
 
 						break;
+
 					case "--output":
 					case "-o":
 						if (i + 1 >= args.length) {
@@ -200,6 +211,7 @@ public class AffixLister {
 						}
 
 						break;
+
 					case "--output-errors":
 					case "-e":
 						if (i + 1 >= args.length) {
@@ -218,6 +230,7 @@ public class AffixLister {
 						}
 
 						break;
+
 					case "--guess-regex":
 						if (i + 1 >= args.length) {
 							errOut.printf("ERROR: group regex argument requires the regex to use be specified\n");
@@ -225,6 +238,21 @@ public class AffixLister {
 						}
 
 						nfr.groupRx = args[++i];
+
+						break;
+					case "--output-affix-groups":
+						if (i + 1 >= args.length) {
+							errOut.printf("ERROR: to output affix-groups, must specify a file to output them to");
+							break;
+						}
+
+						try {
+							affixGroupDest = new PrintStream(args[++i]);
+
+							outputAffixGroups = true;
+						} catch (IOException ioex) {
+							errOut.printf("ERROR: Couldn't open file %s to write affix groups to\n", affixGroupDest);
+						}
 
 						break;
 					default:
@@ -311,6 +339,23 @@ public class AffixLister {
 		}
 		errOut.println();
 		errOut.println();
+
+		if (outputAffixGroups) {
+			for (Entry<String, Set<Affix>> ent : affixSetByContents.affixGroups.entrySet()) {
+				String groupName = ent.getKey();
+				Set<Affix> affixes = ent.getValue();
+
+				boolean isFirstAfx = true;
+				for (Affix afx : affixes) {
+					if (isFirstAfx) {
+						// Print the header for this
+						// group
+						isFirstAfx = false;
+					}
+					// print this affix in the group format
+				}
+			}
+		}
 
 		long endTime = System.nanoTime();
 		errOut.printf("\nProcessed %,d affixes (%,d named, %,d unnamed, %,d zero-weight) (%,d effects) (%,d distinct groups, %,d actual groups, %,d nongrouped affixes) out of %,d files (%,d groups) in %,d nanoseconds (%.2f seconds)\n", nfr.fCount, namedCount, unnamedCount, zeroCount, effectCount, groupCount, groupContents.size(), nonGroupContents.size(), nfr.fCount, nfr.fNames.size(), endTime - startTime, ((double)(endTime - startTime) / 1000000000));

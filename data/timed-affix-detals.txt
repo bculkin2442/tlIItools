@@ -69,3 +69,6 @@ PERCENT ARMOR BONUS
 
 PERCENT BLOCK CHANCE BASE
 <RLM|1|Base Block Chance> for <DUR> seconds
+
+HP MOD OVER TIME
+<RPM|1|HP/Second>
