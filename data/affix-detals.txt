@@ -259,6 +259,9 @@ ADD STAT
 CAST SKILL ON DEATH FROM EFFECT OWNER
 <1R>%% chance to cast <NME> on kill
 
+CAST SKILL ON DEATH
+<1R>%% chance to cast <NME> on kill
+
 MINIONDAMAGE
 <1R>%% <CLM> pet/minion <DT> damage
 

@@ -1,15 +1,23 @@
 package tlIItools;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+
 /**
  * Container of a set of affixes.
  *
  * @author Ben Culkin
  */
 public class AffixSet {
+	private static class AffixComparator implements Comparator<Affix> {
+		public int compare(Affix a1, Affix a2) {
+			if (a1.minLevel == a2.minLevel) {
+				return a1.maxLevel - a2.maxLevel;
+			}
+
+			return a1.minLevel - a2.minLevel;
+		}
+	}
+
 	/**
 	 * All of the affix groups contained in this set.
 	 *
@@ -27,9 +35,9 @@ public class AffixSet {
 	 * Create a new blank affix set.
 	 */
 	public AffixSet() {
-		affixGroups = new HashMap<>();
+		affixGroups = new TreeMap<>();
 
-		ungroupedAffixes = new HashSet<>();
+		ungroupedAffixes = new TreeSet<>(new AffixComparator());
 	}
 	
 	/**
