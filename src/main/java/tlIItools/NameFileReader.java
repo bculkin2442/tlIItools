@@ -51,7 +51,14 @@ public class NameFileReader {
 	 */
 	public int fCount;
 
+	/**
+	 * Stream to write normal output to.
+	 */
 	public PrintStream normOut = System.out;
+	
+	/**
+	 * Stream to write error output to.
+	 */
 	public PrintStream errOut  = System.err;
 
 	/**
@@ -171,12 +178,23 @@ public class NameFileReader {
 		}
 	}
 	
+	/**
+	 * Add a file to this file reader.
+	 * 
+	 * @param fName The file to add.
+	 */
 	public void addFile(String fName) {
 		curList.add(fName);
 
 		fCount += 1;
 	}
-
+	
+	/**
+	 * Add a file to this file reader.
+	 * 
+	 * @param groupName The group to add the file to.	 * 
+	 * @param fName The file to add.
+	 */
 	public void addFile(String groupName, String fName) {
 		fNames.computeIfAbsent(groupName, (key) -> new ArrayList<>()).add(fName);
 

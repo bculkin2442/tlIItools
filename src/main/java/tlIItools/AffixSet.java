@@ -9,6 +9,7 @@ import java.util.*;
  */
 public class AffixSet {
 	private static class AffixComparator implements Comparator<Affix> {
+		@Override
 		public int compare(Affix a1, Affix a2) {
 			if (a1.minLevel == a2.minLevel) {
 				return a1.maxLevel - a2.maxLevel;
