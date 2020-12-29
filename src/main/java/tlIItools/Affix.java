@@ -4,11 +4,25 @@ import java.util.*;
 
 /** Represents a Torchlight II affix.
  *
- * @author Ben Culkin
- */
+ * @author Ben Culkin */
 public class Affix {
+	/** Details which sort of affix this is.
+	 *
+	 * @author Ben Culkin */
+	public enum AffixType {
+		/** An affix that applies to a normal item. */
+		ITEM,
+		/** An affix that applies to a socketable. */
+		SOCKETABLE,
+		/** An affix that applies to a monster/person. */
+		PERSONAL,
+		/** An affix that applies as an item enchantment. */
+		ENCHANTMENT
+	}
+
 	/** Whether or not to record timing info. */
 	public static boolean doTiming;
+
 	/** Internal name of the affix. */
 	public String intName;
 
@@ -48,15 +62,8 @@ public class Affix {
 	/** The number of affix slots taken up. */
 	public int slots;
 
-	// @NOTE isEnchantment, isSocketable and isPerson seem to be  mutally
-	// exclusive. Should they be a enum? - bculkin, 12/29/2020
-	/** Whether this is a socketable affix. */
-	public boolean isSocketable;
-
-	/** Whether this is an enchantment, instead of a standard affix. */
-	public boolean isEnchantment;
-	/** Whether this is a mob/player affix. */
-	public boolean isPerson;
+	/** The type of thing this affix applies to. */
+	public AffixType type = AffixType.ITEM;
 
 	/** The types of equipment this can spawn on. */
 	public List<String> equipTypes;
@@ -107,11 +114,9 @@ public class Affix {
 			if (afx.equipTypes != null) return false;
 		} else if (!equipTypes.equals(afx.equipTypes)) {
 			return false;
-		} else if (isEnchantment != afx.isEnchantment) {
-			return false;
-		} else if (isPerson != afx.isPerson) {
-			return false;
-		} else if (isSocketable != afx.isSocketable) {
+		} else if (type == null) {
+			if (afx.type != null) return false;
+		} else if (type != afx.type) {
 			return false;
 		} else if (nonequipTypes == null) {
 			if (afx.nonequipTypes != null) return false;
@@ -177,20 +182,20 @@ public class Affix {
 	/** Add an equip type to the right set of equip types.
 	 *
 	 * @param type The equip type to add. */
-	public void addEquipType(String type) {
+	public void addEquipType(String equipType) {
 		if (inNonEquip) {
-			nonequipTypes.add(type);
+			nonequipTypes.add(equipType);
 		} else {
-			if (type.equals("SOCKETABLE") || type.contains(" EMBER")) {
-				isSocketable = true;
-				socketableTypes.add(type);
-			} else if (type.startsWith("ENCHANTER")) {
-				isEnchantment = true;
-				enchantSources.add(type.substring(10));
-			} else if (type.equals("MONSTER") || type.equals("PLAYER")) {
-				isPerson = true;
+			if (equipType.equals("SOCKETABLE") || equipType.contains(" EMBER")) {
+				type = AffixType.SOCKETABLE;
+				socketableTypes.add(equipType);
+			} else if (equipType.startsWith("ENCHANTER")) {
+				type = AffixType.ENCHANTMENT;
+				enchantSources.add(equipType.substring(10));
+			} else if (equipType.equals("MONSTER") || equipType.equals("PLAYER")) {
+				type = AffixType.PERSONAL;
 			} else {
-				equipTypes.add(type);
+				equipTypes.add(equipType);
 			}
 		}
 	}
@@ -206,15 +211,15 @@ public class Affix {
 	public String toLongString() {
 		StringBuilder sb = new StringBuilder();
 
-		if (isSocketable) {
+		if (type == AffixType.SOCKETABLE) {
 			sb.append("Socketable ");
-		} else if (isPerson || (intName != null && intName.startsWith("HERO_"))) {
+		} else if (type == AffixType.PERSONAL || (intName != null && intName.startsWith("HERO_"))) {
 			sb.append("Personal ");
 		} else if (intName != null & intName.startsWith("MAP_")) {
 			sb.append("Area ");
 		}
 
-		if (isEnchantment) {
+		if (type == AffixType.ENCHANTMENT) {
 			sb.append("Enchantment: ");
 		} else {
 			sb.append("Affix: ");
@@ -267,9 +272,9 @@ public class Affix {
 		}
 
 		if (equipTypes.size() != 0) {
-			if (isSocketable) {
+			if (type == AffixType.SOCKETABLE) {
 				sb.append("\tSocketable Into: ");
-			} else if (isEnchantment) {
+			} else if (type == AffixType.ENCHANTMENT) {
 				sb.append("\tEnchants Onto: ");
 			} else {
 				sb.append("\tSpawns On: ");
@@ -280,7 +285,7 @@ public class Affix {
 		}
 
 		// Socketables & enchantments use this as a duplicate.
-		if (!isSocketable && !isEnchantment && nonequipTypes.size() != 0) {
+		if (type != AffixType.SOCKETABLE && type != AffixType.ENCHANTMENT && nonequipTypes.size() != 0) {
 			sb.append("\tCan't Spawn On: ");
 			sb.append(nonequipTypes);
 			sb.append("\n");
