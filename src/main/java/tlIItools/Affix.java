@@ -88,10 +88,18 @@ public class Affix {
 		if (effects == null) {
 			if (afx.effects != null) return false;
 		} else if (!effects.equals(afx.effects)) {
-			// TODO this isn't actually an equals; maybe make this a 'isEquivalent' or 'isSimilarEffect'?
-			//  -bculkin, 12/29/2020
-			return false;
-		} else if (enchantSources == null) {
+			Iterator<Effect> leftIter = effects.iterator();
+			Iterator<Effect> rightIter = afx.effects.iterator();
+			
+			while (leftIter.hasNext() && rightIter.hasNext()) {
+			    Effect left = leftIter.next();
+			    Effect right = rightIter.next();
+			    
+			    if (!left.group.equals(right.group)) return false;
+			}
+		}
+		
+		if (enchantSources == null) {
 			if (afx.enchantSources != null) return false;
 		} else if (!enchantSources.equals(afx.enchantSources)) {
 			return false;
@@ -133,14 +141,10 @@ public class Affix {
 	public String getAffixGroupName() {
 		StringBuilder sb = new StringBuilder();
 
-		for (Effect eft : effects) sb.append(eft.getEffectGroup());
-		
+		for (Effect eft : effects) sb.append(eft.group);
 		for (String enchantSource : enchantSources) sb.append(enchantSource);
-		
 		for (String equipType : equipTypes) sb.append(equipType);
-		
 		for (String nonEquipType : nonequipTypes) sb.append(nonEquipType);
-		
 		for (String socketableType : socketableTypes) sb.append(socketableType);
 
 		return sb.toString();

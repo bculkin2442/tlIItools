@@ -13,54 +13,31 @@ public class Effect {
 
 	/** The file name this effect came from. */
 	public String fName;
-	/** The name of the effect. */
-	public String name;
-
-	/** The specific effect that happens. */
-	public String type;
-
-	/** Damage type for the effect, if applicable. */
-	public String damageType = "physical";
-
 	/** Duration of the effect. */
 	public double duration;
-
-	/** Whether or not we have a duration or not. */
-	public boolean hasDuration;
 
 	/** Minimum value for the effect. */
 	public double minValue;
 	/** Maximum value for the effect. */
 	public double maxValue;
 
-	/** The name of the stat that applies to this affect. */
-	public String statName;
 	/** The percent of the stat value to apply. */
 	public double statPercent;
-	/** Whether or not this stat is a bonus value. */
-	public boolean isStatBonus;
-
-	/** Whether or not this uses the owners level to modify any applicable graph. */
-	public boolean ownerLevel;
-
-	/** Whether or not a graph is used for this effect. */
-	public boolean useGraph = true;
-	/** The graph to use instead of the default graph. */
-	public String graphOverride;
-
-	/** Whether this effect can stack with itself. */
-	public boolean exclusive;
-
 	/** The amount the targets armor is reduced by for this effect. */
 	public double soakScale = 1.0;
 
 	/** Level of the effect. */
 	public int level = -1;
 
-	/** Whether or not this effect is a 'transfer' effect (Applied to the enemy on a hit). */
-	public boolean isTransfer;
-
-	/** The amount to resist/do knockback by. */
+	/** The 'effect group' this effect belongs to.
+	 * 
+	 * An 'effect group is essentially any other effect that is the same general sort of effect, just with different details.
+     * 
+     * For instance, an effect that grants +4 strength would group with one granting +8 strength,
+     * assuming that most other details were equal. */
+	public EffectGroup group = new EffectGroup();
+	
+    /** The amount to resist/do knockback by. */
 	public double resist;
 
 	/** Minimum value per monster. */
@@ -82,57 +59,31 @@ public class Effect {
 	public Effect() {
 
 	}
-
-	/** Gets the 'effect group' this effect belongs to.
-	 * 
-	 * An 'effect group is essentially any other effect that is the same general sort of effect, just with different details.
-	 * 
-	 * For instance, an effect that grants +4 strength would group with one granting +8 strength,
-	 * assuming that most other details were equal.
-	 * 
-	 * @return The 'effect group' this effect belongs to. */
-	public String getEffectGroup() {
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append(name);
-		sb.append(type);
-		sb.append(damageType);
-		sb.append(hasDuration);
-		sb.append(statName);
-		sb.append(isStatBonus);
-		sb.append(ownerLevel);
-		sb.append(graphOverride);
-		sb.append(useGraph);
-		sb.append(exclusive);
-		sb.append(isTransfer);
-		
-		return sb.toString();
-	}
 	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		if (isTransfer) {
+		if (group.isTransfer) {
 			sb.append("Inflict on Hit: ");
 		}
 
-		Map<String, String> detMap = hasDuration ? EffectRepo.timeDetals : EffectRepo.detals;
+		Map<String, String> detMap = group.hasDuration ? EffectRepo.timeDetals : EffectRepo.detals;
 
-		if (detMap.containsKey(type) ||
-			(hasDuration 
-			 && !EffectRepo.timeDetals.containsKey(type) 
-			 && EffectRepo.detals.containsKey(type))) 
+		if (detMap.containsKey(group.type) ||
+			(group.hasDuration 
+			 && !EffectRepo.timeDetals.containsKey(group.type) 
+			 && EffectRepo.detals.containsKey(group.type))) 
 		{
 			String fmt;
-			if (hasDuration 
-				&& !EffectRepo.timeDetals.containsKey(type) 
-				&& EffectRepo.detals.containsKey(type)) 
+			if (group.hasDuration 
+				&& !EffectRepo.timeDetals.containsKey(group.type) 
+				&& EffectRepo.detals.containsKey(group.type)) 
 			{
-				AffixLister.errOut.printf("Improvised details for timed %s\n", type);
-				fmt = EffectRepo.detals.get(type) + "for <DUR> seconds";
+				AffixLister.errOut.printf("Improvised details for timed %s\n", group.type);
+				fmt = EffectRepo.detals.get(group.type) + "for <DUR> seconds";
 			} else {
-				fmt = detMap.get(type);
+				fmt = detMap.get(group.type);
 			}
 
 			// Expand aliases first.
@@ -145,44 +96,44 @@ public class Effect {
 			if (minPer >= 0 && maxPer >= 0) { fmt = fmt.replaceAll("<MC\\|([^|>]+)\\|([^|>]+)>", "$2"); }
 			
 			if (fmt.contains("<") || fmt.contains(">")) {
-				AffixLister.errOut.printf("WARN: Details for effect %s are malformatted (contains < or >):\n\t%s\n", type, fmt);
+				AffixLister.errOut.printf("WARN: Details for effect %s are malformatted (contains < or >):\n\t%s\n", group.type, fmt);
 			}
 
 			sb.append(String.format(fmt,
 					Math.abs(minValue), Math.abs(maxValue),
-					duration, damageType.toLowerCase(), level, resist, name,
+					duration, group.damageType.toLowerCase(), level, resist, group.name,
 					Math.abs(minPer), Math.abs(maxPer), range, maxCount, pulse));
 		} else {
 			sb.append("No effect details for effect ");
-			sb.append(type);
+			sb.append(group.type);
 			sb.append(String.format(
 					" with parameters (min %.2f, max %.2f, dur %.2f, type %s, level %d)",
-					minValue, maxValue, duration, damageType.toLowerCase(), level, name));
+					minValue, maxValue, duration, group.damageType.toLowerCase(), level, group.name));
 
 			if (AffixLister.addFileName) {
 				sb.append(" from file ");
 				sb.append(fName);
 			}
 
-			if (hasDuration) AffixLister.errOut.print("TIMED: ");
+			if (group.hasDuration) AffixLister.errOut.print("TIMED: ");
 			AffixLister.errOut.println(sb.toString());
 		}
 
-		if (name != null) {
+		if (group.name != null) {
 			sb.append(" (named ");
-			sb.append(name);
+			sb.append(group.name);
 			sb.append(")");
 		}
 
-		if (exclusive) sb.append(" (Exclusive)");
+		if (group.exclusive) sb.append(" (Exclusive)");
 
-		if (graphOverride != null) {
+		if (group.graphOverride != null) {
 			sb.append(" (Uses ");
-			sb.append(graphOverride);
+			sb.append(group.graphOverride);
 			sb.append(" graph)");
 		}
 
-		if (ownerLevel) {
+		if (group.ownerLevel) {
 			sb.append(" (Uses owner level for graph)");
 		}
 
@@ -198,135 +149,58 @@ public class Effect {
 			sb.append(")");
 		}
 
-		if (statName != null) {
-			sb.append(String.format(" (%.2f of stat %s", statPercent, statName));
+		if (group.statName != null) {
+			sb.append(String.format(" (%.2f of stat %s", statPercent, group.statName));
 
-			if (isStatBonus) sb.append(" as bonus)");
+			if (group.isStatBonus) sb.append(" as bonus)");
 			else             sb.append(")");
 		}
 
-		if (!useGraph) sb.append(" (Ignoring graph)");
+		if (!group.useGraph) sb.append(" (Ignoring graph)");
 
 		return sb.toString();
 	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((damageType == null) ? 0 : damageType.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(duration);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + (exclusive ? 1231 : 1237);
-		result = prime * result
-				+ ((graphOverride == null) ? 0 : graphOverride.hashCode());
-		result = prime * result + (hasDuration ? 1231 : 1237);
-		result = prime * result + (isStatBonus ? 1231 : 1237);
-		result = prime * result + (isTransfer ? 1231 : 1237);
-		result = prime * result + level;
-		temp = Double.doubleToLongBits(maxCount);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(maxPer);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(maxValue);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(minPer);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(minValue);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (ownerLevel ? 1231 : 1237);
-		temp = Double.doubleToLongBits(pulse);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(range);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(resist);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(soakScale);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((statName == null) ? 0 : statName.hashCode());
-		temp = Double.doubleToLongBits(statPercent);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		result = prime * result + (useGraph ? 1231 : 1237);
-		return result;
-	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)                  return true;
-		if (obj == null)                  return false;
-		if (getClass() != obj.getClass()) return false;
+    public int hashCode() {
+        return Objects.hash(duration, fName, group, level, maxCount, maxPer, maxValue,
+                minPer, minValue, pulse, range, resist, soakScale, statPercent);
+    }
 
-		Effect other = (Effect) obj;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Effect other = (Effect) obj;
+        return Double.doubleToLongBits(duration)
+                == Double.doubleToLongBits(other.duration)
+                && Objects.equals(fName, other.fName)
+                && Objects.equals(group, other.group) && level == other.level
+                && Double.doubleToLongBits(maxCount)
+                        == Double.doubleToLongBits(other.maxCount)
+                && Double.doubleToLongBits(maxPer)
+                        == Double.doubleToLongBits(other.maxPer)
+                && Double.doubleToLongBits(maxValue)
+                        == Double.doubleToLongBits(other.maxValue)
+                && Double.doubleToLongBits(minPer)
+                        == Double.doubleToLongBits(other.minPer)
+                && Double.doubleToLongBits(minValue)
+                        == Double.doubleToLongBits(other.minValue)
+                && Double.doubleToLongBits(pulse) == Double.doubleToLongBits(other.pulse)
+                && Double.doubleToLongBits(range) == Double.doubleToLongBits(other.range)
+                && Double.doubleToLongBits(resist)
+                        == Double.doubleToLongBits(other.resist)
+                && Double.doubleToLongBits(soakScale)
+                        == Double.doubleToLongBits(other.soakScale)
+                && Double.doubleToLongBits(statPercent)
+                        == Double.doubleToLongBits(other.statPercent);
+    }
 
-		if (damageType == null) {
-			if (other.damageType != null) return false;
-		} else if (!damageType.equals(other.damageType))
-			return false;
-		if (Double.doubleToLongBits(duration) != Double.doubleToLongBits(other.duration))
-			return false;
-		if (exclusive != other.exclusive)
-			return false;
-		if (graphOverride == null) {
-			if (other.graphOverride != null)
-				return false;
-		} else if (!graphOverride.equals(other.graphOverride))
-			return false;
-		if (hasDuration != other.hasDuration)
-			return false;
-		if (isStatBonus != other.isStatBonus)
-			return false;
-		if (isTransfer != other.isTransfer)
-			return false;
-		if (level != other.level)
-			return false;
-		if (Double.doubleToLongBits(maxCount) != Double.doubleToLongBits(other.maxCount))
-			return false;
-		if (Double.doubleToLongBits(maxPer) != Double.doubleToLongBits(other.maxPer))
-			return false;
-		if (Double.doubleToLongBits(maxValue) != Double.doubleToLongBits(other.maxValue))
-			return false;
-		if (Double.doubleToLongBits(minPer) != Double.doubleToLongBits(other.minPer))
-			return false;
-		if (Double.doubleToLongBits(minValue) != Double.doubleToLongBits(other.minValue))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (ownerLevel != other.ownerLevel)
-			return false;
-		if (Double.doubleToLongBits(pulse) != Double.doubleToLongBits(other.pulse))
-			return false;
-		if (Double.doubleToLongBits(range) != Double.doubleToLongBits(other.range))
-			return false;
-		if (Double.doubleToLongBits(resist) != Double.doubleToLongBits(other.resist))
-			return false;
-		if (Double.doubleToLongBits(soakScale)
-				!= Double.doubleToLongBits(other.soakScale))
-			return false;
-		if (statName == null) {
-			if (other.statName != null)
-				return false;
-		} else if (!statName.equals(other.statName))
-			return false;
-		if (Double.doubleToLongBits(statPercent)
-				!= Double.doubleToLongBits(other.statPercent))
-			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
-			return false;
-		if (useGraph != other.useGraph)
-			return false;
-		return true;
-	}
-
-	/** Parse an effect.
+    /** Parse an effect.
 	 *
 	 * @param afx The affix the effect belongs to.
 	 * @param scn The scanner to read from.
@@ -365,11 +239,11 @@ public class Effect {
 			if (splits.length == 1) continue;
 
 			if (ln.contains("NAME")) {
-				efct.name = splits[1];
+				efct.group.name = splits[1];
 			} else if (ln.contains("DAMAGE_TYPE")) {
-				efct.damageType = splits[1];
+				efct.group.damageType = splits[1];
 			} else if (ln.contains("TYPE")) {
-				efct.type = splits[1];
+				efct.group.type = splits[1];
 			} else if (ln.contains("ACTIVATION")) {
 				switch (splits[1]) {
 					case "DYNAMIC":
@@ -379,31 +253,31 @@ public class Effect {
 						// actual difference.
 						break;
 					case "TRANSFER":
-						efct.isTransfer = true;
+						efct.group.isTransfer = true;
 						break;
 					default:
-						errs.add(String.format("Malformed activation type: (%s) (%s) (%s)\n", splits[1], efct.name, afx.intName));
+						errs.add(String.format("Malformed activation type: (%s) (%s) (%s)\n", splits[1], efct.group.name, afx.intName));
 				}
 			} else if (ln.contains("DURATION")) {
 				if (splits[1].equals("ALWAYS")) {
-					efct.hasDuration = false;
+					efct.group.hasDuration = false;
 
 					efct.duration = Double.POSITIVE_INFINITY;
 				} else if (splits[1].equals("INSTANT")) {
-					efct.hasDuration = false;
+					efct.group.hasDuration = false;
 
 					efct.duration = Double.NaN;
 				} else if (splits[1].equals("PERCENT")) {
-					efct.hasDuration = false;
+					efct.group.hasDuration = false;
 
 					efct.duration = Double.NaN;
 
 					errs.add(String.format("WARN: Punting on DURATION:PERCENT for %s\n", scnSource));
 				} else if (splits[1].equals("0")) {
-					efct.hasDuration = false;
+					efct.group.hasDuration = false;
 					efct.duration = 0.0;
 				} else {
-					efct.hasDuration = true;
+					efct.group.hasDuration = true;
 
 					if (splits[1].equalsIgnoreCase("instant")) {
 						efct.duration = -1;
@@ -420,19 +294,19 @@ public class Effect {
 			} else if (ln.contains("LEVEL:")) {
 				efct.level = Integer.parseInt(splits[1]);
 			} else if (ln.contains("EXCLUSIVE")) {
-				efct.exclusive = Boolean.parseBoolean(splits[1]);
+				efct.group.exclusive = Boolean.parseBoolean(splits[1]);
 			} else if (ln.contains("GRAPHOVERRIDE")) {
-				efct.graphOverride = splits[1];
+				efct.group.graphOverride = splits[1];
 			} else if (ln.contains("USEOWNERLEVEL")) {
-				efct.ownerLevel = Boolean.parseBoolean(splits[1]);
+				efct.group.ownerLevel = Boolean.parseBoolean(splits[1]);
 			} else if (ln.contains("NOGRAPH")) {
-				efct.useGraph = Boolean.parseBoolean(splits[1]);
+				efct.group.useGraph = Boolean.parseBoolean(splits[1]);
 			} else if (ln.contains("STATNAME")) {
-				efct.statName = splits[1];
+				efct.group.statName = splits[1];
 			} else if (ln.contains("STATPERCENT")) {
 				efct.statPercent = Double.parseDouble(splits[1]);
 			} else if (ln.contains("STATMODIFIERISBONUS")) {
-				efct.isStatBonus = Boolean.parseBoolean(splits[1]);
+				efct.group.isStatBonus = Boolean.parseBoolean(splits[1]);
 			} else if (ln.contains("RESISTANCE:")) {
 				efct.resist = Double.parseDouble(splits[1]);
 			} else if (ln.contains("FORCE:")) {
@@ -458,7 +332,7 @@ public class Effect {
 			String fmt = "\t\tProcessed effect %s from %s in %d nanoseconds (%.2f seconds)\n";
 
 			double seconds = (((endTime - startTime) / 1000000000));
-			errs.add(String.format(fmt, efct.name, scnSource, endTime - startTime, seconds));
+			errs.add(String.format(fmt, efct.group.name, scnSource, endTime - startTime, seconds));
 		}
 
 		effectCount += 1;
