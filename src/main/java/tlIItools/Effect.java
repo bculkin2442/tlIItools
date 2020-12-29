@@ -1,162 +1,96 @@
 package tlIItools;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
-/**
- * Represents an effect attached to an affix.
+/** Represents an effect attached to an affix.
  *
- * @author Ben Culkin
- */
+ * @author Ben Culkin */
 public class Effect {
-	/**
-	 * Count of all loaded effects.
-	 */
+	/** Count of all loaded effects. */
 	public static int effectCount = 0;
-	/**
-	 * Do timing analysis when loading effects.
-	 */
+	/** Do timing analysis when loading effects. */
 	public static boolean doTiming;
 
-	/**
-	 * The file name this effect came from.
-	 */
+	/** The file name this effect came from. */
 	public String fName;
-
-	/**
-	 * The name of the effect.
-	 */
+	/** The name of the effect. */
 	public String name;
 
-	/**
-	 * The specific effect that happens.
-	 */
+	/** The specific effect that happens. */
 	public String type;
 
-	/**
-	 * Damage type for the effect, if applicable.
-	 */
+	/** Damage type for the effect, if applicable. */
 	public String damageType = "physical";
 
-	/**
-	 * Duration of the effect.
-	 */
+	/** Duration of the effect. */
 	public double duration;
 
-	/**
-	 * Whether or not we have a duration or not.
-	 */
+	/** Whether or not we have a duration or not. */
 	public boolean hasDuration;
 
-	/**
-	 * Minimum value for the effect.
-	 */
+	/** Minimum value for the effect. */
 	public double minValue;
-	/**
-	 * Maximum value for the effect.
-	 */
+	/** Maximum value for the effect. */
 	public double maxValue;
 
-	/**
-	 * The name of the stat that applies to this affect.
-	 */
+	/** The name of the stat that applies to this affect. */
 	public String statName;
-	/**
-	 * The percent of the stat value to apply.
-	 */
+	/** The percent of the stat value to apply. */
 	public double statPercent;
-	/**
-	 * Whether or not this stat is a bonus value.
-	 */
+	/** Whether or not this stat is a bonus value. */
 	public boolean isStatBonus;
 
-	/**
-	 * Whether or not this uses the owners level to modify
-	 * any applicable graph.
-	 */
+	/** Whether or not this uses the owners level to modify any applicable graph. */
 	public boolean ownerLevel;
 
-	/**
-	 * The graph to use instead of the default graph.
-	 */
+	/** Whether or not a graph is used for this effect. */
+	public boolean useGraph = true;
+	/** The graph to use instead of the default graph. */
 	public String graphOverride;
 
-	/**
-	 * Whether or not a graph is used for this effect.
-	 */
-	public boolean useGraph = true;
-
-	/**
-	 * Whether this effect can stack with itself.
-	 */
+	/** Whether this effect can stack with itself. */
 	public boolean exclusive;
 
-	/**
-	 * The amount the targets armor is reduced by for this
-	 * effect.
-	 */
+	/** The amount the targets armor is reduced by for this effect. */
 	public double soakScale = 1.0;
 
-	/**
-	 * Level of the effect.
-	 */
+	/** Level of the effect. */
 	public int level = -1;
 
-	/**
-	 * Whether or not this effect is a 'transfer'
-	 * effect (Applied to the enemy on a hit).
-	 */
+	/** Whether or not this effect is a 'transfer' effect (Applied to the enemy on a hit). */
 	public boolean isTransfer;
 
-	/**
-	 * The amount to resist/do knockback by.
-	 */
+	/** The amount to resist/do knockback by. */
 	public double resist;
 
-	/**
-	 * Minimum value per monster.
-	 */
+	/** Minimum value per monster. */
 	public double minPer;
 
-	/**
-	 * Maximum value per monster.
-	 */
+	/** Maximum value per monster. */
 	public double maxPer;
 
-	/**
-	 * Range for effect.
-	 */
+	/** Range for effect. */
 	public double range;
 
-	/**
-	 * Maximum count of monsters.
-	 */
+	/** Maximum count of monsters. */
 	public double maxCount;
 
-	/**
-	 * The rate at which the effect fires.
-	 */
+	/** The rate at which the effect fires. */
 	public double pulse;
 
-	/**
-	 * Create a new blank effect.
-	 */
+	/** Create a new blank effect. */
 	public Effect() {
 
 	}
 
-	/**
-	 * Gets the 'effect group' this effect belongs to.
+	/** Gets the 'effect group' this effect belongs to.
 	 * 
 	 * An 'effect group is essentially any other effect that is the same general sort of effect, just with different details.
 	 * 
 	 * For instance, an effect that grants +4 strength would group with one granting +8 strength,
 	 * assuming that most other details were equal.
 	 * 
-	 * @return The 'effect group' this effect belongs to.
-	 */
+	 * @return The 'effect group' this effect belongs to. */
 	public String getEffectGroup() {
 		StringBuilder sb = new StringBuilder();
 		
@@ -185,9 +119,16 @@ public class Effect {
 
 		Map<String, String> detMap = hasDuration ? EffectRepo.timeDetals : EffectRepo.detals;
 
-		if (detMap.containsKey(type) || (hasDuration && !EffectRepo.timeDetals.containsKey(type) && EffectRepo.detals.containsKey(type))) {
+		if (detMap.containsKey(type) ||
+			(hasDuration 
+			 && !EffectRepo.timeDetals.containsKey(type) 
+			 && EffectRepo.detals.containsKey(type))) 
+		{
 			String fmt;
-			if (hasDuration && !EffectRepo.timeDetals.containsKey(type) && EffectRepo.detals.containsKey(type)) {
+			if (hasDuration 
+				&& !EffectRepo.timeDetals.containsKey(type) 
+				&& EffectRepo.detals.containsKey(type)) 
+			{
 				AffixLister.errOut.printf("Improvised details for timed %s\n", type);
 				fmt = EffectRepo.detals.get(type) + "for <DUR> seconds";
 			} else {
@@ -196,35 +137,27 @@ public class Effect {
 
 			// Expand aliases first.
 
-			for (ReplPair repl : EffectRepo.replList) {				
-				fmt = fmt.replaceAll(repl.find, repl.replace);
-			}
+			for (ReplPair repl : EffectRepo.replList) fmt = fmt.replaceAll(repl.find, repl.replace);
 			
-			if (minValue <= 0 && maxValue <= 0) {
-				fmt = fmt.replaceAll("<C\\|([^|>]+)\\|([^|>]+)>", "$1");
-			}
-
-			if (minValue >= 0 && maxValue >= 0) {
-				fmt = fmt.replaceAll("<C\\|([^|>]+)\\|([^|>]+)>", "$2");
-			}
-
-			if (minPer <= 0 && maxPer <= 0) {
-				fmt = fmt.replaceAll("<MC\\|(\\w+)\\|(\\w+)>", "$1");
-			}
-
-			if (minPer >= 0 && maxPer >= 0) {
-				fmt = fmt.replaceAll("<MC\\|([^|>]+)\\|([^|>]+)>", "$2");
-			}
+			if (minValue <= 0 && maxValue <= 0) { fmt = fmt.replaceAll("<C\\|([^|>]+)\\|([^|>]+)>", "$1"); }
+			if (minValue >= 0 && maxValue >= 0) { fmt = fmt.replaceAll("<C\\|([^|>]+)\\|([^|>]+)>", "$2"); }
+			if (minPer <= 0 && maxPer <= 0) { fmt = fmt.replaceAll("<MC\\|(\\w+)\\|(\\w+)>", "$1"); }
+			if (minPer >= 0 && maxPer >= 0) { fmt = fmt.replaceAll("<MC\\|([^|>]+)\\|([^|>]+)>", "$2"); }
 			
 			if (fmt.contains("<") || fmt.contains(">")) {
 				AffixLister.errOut.printf("WARN: Details for effect %s are malformatted (contains < or >):\n\t%s\n", type, fmt);
 			}
 
-			sb.append(String.format(fmt, Math.abs(minValue), Math.abs(maxValue), duration, damageType.toLowerCase(), level, resist, name, Math.abs(minPer), Math.abs(maxPer), range, maxCount, pulse));
+			sb.append(String.format(fmt,
+					Math.abs(minValue), Math.abs(maxValue),
+					duration, damageType.toLowerCase(), level, resist, name,
+					Math.abs(minPer), Math.abs(maxPer), range, maxCount, pulse));
 		} else {
 			sb.append("No effect details for effect ");
 			sb.append(type);
-			sb.append(String.format(" with parameters (min %.2f, max %.2f, dur %.2f, type %s, level %d)", minValue, maxValue, duration, damageType.toLowerCase(), level, name));
+			sb.append(String.format(
+					" with parameters (min %.2f, max %.2f, dur %.2f, type %s, level %d)",
+					minValue, maxValue, duration, damageType.toLowerCase(), level, name));
 
 			if (AffixLister.addFileName) {
 				sb.append(" from file ");
@@ -267,6 +200,7 @@ public class Effect {
 
 		if (statName != null) {
 			sb.append(String.format(" (%.2f of stat %s", statPercent, statName));
+
 			if (isStatBonus) sb.append(" as bonus)");
 			else             sb.append(")");
 		}
@@ -321,16 +255,14 @@ public class Effect {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		if (this == obj)                  return true;
+		if (obj == null)                  return false;
+		if (getClass() != obj.getClass()) return false;
+
 		Effect other = (Effect) obj;
+
 		if (damageType == null) {
-			if (other.damageType != null)
-				return false;
+			if (other.damageType != null) return false;
 		} else if (!damageType.equals(other.damageType))
 			return false;
 		if (Double.doubleToLongBits(duration) != Double.doubleToLongBits(other.duration))
@@ -394,25 +326,26 @@ public class Effect {
 		return true;
 	}
 
-	/**
-	 * Parse an effect.
+	/** Parse an effect.
+	 *
 	 * @param afx The affix the effect belongs to.
 	 * @param scn The scanner to read from.
 	 * @param scnSource The name of the scanner.
+	 *
 	 * @return An effect, read from the scanner.
 	 */
 	public static Effect parseEffect(Affix afx, Scanner scn, String scnSource) {
 		return parseEffect(afx, scn, scnSource, new ArrayList<>());
 	}
 
-	/**
-	 * Parse an effect.
+	/** Parse an effect.
+	 *
 	 * @param afx The affix the effect belongs to.
 	 * @param scn The scanner to read from.
 	 * @param scnSource The name of the scanner.
 	 * @param errs Repository for errors found while parsing.
-	 * @return An effect, read from the scanner.
-	 */
+	 *
+	 * @return An effect, read from the scanner. */
 	public static Effect parseEffect(Affix afx, Scanner scn, String scnSource, List<String> errs) {
 		Effect efct = new Effect();
 
@@ -532,6 +465,4 @@ public class Effect {
 
 		return efct;
 	}
-	
-	
 }

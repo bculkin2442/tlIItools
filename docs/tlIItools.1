@@ -21,6 +21,10 @@ File groups are a concept that was introduced to group together similar items.
 Currently, there isn't much mechanical support they offer, but they help with
 grouping things together in the output, and will likely be used for more in the
 future.
+.SS Affix groups
+Affix groups are used to group together affixes that are mechanically similar.
+For instance, the affixes \fB+2 to strength\fP and \fB+4 to strength\fP would go
+into the same affix group, assuming that they spawned on the same sort of items.
 .SH OPTIONS
 .TP 
 \fB--\fP
@@ -100,5 +104,8 @@ the standard error stream.
 Specify the regular expression that should guide any attempts to guess file
 groups. The regular expression should match the file name, with a single
 capture-group that will specify the name of the file group.
+.TP "--output-affix-groups \fIfile-name\fP"
+Specify that affix groups should be printed out to \fIfile-name\fP. By default,
+affix groups aren't output
 .SH EXAMPLES
 .SH SEE ALSO

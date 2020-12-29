@@ -1,17 +1,12 @@
 package tlIItools;
 
-/**
- * Main method for TLIITools
+/** Main method for TLIITools
  * 
- * @author Ben Culkin
- *
- */
+ * @author Ben Culkin */
 public class Main {
-	/**
-	 * Main method.
+	/** Main method.
 	 * 
-	 * @param args Unused CLI args.
-	 */
+	 * @param args Unused CLI args. */
 	public static void main(String[] args) {
 		// TODO implement this
 	}

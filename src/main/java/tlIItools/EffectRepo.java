@@ -1,40 +1,26 @@
 package tlIItools;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 import java.util.Map.Entry;
 
-/**
- * Repository class for storing information needed for parsing/outputing
+/** Repository class for storing information needed for parsing/outputing
  * effects.
  * 
- * @author Ben Culkin
- *
- */
+ * @author Ben Culkin */
 public class EffectRepo {
 	// NOTE: consider making these use function accessors in the future?
 	// --bculkin, 6/24/20
-	/**
-	 * The list of detail strings for skills.
-	 */
+
+	/** The list of detail strings for skills. */
 	public static Map<String, String> detals;
-	/**
-	 * The list of detail strings for timed skills.
-	 */
+	/** The list of detail strings for timed skills. */
 	public static Map<String, String> timeDetals;
 
-	/**
-	 * The list of replacements for detail strings.
-	 */
+	/** The list of replacements for detail strings. */
 	public static List<ReplPair> replList;
 
-	/*
-	 * Init. lists from files.
-	 */
+	/* Init. lists from files. */
 	static {
 		try (FileReader detalReader = new FileReader("data/affix-detals.txt")) {
 			detals = readDetails(new Scanner(detalReader));
@@ -42,8 +28,7 @@ public class EffectRepo {
 			AffixLister.errOut.println("Error loading affix detail text");
 		}
 
-		try (FileReader timedDetalReader
-				= new FileReader("data/timed-affix-detals.txt")) {
+		try (FileReader timedDetalReader = new FileReader("data/timed-affix-detals.txt")) {
 			timeDetals = readDetails(new Scanner(timedDetalReader));
 		} catch (IOException ioex) {
 			AffixLister.errOut.println("Error loading timed affix detail text");
@@ -56,36 +41,31 @@ public class EffectRepo {
 		}
 	}
 
-	/**
-	 * Read effect detail strings from an input source.
+	/** Read effect detail strings from an input source.
 	 *
-	 * @param scn
-	 *            The source to read from.
-	 * @return The map of effect details to use.
-	 */
+	 * @param scn The source to read from.
+	 *
+	 * @return The map of effect details to use. */
 	public static Map<String, String> readDetails(Scanner scn) {
 		Map<String, String> detalMap = new HashMap<>();
 
 		return readDetails(detalMap, scn);
 	}
 
-	/**
-	 * Read effect detail strings from an input source, adding to an existing set.
+	/** Read effect detail strings from an input source, adding to an existing set.
 	 *
-	 * @param detalMap
-	 *                 The details to add to.
-	 * @param scn
-	 *                 The source to read from.
-	 * @return The map of effect details to use.
-	 */
-	public static Map<String, String> readDetails(Map<String, String> detalMap,
-			Scanner scn) {
+	 * @param detalMap The details to add to.
+	 * @param scn The source to read from.
+	 *
+	 * @return The map of effect details to use. */
+	public static Map<String, String> readDetails(
+			Map<String, String> detalMap, Scanner scn)
+	{
 		while (scn.hasNextLine()) {
 			String name = scn.nextLine().trim();
-			if (name.equals(""))
-				continue;
-			if (name.startsWith("#"))
-				continue;
+
+			if (name.equals(""))      continue;
+			if (name.startsWith("#")) continue;
 
 			String body;
 			do {
@@ -98,18 +78,17 @@ public class EffectRepo {
 		return detalMap;
 	}
 
-	/**
-	 * Sanity check the loaded format strings.
-	 */
+	/** Sanity check the loaded format strings. */
 	public static void sanityCheckFormats() {
 		for (Entry<String, String> detal : detals.entrySet()) {
 			String fmt = detal.getValue();
 
-			AffixLister.errOut.printf("\tTRACE: Applying replacements for %s\n",
-					detal.getKey());
+			AffixLister.errOut.printf("\tTRACE: Applying replacements for %s\n", detal.getKey());
+
 			for (ReplPair repl : replList) {
 				String tmp = fmt;
 				fmt = fmt.replaceAll(repl.find, repl.replace);
+
 				if (!fmt.equals(tmp)) {
 					String outFmt = "\t\tTRACE: Replaced %s with %s: \n\t\t%s\n\t\t%s\n";
 
@@ -118,8 +97,7 @@ public class EffectRepo {
 			}
 
 			if (fmt.contains("<") || fmt.contains(">")) {
-				String warnFmt
-						= "WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n";
+				String warnFmt = "WARN: Details for effect %s are malformated (contains < or >):\n\t%s\n";
 
 				AffixLister.errOut.printf(warnFmt, detal.getKey(), fmt);
 			}
@@ -133,8 +111,7 @@ public class EffectRepo {
 			}
 
 			if (fmt.contains("<") || fmt.contains(">")) {
-				String warnFmt
-						= "WARN: Details for timed effect %s are malformatted (contains < or >):\n\t%s\n";
+				String warnFmt = "WARN: Details for timed effect %s are malformatted (contains < or >):\n\t%s\n";
 				AffixLister.errOut.printf(warnFmt, detal.getKey(), fmt);
 			}
 		}

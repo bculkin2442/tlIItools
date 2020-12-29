@@ -1,112 +1,78 @@
 package tlIItools;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-/**
- * Represents a Torchlight II affix.
+/** Represents a Torchlight II affix.
+ *
+ * @author Ben Culkin
  */
 public class Affix {
-	/**
-	 * Whether or not to record timing info.
-	 */
+	/** Whether or not to record timing info. */
 	public static boolean doTiming;
-	/**
-	 * Internal name of the affix.
-	 */
+	/** Internal name of the affix. */
 	public String intName;
 
-	/*
-	 * The prefix/suffix attached to the affix.
+	/* The prefix/suffix attached to the affix.
 	 *
 	 * In general, only one of these is set for a given affix.
 	 *
 	 * NOTE: Some affixes have a mis-set suffix/prefix ordering, and may need to be
-	 * changed in their files.
-	 */
-	/**
-	 * The 'suffix name' attached to this affix.
+	 * changed in their files. */
+
+	/** The 'suffix name' attached to this affix.
 	 * 
 	 * Include the word [ITEM] to indicate where the item name should go.
 	 * 
 	 * Note that it is not guaranteed that this is actually a suffix; it could be a
-	 * prefix.
-	 */
+	 * prefix. */
 	public String affixSuffix;
 
-	/**
-	 * The 'prefix name' attached to this affix.
+	/** The 'prefix name' attached to this affix.
 	 * 
 	 * Include the word [ITEM] to indicate where the item name should go.
 	 * 
 	 * Note that it is not guaranteed that this is actually a prefix; it could be a
-	 * suffix.
-	 */
+	 * suffix. */
 	public String affixPrefix;
 
-	/*
-	 * The min/max levels the affix can spawn at.
-	 */
-	/**
-	 * The minimum level of an item this affix can spawn on.
-	 */
+	/* The min/max levels the affix can spawn at. */
+
+	/** The minimum level of an item this affix can spawn on. */
 	public int minLevel;
-	/**
-	 * The maximum level of an item this affix can spawn on.
-	 */
+	/** The maximum level of an item this affix can spawn on. */
 	public int maxLevel;
 
-	/**
-	 * The spawn weight for the affix.
-	 */
+	/** The spawn weight for the affix. */
 	public int weight;
 
-	/**
-	 * The number of affix slots taken up.
-	 */
+	/** The number of affix slots taken up. */
 	public int slots;
 
-	/**
-	 * Whether this is a socketable affix.
-	 */
+	// @NOTE isEnchantment, isSocketable and isPerson seem to be  mutally
+	// exclusive. Should they be a enum? - bculkin, 12/29/2020
+	/** Whether this is a socketable affix. */
 	public boolean isSocketable;
-	/**
-	 * Whether this is an enchantment, instead of a standard affix.
-	 */
+
+	/** Whether this is an enchantment, instead of a standard affix. */
 	public boolean isEnchantment;
-	/**
-	 * Whether this is a mob/player affix.
-	 */
+	/** Whether this is a mob/player affix. */
 	public boolean isPerson;
 
-	/**
-	 * The types of equipment this can spawn on.
-	 */
+	/** The types of equipment this can spawn on. */
 	public List<String> equipTypes;
-	/**
-	 * The types of equipment this can't spawn on.
-	 */
+	/** The types of equipment this can't spawn on. */
 	public List<String> nonequipTypes;
 
-	/**
-	 * Places to get this enchantment from;
-	 */
+	/** Places to get this enchantment from; */
 	public List<String> enchantSources;
 
-	/**
-	 * The socketable types this spawns on.
-	 */
+	/** The socketable types this spawns on. */
 	public List<String> socketableTypes;
 
-	/**
-	 * The effects attached to this affix.
-	 */
+	/** The effects attached to this affix. */
 	public List<Effect> effects;
 
-	/**
-	 * Is this affix in an 'affix group' with another affix?
+	/** Determine whether this affix is in an 'affix group' with another affix.
 	 * 
 	 * By 'affix group', what we mean is that it is essentially the same affix, with
 	 * generally just differing levels/values.
@@ -115,50 +81,45 @@ public class Affix {
 	 * strength would be considered to be in the same affix group (assuming that
 	 * both of those strength bonuses had the same effect name).
 	 * 
-	 * @param afx
-	 *            The affix to check if we are in an affix group with.
+	 * @param afx The affix to check if we are in an affix group with.
 	 * 
-	 * @return Whether or now we are in an affix group with the specified affix.
-	 */
+	 * @return Whether or now we are in an affix group with the specified affix. */
 	public boolean isInAffixGroup(Affix afx) {
 		if (effects == null) {
-			if (afx.effects != null)
-				return false;
-		} else if (!effects.equals(afx.effects)) // TODO this isn't actually an equals;
-													// maybe make this a 'isEquivalent' or
-													// 'isSimilarEffect'?
+			if (afx.effects != null) return false;
+		} else if (!effects.equals(afx.effects)) {
+			// TODO this isn't actually an equals; maybe make this a 'isEquivalent' or 'isSimilarEffect'?
+			//  -bculkin, 12/29/2020
 			return false;
-		if (enchantSources == null) {
-			if (afx.enchantSources != null)
-				return false;
-		} else if (!enchantSources.equals(afx.enchantSources))
+		} else if (enchantSources == null) {
+			if (afx.enchantSources != null) return false;
+		} else if (!enchantSources.equals(afx.enchantSources)) {
 			return false;
-		if (equipTypes == null) {
-			if (afx.equipTypes != null)
-				return false;
-		} else if (!equipTypes.equals(afx.equipTypes))
+		} else if (equipTypes == null) {
+			if (afx.equipTypes != null) return false;
+		} else if (!equipTypes.equals(afx.equipTypes)) {
 			return false;
-		if (isEnchantment != afx.isEnchantment)
+		} else if (isEnchantment != afx.isEnchantment) {
 			return false;
-		if (isPerson != afx.isPerson)
+		} else if (isPerson != afx.isPerson) {
 			return false;
-		if (isSocketable != afx.isSocketable)
+		} else if (isSocketable != afx.isSocketable) {
 			return false;
-		if (nonequipTypes == null) {
-			if (afx.nonequipTypes != null)
-				return false;
-		} else if (!nonequipTypes.equals(afx.nonequipTypes))
+		} else if (nonequipTypes == null) {
+			if (afx.nonequipTypes != null) return false;
+		} else if (!nonequipTypes.equals(afx.nonequipTypes)) {
 			return false;
-		if (socketableTypes == null) {
-			if (afx.socketableTypes != null)
-				return false;
-		} else if (!socketableTypes.equals(afx.socketableTypes))
+		} else if (socketableTypes == null) {
+			if (afx.socketableTypes != null) return false;
+		} else if (!socketableTypes.equals(afx.socketableTypes)) {
 			return false;
+		} else {
+			return true;
+		}
 		return true;
 	}
 
-	/**
-	 * Gets the name of the 'affix group' that this affix is in.
+	/** Gets the name of the 'affix group' that this affix is in.
 	 * 
 	 * By 'affix group', what we mean is that it is essentially the same affix, with
 	 * generally just differing levels/values.
@@ -168,71 +129,50 @@ public class Affix {
 	 * both of those strength bonuses had the same effect name, and applied to the
 	 * same sorts of items).
 	 * 
-	 * @return The name of the affix group
-	 */
+	 * @return The name of the affix group */
 	public String getAffixGroupName() {
 		StringBuilder sb = new StringBuilder();
 
-		for (Effect eft : effects) {
-			sb.append(eft.getEffectGroup());
-		}
+		for (Effect eft : effects) sb.append(eft.getEffectGroup());
 		
-		for (String enchantSource : enchantSources) {
-			sb.append(enchantSource);
-		}
+		for (String enchantSource : enchantSources) sb.append(enchantSource);
 		
-		for (String equipType : equipTypes) {
-			sb.append(equipType);
-		}
+		for (String equipType : equipTypes) sb.append(equipType);
 		
-		for (String nonEquipType : nonequipTypes) {
-			sb.append(nonEquipType);
-		}
+		for (String nonEquipType : nonequipTypes) sb.append(nonEquipType);
 		
-		for (String socketableType : socketableTypes) {
-			sb.append(socketableType);
-		}
+		for (String socketableType : socketableTypes) sb.append(socketableType);
 
 		return sb.toString();
 	}
 
-	/*
-	 * Are invalid equip types being added?
+	/* Are invalid equip types being added?
 	 * 
 	 * NOTE: This is kinda bad practice. It should really be handled via two
 	 * separate affix methods, one to add a valid affix, one to add an invalid, w/
-	 * the caller keeping tracking/calling the right one.
-	 */
+	 * the caller keeping tracking/calling the right one. */
 	private boolean inNonEquip;
 
-	/**
-	 * Create a new blank affix.
-	 */
+	/** Create a new blank affix. */
 	public Affix() {
-		equipTypes = new ArrayList<>();
-		nonequipTypes = new ArrayList<>();
-		enchantSources = new ArrayList<>();
+		equipTypes      = new ArrayList<>();
+		nonequipTypes   = new ArrayList<>();
+		enchantSources  = new ArrayList<>();
 		socketableTypes = new ArrayList<>();
-		effects = new ArrayList<>();
+		effects         = new ArrayList<>();
 	}
 
-	/**
-	 * Sets the set of equip types that is added to.
+	/** Sets the set of equip types that is added to.
 	 *
-	 * @param nonequip
-	 *                 True if the equip types being added are prohibited, or false
-	 *                 if they are allowed.
-	 */
+	 * @param nonequip True if the equip types being added are prohibited, or false
+	 *                 if they are allowed. */
 	public void setEquipType(boolean nonequip) {
 		inNonEquip = nonequip;
 	}
 
-	/**
-	 * Add an equip type to the right set of equip types.
+	/** Add an equip type to the right set of equip types.
 	 *
-	 * @param type
-	 *             The equip type to add.
-	 */
+	 * @param type The equip type to add. */
 	public void addEquipType(String type) {
 		if (inNonEquip) {
 			nonequipTypes.add(type);
@@ -256,13 +196,12 @@ public class Affix {
 		return intName;
 	}
 
-	/**
-	 * Print out the full details of this affix.
+	/** Print out the full details of this affix.
 	 * 
-	 * @return The full details of the affix.
-	 */
+	 * @return The full details of the affix. */
 	public String toLongString() {
 		StringBuilder sb = new StringBuilder();
+
 		if (isSocketable) {
 			sb.append("Socketable ");
 		} else if (isPerson || (intName != null && intName.startsWith("HERO_"))) {
@@ -324,12 +263,14 @@ public class Affix {
 		}
 
 		if (equipTypes.size() != 0) {
-			if (isSocketable)
+			if (isSocketable) {
 				sb.append("\tSocketable Into: ");
-			else if (isEnchantment)
+			} else if (isEnchantment) {
 				sb.append("\tEnchants Onto: ");
-			else
+			} else {
 				sb.append("\tSpawns On: ");
+			}
+
 			sb.append(equipTypes);
 			sb.append("\n");
 		}
@@ -362,6 +303,7 @@ public class Affix {
 			sb.append("\n");
 		}
 		
+		/*
 		sb.append("Affix Group: ");
 		String afxGroupName = getAffixGroupName();
 		sb.append(afxGroupName);
@@ -369,36 +311,29 @@ public class Affix {
 		sb.append(afxGroupName.hashCode());
 		sb.append(")");
 		sb.append("\n");
+		*/
 		
 		return sb.toString();
 	}
 
-	/**
-	 * Load an affix from an input source.
+	/** Load an affix from an input source.
 	 *
-	 * @param scn
-	 *              The input source to load from.
+	 * @param scn The input source to load from.
 	 *
-	 * @param fName
-	 *              The name of the input source in question.
+	 * @param fName The name of the input source in question.
 	 *
-	 * @return The loaded affix.
-	 */
+	 * @return The loaded affix. */
 	public static Affix loadAffix(Scanner scn, String fName) {
 		return loadAffix(scn, fName, new ArrayList<>());
 	}
 
-	/**
-	 * Load an affix from an input source.
+	/** Load an affix from an input source.
 	 * 
-	 * @param scn
-	 *                The input source to read from.
-	 * @param scnName
-	 *                The name of the input source.
-	 * @param errors
-	 *                A list to stick errors encountered during loading the affix.
-	 * @return The affix, loaded from the file.
-	 */
+	 * @param scn The input source to read from.
+	 * @param scnName The name of the input source.
+	 * @param errors A list to stick errors encountered during loading the affix.
+	 *
+	 * @return The affix, loaded from the file. */
 	public static Affix loadAffix(Scanner scn, String scnName, List<String> errors) {
 		Affix afx = new Affix();
 
@@ -428,9 +363,10 @@ public class Affix {
 					afx.affixPrefix = splits[1];
 					break;
 				default:
-					errors.add(
-							String.format("Misformed affix translation: (%s) (%s) (%s)\n",
-									splits[0], splits[1], scnName));
+					String msg = String.format(
+							"Misformed affix translation: (%s) (%s) (%s)\n",
+							splits[0], splits[1], scnName);
+					errors.add(msg);
 				}
 			} else if (ln.contains("MIN_SPAWN_RANGE")) {
 				afx.minLevel = Integer.parseInt(splits[1]);
@@ -442,13 +378,17 @@ public class Affix {
 				afx.weight = Integer.parseInt(splits[1]);
 			} else if (ln.contains("UNITTYPE") && !ln.contains("/")) {
 				if (splits.length == 1)
-					errors.add(String.format("Malformed equip type: (%s) (%s)\n",
+					errors.add(String.format(
+							"Malformed equip type: (%s) (%s)\n",
 							splits[0], scnName));
+
 				afx.addEquipType(splits[1]);
 			} else if (splits[0].equals("<STRING>NAME")) {
 				if (splits.length == 1)
-					errors.add(String.format("Malformed name: (%s) (%s)\n", splits[0],
-							scnName));
+					errors.add(String.format(
+							"Malformed name: (%s) (%s)\n",
+							splits[0], scnName));
+
 				afx.intName = splits[1];
 			} else if (ln.contains("[EFFECT]")) {
 				List<String> eftErrs = new ArrayList<>();
@@ -459,21 +399,21 @@ public class Affix {
 				afx.effects.add(eft);
 			}
 		}
+
 		// Sort effects, so that they are in a stable order, even if specified out of
 		// order
 		afx.effects.sort(Comparator.comparingInt((val) -> val.hashCode()));
 
 		long endTime = System.nanoTime();
 		if (doTiming) {
-			String fmt
-					= "\tProcessed affix %s from %s in %d nanoseconds (%.2f seconds)\n\n";
+			String fmt = "\tProcessed affix %s from %s in %d nanoseconds (%.2f seconds)\n\n";
 			double seconds = ((double) (endTime - startTime) / 1000000000);
 
-			errors.add(String.format(fmt, afx.intName, scnName, endTime - startTime,
-					seconds));
+			errors.add(String.format(
+					fmt,
+					afx.intName, scnName, endTime - startTime, seconds));
 		}
 
 		return afx;
 	}
-
 }
