@@ -49,9 +49,7 @@ public class AffixLister {
 	 * @return The listed affix set. */
 	@SuppressWarnings("unused")
 	public static AffixSet listAffixes(String[] args) {
-		AffixSet affixSetByName = new AffixSet();
-
-		boolean doingArgs = true;
+	    boolean doingArgs = true;
 
 		boolean omitZeros = false;
 		boolean listZeros = false;
@@ -66,8 +64,8 @@ public class AffixLister {
 		boolean outputAffixGroups   = false;
 		OutputStream affixGroupDest = null;
 
-		Map<String, Set<Affix>> groupContents    = affixSetByName.affixGroups;
-		Set<Affix>              nonGroupContents = affixSetByName.ungroupedAffixes;
+		Map<String, Set<Affix>> groupContents    = new HashMap<>();
+		Set<Affix>              nonGroupContents = new HashSet<>();
 
 		NameFileReader nfr = new NameFileReader(false);
 		nfr.groupRx = ".*/mods/([^/]+)/*";
@@ -298,24 +296,23 @@ public class AffixLister {
 		errOut.println();
 
 		if (outputAffixGroups) {
-			for (Entry<String, Set<Affix>> ent :
-				affixSetByContents.affixGroups .entrySet()) {
+		    for (Entry<AffixGroup, Set<Affix>> entry 
+		            : affixSetByContents.affixGroups.entrySet()) {
+		        AffixGroup groupName = entry.getKey();
+                Set<Affix> affixes   = entry.getValue();
 
-				String     groupName = ent.getKey();
-				Set<Affix> affixes   = ent.getValue();
+                boolean isFirstAfx = true;
+                for (Affix afx : affixes) {
+                    // @TODO actually implement this -bculkin, 12/29/2020
 
-				boolean isFirstAfx = true;
-				for (Affix afx : affixes) {
-					// @TODO actually implement this -bculkin, 12/29/2020
+                    // Print the header for this group
+                    if (isFirstAfx) {
+                        isFirstAfx = false;
+                    }
 
-					// Print the header for this group
-					if (isFirstAfx) {
-						isFirstAfx = false;
-					}
-
-					// print this affix in the group format
-				}
-			}
+                    // print this affix in the group format
+                }
+            }
 		}
 
 		long endTime = System.nanoTime();
@@ -330,6 +327,6 @@ public class AffixLister {
 			"\tOptions: Name Mode: %s, Special-case zero weight: %s, Noting zero-weight in special case: %s\n",
 			nameMode, !listZeros, !omitZeros);
 
-		return affixSetByName;
+		return affixSetByContents;
 	}
 }

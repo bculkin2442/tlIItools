@@ -18,7 +18,7 @@ public class AffixSet {
 	 *
 	 * An affix group is a set of affixes that generally have the same or
 	 * similar effects, but have different intensities or spawn levels. */
-	public Map<String, Set<Affix>> affixGroups;
+	public Map<AffixGroup, Set<Affix>> affixGroups;
 
 	/** All of the ungrouped affixes contained in this set. */
 	public Set<Affix> ungroupedAffixes;
@@ -34,12 +34,13 @@ public class AffixSet {
 	 * 
 	 * @param afx The affix to add. */
 	public void addAffixByContents(Affix afx) {
-		String afxGroup = afx.getAffixGroupName();
+		AffixGroup group = afx.toAffixGroup();
+        String afxGroup = group.toString();
 		
 		if (afxGroup.equals("")) {
 			ungroupedAffixes.add(afx);
 		} else {
-			affixGroups.compute(afxGroup, (key, val) -> {
+			affixGroups.compute(group, (key, val) -> {
 				if (val == null) {
 					Set<Affix> afxSet = new HashSet<>();
 					afxSet.add(afx);

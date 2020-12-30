@@ -2,6 +2,12 @@ package tlIItools;
 
 import java.util.*;
 
+/** An 'effect group'.
+ * 
+ * This groups similar effects together, the same way affix groups group affixs
+ * together.
+ * 
+ * @author Ben Culkin */
 public class EffectGroup {
     /** The name of the effect. */
     public String name;

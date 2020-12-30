@@ -67,13 +67,13 @@ public class Affix {
 
 	/** The types of equipment this can spawn on. */
 	public List<String> equipTypes;
-	/** The types of equipment this can't spawn on. */
+    /** The types of equipment this can spawn on. */
 	public List<String> nonequipTypes;
 
-	/** Places to get this enchantment from; */
+    /** The types of equipment this can spawn on. */
 	public List<String> enchantSources;
 
-	/** The socketable types this spawns on. */
+    /** The types of equipment this can spawn on. */
 	public List<String> socketableTypes;
 
 	/** The effects attached to this affix. */
@@ -131,30 +131,29 @@ public class Affix {
 		}
 		return true;
 	}
-
-	/** Gets the name of the 'affix group' that this affix is in.
-	 * 
-	 * By 'affix group', what we mean is that it is essentially the same affix, with
-	 * generally just differing levels/values.
-	 * 
-	 * For instance, an affix that granted +2 strength, and one that granted +4
-	 * strength would be considered to be in the same affix group (assuming that
-	 * both of those strength bonuses had the same effect name, and applied to the
-	 * same sorts of items).
-	 * 
-	 * @return The name of the affix group */
-	public String getAffixGroupName() {
-		StringBuilder sb = new StringBuilder();
-
-		for (Effect eft : effects) sb.append(eft.group);
-		for (String enchantSource : enchantSources) sb.append(enchantSource);
-		for (String equipType : equipTypes) sb.append(equipType);
-		for (String nonEquipType : nonequipTypes) sb.append(nonEquipType);
-		for (String socketableType : socketableTypes) sb.append(socketableType);
-
-		return sb.toString();
+   
+	/** Gets the 'affix group' that this affix is in.
+     * 
+     * By 'affix group', what we mean is that it is essentially the same affix, with
+     * generally just differing levels/values.
+     * 
+     * For instance, an affix that granted +2 strength, and one that granted +4
+     * strength would be considered to be in the same affix group (assuming that
+     * both of those strength bonuses had the same effect name, and applied to the
+     * same sorts of items).
+     * 
+     * @return The affix group */
+	public AffixGroup toAffixGroup() {
+	    AffixGroup group = new AffixGroup();
+	    
+	    group.enchantSources = enchantSources;
+	    group.equipTypes = equipTypes;
+	    group.nonequipTypes = nonequipTypes;
+	    group.socketableTypes = socketableTypes;
+	    for (Effect eff : effects) group.effects.add(eff.group);
+	    
+	    return group;
 	}
-
 	/* Are invalid equip types being added?
 	 * 
 	 * NOTE: This is kinda bad practice. It should really be handled via two
@@ -181,7 +180,7 @@ public class Affix {
 
 	/** Add an equip type to the right set of equip types.
 	 *
-	 * @param type The equip type to add. */
+	 * @param equipType The equip type to add. */
 	public void addEquipType(String equipType) {
 		if (inNonEquip) {
 			nonequipTypes.add(equipType);
