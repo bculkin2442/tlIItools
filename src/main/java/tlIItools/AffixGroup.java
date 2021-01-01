@@ -11,15 +11,15 @@ import tlIItools.Affix.*;
  * or have effects of differing intensity.
  *
  * @author Ben Culkin */
-public class AffixGroup {
+public class AffixGroup implements Comparable<AffixGroup> {
     public List<EffectGroup> effects;
-    /** The types of equipment this can spawn on. */
+    /** The types of enchanters who can add this. */
     public List<String> enchantSources;
     /** The types of equipment this can spawn on. */
     public List<String> equipTypes;
-    /** The types of equipment this can spawn on. */
+    /** The types of equipment this cannot spawn on. */
     public List<String> nonequipTypes;
-    /** The types of equipment this can spawn on. */
+    /** The types of equipment this can be socketed into on. */
     public List<String> socketableTypes;
     
     /** The type of thing this affix applies to. */
@@ -27,10 +27,10 @@ public class AffixGroup {
     
     /** Create a new affix group. */
     public AffixGroup() {
-        effects = new ArrayList<>();
-        enchantSources = new ArrayList<>();
-        equipTypes = new ArrayList<>();
-        nonequipTypes = new ArrayList<>();
+        effects         = new ArrayList<>();
+        enchantSources  = new ArrayList<>();
+        equipTypes      = new ArrayList<>();
+        nonequipTypes   = new ArrayList<>();
         socketableTypes = new ArrayList<>();
     }
 
@@ -50,26 +50,53 @@ public class AffixGroup {
         return afx.toAffixGroup().equals(this);
     }
     
-    /** Get the 'header' for displaying this group
-     * 
-     * @return The header for this group. */
-    public String groupHeader() {
-       StringBuilder sb = new StringBuilder();
-       
-       sb.append("ID: " + hashCode());
-       
-       return sb.toString();
-    }
-    
+	public String groupSummary() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("Affix Type: ");
+		sb.append(type);
+		sb.append("\n");
+/*		sb.append("Effects: \n");
+		for (EffectGroup group : effects) {
+			sb.append("\t");
+			sb.append(group);
+			sb.append("\n");
+		}
+*/
+
+		sb.append("Affix can spawn on: ");
+		sb.append(String.join(", ", equipTypes));
+		sb.append("\nAffix can't spawn on: ");
+		sb.append(String.join(", ", nonequipTypes));
+		sb.append("\n");
+
+		if (type == AffixType.SOCKETABLE) {
+			sb.append("Affix can be socketed into: ");
+			sb.append(String.join(", ", socketableTypes));
+			sb.append("\n");
+		} else if (type == AffixType.ENCHANTMENT) {
+			sb.append("Affix can be enchanted by: ");
+			sb.append(String.join(", ", socketableTypes));
+			sb.append("\n");
+		}
+
+		return sb.toString();
+	}
+
+    @Override
+	public int compareTo(AffixGroup other) {
+		return toString().compareTo(other.toString());
+	}
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         
-        for (EffectGroup group : effects) sb.append(group);
-        for (String enchantSource : enchantSources) sb.append(enchantSource);
-        for (String equipType : equipTypes) sb.append(equipType);
-        for (String nonEquipType : nonequipTypes) sb.append(nonEquipType);
-        for (String socketableType : socketableTypes) sb.append(socketableType);
+        for (EffectGroup group:     effects)         sb.append(group);
+        for (String enchantSource:  enchantSources)  sb.append(enchantSource);
+        for (String equipType:      equipTypes)      sb.append(equipType);
+        for (String nonEquipType:   nonequipTypes)   sb.append(nonEquipType);
+        for (String socketableType: socketableTypes) sb.append(socketableType);
         
         return sb.toString();
     }

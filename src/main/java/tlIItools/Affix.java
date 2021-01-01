@@ -49,12 +49,8 @@ public class Affix {
 	 * suffix. */
 	public String affixPrefix;
 
-	/* The min/max levels the affix can spawn at. */
-
-	/** The minimum level of an item this affix can spawn on. */
-	public int minLevel;
-	/** The maximum level of an item this affix can spawn on. */
-	public int maxLevel;
+	/** The min/max levels the affix can spawn at. */
+	public LevelRange spawnRange = new LevelRange();
 
 	/** The spawn weight for the affix. */
 	public int weight;
@@ -67,13 +63,11 @@ public class Affix {
 
 	/** The types of equipment this can spawn on. */
 	public List<String> equipTypes;
-    /** The types of equipment this can spawn on. */
+	/** The types of equipment this can spawn on. */
 	public List<String> nonequipTypes;
-
-    /** The types of equipment this can spawn on. */
+	/** The types of equipment this can spawn on. */
 	public List<String> enchantSources;
-
-    /** The types of equipment this can spawn on. */
+	/** The types of equipment this can spawn on. */
 	public List<String> socketableTypes;
 
 	/** The effects attached to this affix. */
@@ -133,27 +127,29 @@ public class Affix {
 	}
    
 	/** Gets the 'affix group' that this affix is in.
-     * 
-     * By 'affix group', what we mean is that it is essentially the same affix, with
-     * generally just differing levels/values.
-     * 
-     * For instance, an affix that granted +2 strength, and one that granted +4
-     * strength would be considered to be in the same affix group (assuming that
-     * both of those strength bonuses had the same effect name, and applied to the
-     * same sorts of items).
-     * 
-     * @return The affix group */
+	 * 
+	 * By 'affix group', what we mean is that it is essentially the same affix, with
+	 * generally just differing levels/values.
+	 * 
+	 * For instance, an affix that granted +2 strength, and one that granted +4
+	 * strength would be considered to be in the same affix group (assuming that
+	 * both of those strength bonuses had the same effect name, and applied to the
+	 * same sorts of items).
+	 * 
+	 * @return The affix group */
 	public AffixGroup toAffixGroup() {
 	    AffixGroup group = new AffixGroup();
 	    
-	    group.enchantSources = enchantSources;
-	    group.equipTypes = equipTypes;
-	    group.nonequipTypes = nonequipTypes;
+	    group.enchantSources  = enchantSources;
+	    group.equipTypes      = equipTypes;
+	    group.nonequipTypes   = nonequipTypes;
 	    group.socketableTypes = socketableTypes;
+
 	    for (Effect eff : effects) group.effects.add(eff.group);
 	    
 	    return group;
 	}
+
 	/* Are invalid equip types being added?
 	 * 
 	 * NOTE: This is kinda bad practice. It should really be handled via two
@@ -204,6 +200,56 @@ public class Affix {
 		return intName;
 	}
 
+	/** Print out a 'short-form' of this affix.
+	 *
+	 * @return The short form of this affix. */
+	public String toShortString() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(intName);
+		sb.append("\n");
+
+		if (affixSuffix != null) {
+			sb.append("\tSuffix: ");
+			sb.append(affixSuffix);
+			sb.append("\n");
+		}
+
+		if (affixPrefix != null) {
+			sb.append("\tPrefix: ");
+			sb.append(affixPrefix);
+			sb.append("\n");
+
+		}
+
+		sb.append("\t");
+		sb.append(spawnRange.toString());
+		sb.append("\n");
+
+		sb.append("\tSpawn Weight: ");
+		sb.append(weight);
+		sb.append("\n");
+
+		if (slots == 0) {
+			sb.append("\tOccupies no slots\n");
+		} else {
+			sb.append("\tSlots: ");
+			sb.append(slots);
+			sb.append("\n");
+		}
+
+		if (effects.size() != 0) {
+			sb.append("\tEffects: ");
+			for (Effect eft : effects) {
+				sb.append("\n\t\t");
+				sb.append(eft.toString());
+			}
+			sb.append("\n");
+		}
+
+		return sb.toString();
+	}
+
 	/** Print out the full details of this affix.
 	 * 
 	 * @return The full details of the affix. */
@@ -241,21 +287,7 @@ public class Affix {
 		}
 
 		sb.append("\t");
-		if (minLevel <= 1 && maxLevel == 999) {
-			sb.append("No Level Range");
-		} else if (minLevel != 1 && maxLevel != 999) {
-			sb.append("Level Range: ");
-			sb.append(minLevel);
-			sb.append("-");
-			sb.append(maxLevel);
-		} else if (minLevel <= 1) {
-			sb.append("Max Level: ");
-			sb.append(maxLevel);
-		} else if (maxLevel == 999) {
-			sb.append("Minimum Level: ");
-			sb.append(minLevel);
-		}
-
+		sb.append(spawnRange);
 		sb.append("\n");
 
 		sb.append("\tSpawn Weight: ");
@@ -377,9 +409,9 @@ public class Affix {
 					errors.add(msg);
 				}
 			} else if (ln.contains("MIN_SPAWN_RANGE")) {
-				afx.minLevel = Integer.parseInt(splits[1]);
+				afx.spawnRange.minLevel = Integer.parseInt(splits[1]);
 			} else if (ln.contains("MAX_SPAWN_RANGE")) {
-				afx.maxLevel = Integer.parseInt(splits[1]);
+				afx.spawnRange.maxLevel = Integer.parseInt(splits[1]);
 			} else if (ln.contains("WEIGHT:")) {
 				afx.weight = Integer.parseInt(splits[1]);
 			} else if (ln.contains("SLOTS_OCCUPY")) {

@@ -24,6 +24,8 @@ public class AffixLister {
 	public static PrintStream normOut = System.out;
 	/** The error output to use. */
 	public static PrintStream errOut = System.err;
+	/** The output to write affix groups to. */
+	public static PrintStream affixGroupDest = null;
 
 	/** Indicates how to treat affixes with regards to their names. */
 	public static enum NameMode {
@@ -62,7 +64,6 @@ public class AffixLister {
 		int groupCount   = 0;
 
 		boolean outputAffixGroups   = false;
-		OutputStream affixGroupDest = null;
 
 		Map<String, Set<Affix>> groupContents    = new HashMap<>();
 		Set<Affix>              nonGroupContents = new HashSet<>();
@@ -297,22 +298,30 @@ public class AffixLister {
 
 		if (outputAffixGroups) {
 		    for (Entry<AffixGroup, Set<Affix>> entry 
-		            : affixSetByContents.affixGroups.entrySet()) {
-		        AffixGroup groupName = entry.getKey();
-                Set<Affix> affixes   = entry.getValue();
+		            : affixSetByContents.affixGroups.entrySet())
+		    {
+		        AffixGroup group   = entry.getKey();
+			Set<Affix> affixes = entry.getValue();
 
-                boolean isFirstAfx = true;
-                for (Affix afx : affixes) {
-                    // @TODO actually implement this -bculkin, 12/29/2020
+			// Skip one-affix groups
+			if (affixes.size() == 1) continue;
 
-                    // Print the header for this group
-                    if (isFirstAfx) {
-                        isFirstAfx = false;
-                    }
+			boolean isFirstAfx = true;
+			for (Affix afx : affixes) {
+				// @TODO actually implement this -bculkin, 12/29/2020
 
-                    // print this affix in the group format
-                }
-            }
+				// Print the header for this group
+				if (isFirstAfx) {
+					isFirstAfx = false;
+					affixGroupDest.printf("Group ID %s (%d affixes)\n",
+						group.hashCode(), affixes.size());
+					affixGroupDest.println(group.groupSummary());
+				}
+
+				affixGroupDest.println(afx.toShortString());
+				// print this affix in the group format
+			}
+		    }
 		}
 
 		long endTime = System.nanoTime();

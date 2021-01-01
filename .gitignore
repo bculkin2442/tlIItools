@@ -1,6 +1,7 @@
 *.class
 bin/
 output/
+old-output/
 tags
 synfiles
 basefiles

@@ -9,8 +9,7 @@ public class AffixSet {
 	private static class AffixComparator implements Comparator<Affix> {
 		@Override
 		public int compare(Affix a1, Affix a2) {
-			if (a1.minLevel == a2.minLevel)  return a1.maxLevel - a2.maxLevel;
-			else                             return a1.minLevel - a2.minLevel;
+			return a1.spawnRange.compareTo(a2.spawnRange);
 		}
 	}
 
@@ -29,14 +28,14 @@ public class AffixSet {
 
 		ungroupedAffixes = new TreeSet<>(new AffixComparator());
 	}
-	
+
 	/** Add an affix to this set.
 	 * 
 	 * @param afx The affix to add. */
 	public void addAffixByContents(Affix afx) {
 		AffixGroup group = afx.toAffixGroup();
-        String afxGroup = group.toString();
-		
+		String afxGroup = group.toString();
+
 		if (afxGroup.equals("")) {
 			ungroupedAffixes.add(afx);
 		} else {

@@ -32,6 +32,20 @@ public class EffectGroup {
     /** Whether or not this effect is a 'transfer' effect (Applied to the enemy on a hit). */
     public boolean isTransfer;
     
+	public String summary() {
+		StringBuilder sb = new StringBuilder();
+		
+		// @TODO Ben Culkin 12/31/2020 :FancyEffectSummary
+		//
+		// EffectGroups should probably use something from EffectRepo to better
+		// output the summary for a particular group type
+		String fmt = "%s (name %s, damageType %s, hasDuration %s, stat %s, isBonus %s, ownerLevel %s, useGraph %s, graphOverride %s, exclusive %s, isTransfer %s)";
+	
+		sb.append(String.format(fmt, type, name, damageType, hasDuration, statName, isStatBonus, ownerLevel, useGraph, graphOverride, exclusive, isTransfer));
+
+		return sb.toString();
+	}
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
