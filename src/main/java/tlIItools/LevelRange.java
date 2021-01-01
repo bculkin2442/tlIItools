@@ -1,5 +1,7 @@
 package tlIItools;
 
+import java.util.*;
+
 public class LevelRange implements Comparable<LevelRange> {
 	/*
 	 * if (minLevel <= 1 && maxLevel == 999) {
@@ -72,6 +74,29 @@ public class LevelRange implements Comparable<LevelRange> {
 	}
 
 	@Override
+    public int hashCode() {
+	    clamp();
+	    
+        return Objects.hash(maxLevel, minLevel);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        LevelRange other = (LevelRange) obj;
+        
+        clamp();
+        other.clamp();
+        
+        return maxLevel == other.maxLevel && minLevel == other.minLevel;
+    }
+
+    @Override
 	public int compareTo(LevelRange other) {
 		if (this.equals(other)) return 0;
 
@@ -79,7 +104,11 @@ public class LevelRange implements Comparable<LevelRange> {
 		if (isUnrestricted()) return 1;
 
 		if (noLowerBound()) {
-			return maxLevel - other.maxLevel;
+		        if (other.noLowerBound()) {
+		            return maxLevel - other.maxLevel;
+		        } else {
+		            return -1;
+		        }
 		} else if (noUpperBound()) {
 			return minLevel - other.minLevel;
 		} else {
