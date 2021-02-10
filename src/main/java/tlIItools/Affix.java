@@ -140,6 +140,7 @@ public class Affix {
 	public AffixGroup toAffixGroup() {
 	    AffixGroup group = new AffixGroup();
 	    
+	    group.type            = type;
 	    group.enchantSources  = enchantSources;
 	    group.equipTypes      = equipTypes;
 	    group.nonequipTypes   = nonequipTypes;
@@ -228,7 +229,7 @@ public class Affix {
 
 		sb.append("\tSpawn Weight: ");
 		sb.append(weight);
-		sb.append("\n");
+		sb.append("\t");
 
 		if (slots == 0) {
 			sb.append("\tOccupies no slots\n");
@@ -241,7 +242,7 @@ public class Affix {
 		if (effects.size() != 0) {
 			sb.append("\tEffects: ");
 			for (Effect eft : effects) {
-				sb.append("\n\t\t");
+				if (effects.size() > 1) sb.append("\n\t\t");
 				sb.append(eft.toString());
 			}
 			sb.append("\n");

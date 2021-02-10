@@ -35,13 +35,39 @@ public class EffectGroup {
 	public String summary() {
 		StringBuilder sb = new StringBuilder();
 		
+		if (isTransfer) sb.append("Transfer: ");
+		sb.append(type);
+		if (name != null && !name.equals("")) {
+			sb.append(" (named ");
+			sb.append(name);
+			sb.append(")");
+		}
+
+		if (hasDuration) sb.append(" (timed)");
+		if (statName != null && !name.equals("")) {
+			sb.append(" (uses stat ");
+			sb.append(statName);
+			if (isStatBonus) sb.append(" as a bonus");
+			sb.append(")");
+		}
+
+		if (ownerLevel) sb.append(" (uses owner level)");
+		if (useGraph) {
+			sb.append(" (uses ");
+			if (graphOverride != null && !graphOverride.equals("")) sb.append(graphOverride);
+			else sb.append("default");
+			sb.append(" graph)");
+		}
+
+		if (exclusive) sb.append(" (exclusive)");
+
 		// @TODO Ben Culkin 12/31/2020 :FancyEffectSummary
 		//
 		// EffectGroups should probably use something from EffectRepo to better
 		// output the summary for a particular group type
-		String fmt = "%s (name %s, damageType %s, hasDuration %s, stat %s, isBonus %s, ownerLevel %s, useGraph %s, graphOverride %s, exclusive %s, isTransfer %s)";
+		// String fmt = "%s (name %s, damageType %s, hasDuration %s, stat %s, isBonus %s, ownerLevel %s, useGraph %s, graphOverride %s, exclusive %s, isTransfer %s)";
 	
-		sb.append(String.format(fmt, type, name, damageType, hasDuration, statName, isStatBonus, ownerLevel, useGraph, graphOverride, exclusive, isTransfer));
+		// sb.append(String.format(fmt, type, name, damageType, hasDuration, statName, isStatBonus, ownerLevel, useGraph, graphOverride, exclusive, isTransfer));
 
 		return sb.toString();
 	}

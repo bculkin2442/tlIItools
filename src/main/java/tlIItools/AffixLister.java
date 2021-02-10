@@ -306,21 +306,26 @@ public class AffixLister {
 			// Skip one-affix groups
 			if (affixes.size() == 1) continue;
 
+			List<Affix> affixList = new ArrayList<>(affixes);
+			Collections.sort(affixList, (lhs, rhs) -> lhs.spawnRange.compareTo(rhs.spawnRange));
+
 			boolean isFirstAfx = true;
-			for (Affix afx : affixes) {
+			for (Affix afx : affixList) {
 				// @TODO actually implement this -bculkin, 12/29/2020
 
 				// Print the header for this group
 				if (isFirstAfx) {
 					isFirstAfx = false;
-					affixGroupDest.printf("Group ID %s (%d affixes)\n",
+					affixGroupDest.printf("Group ID %s (%d affixes)\t",
 						group.hashCode(), affixes.size());
-					affixGroupDest.println(group.groupSummary());
+					affixGroupDest.print(group.groupSummary());
 				}
 
-				affixGroupDest.println(afx.toShortString());
+				affixGroupDest.print("\t");
+				affixGroupDest.print(afx.toShortString().replaceAll("\n(?=.)", "\n\t"));
 				// print this affix in the group format
 			}
+			affixGroupDest.println();
 		    }
 		}
 

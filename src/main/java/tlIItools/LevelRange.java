@@ -34,7 +34,7 @@ public class LevelRange implements Comparable<LevelRange> {
 
 	private void clamp() {
 		minLevel = Math.max(1,   minLevel);
-		maxLevel = Math.max(999, maxLevel);
+		maxLevel = Math.min(999, maxLevel);
 	}
 
 	public boolean isUnrestricted() {
@@ -82,26 +82,38 @@ public class LevelRange implements Comparable<LevelRange> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj)                  return true;
+        if (obj == null)                  return false;
+        if (getClass() != obj.getClass()) return false;
+
         LevelRange other = (LevelRange) obj;
         
         clamp();
         other.clamp();
         
-        return maxLevel == other.maxLevel && minLevel == other.minLevel;
+		if (isUnrestricted() && other.isUnrestricted()) {
+			return true;
+		} else if (noLowerBound()) {
+			if (other.noLowerBound()) return maxLevel == other.maxLevel;
+			else                      return false;
+		} else if (noUpperBound()) {
+			if (other.noUpperBound()) return minLevel == other.minLevel;
+			else                      return false;
+		} else {
+			return maxLevel == other.maxLevel && minLevel == other.minLevel;
+		}
     }
 
     @Override
 	public int compareTo(LevelRange other) {
+		clamp();
+		other.clamp();
+
 		if (this.equals(other)) return 0;
 
 		// Unrestricted ranges sort above all others
-		if (isUnrestricted()) return 1;
+		if (isUnrestricted())       return 1;
+		if (other.isUnrestricted()) return -1;
 
 		if (noLowerBound()) {
 		        if (other.noLowerBound()) {
@@ -110,7 +122,11 @@ public class LevelRange implements Comparable<LevelRange> {
 		            return -1;
 		        }
 		} else if (noUpperBound()) {
-			return minLevel - other.minLevel;
+			if (other.noUpperBound()) {
+				return minLevel - other.minLevel;
+			} else {
+				return 1;
+			}
 		} else {
 			if (minLevel == other.minLevel) return maxLevel - other.maxLevel;
 			else                            return minLevel - other.minLevel;

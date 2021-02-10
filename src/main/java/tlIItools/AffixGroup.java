@@ -56,25 +56,29 @@ public class AffixGroup implements Comparable<AffixGroup> {
 		sb.append("Affix Type: ");
 		sb.append(type);
 		sb.append("\n");
-/*		sb.append("Effects: \n");
+		sb.append("Effects: ");
+		if (effects.size() > 1) sb.append("\n");
 		for (EffectGroup group : effects) {
-			sb.append("\t");
-			sb.append(group);
+			if (effects.size() > 1) sb.append("\t");
+			sb.append(group.summary());
 			sb.append("\n");
 		}
-*/
-
-		sb.append("Affix can spawn on: ");
-		sb.append(String.join(", ", equipTypes));
-		sb.append("\nAffix can't spawn on: ");
-		sb.append(String.join(", ", nonequipTypes));
-		sb.append("\n");
 
 		if (type == AffixType.SOCKETABLE) {
 			sb.append("Affix can be socketed into: ");
+			sb.append(String.join(", ", equipTypes));
+			sb.append("\nAffix can spawn on: ");
 			sb.append(String.join(", ", socketableTypes));
 			sb.append("\n");
-		} else if (type == AffixType.ENCHANTMENT) {
+		} else {
+			sb.append("Affix can spawn on: ");
+			sb.append(String.join(", ", equipTypes));
+			sb.append("\nAffix can't spawn on: ");
+			sb.append(String.join(", ", nonequipTypes));
+			sb.append("\n");
+		} 
+
+		if (type == AffixType.ENCHANTMENT) {
 			sb.append("Affix can be enchanted by: ");
 			sb.append(String.join(", ", socketableTypes));
 			sb.append("\n");
