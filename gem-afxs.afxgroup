@@ -1,0 +1,1924 @@
+Group ID 321149533 (6 affixes)	Affix Type: SOCKETABLE
+Effects: ARMOR BONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED EMBER
+	GEM_ALL_ARMOR_FLAT1
+		Prefix: Virile [ITEM]
+		Max Level: 60
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(13.0-15.0) all Armor
+	GEM_ALL_ARMOR_FLAT2
+		Prefix: Athlete's [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(15.0-17.0) all Armor
+	GEM_ALL_ARMOR_FLAT3
+		Prefix: Fecund [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(17.0-19.0) all Armor
+	GEM_ALL_ARMOR_FLAT4
+		Prefix: Vigorous [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(19.0-21.0) all Armor
+	GEM_ALL_ARMOR_FLAT5
+		Prefix: Rapturous [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(21.0-23.0) all Armor
+	GEM_ALL_ARMOR_FLAT6
+		Prefix: Prime [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(23.0-25.0) all Armor
+
+Group ID 436050567 (3 affixes)	Affix Type: SOCKETABLE
+Effects: ARMOR BONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: IRON EMBER
+	GEM_IRONEMBER_ARMOR_ARMOR
+		Suffix: [ITEM] of Light Armour
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(18.0-22.0) physical Armor
+	GEM_IRONEMBER_ARMOR_ARMOR2
+		Suffix: [ITEM] of Medium Armour
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(20.0-24.0) physical Armor
+	GEM_IRONEMBER_ARMOR_ARMOR3
+		Suffix: [ITEM] of Heavy Armour
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(22.0-28.0) physical Armor
+
+Group ID -397519612 (7 affixes)	Affix Type: SOCKETABLE
+Effects: CRITICAL CHANCE (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_WEAPON_CRITCHANCE
+		Prefix: Needling [ITEM]
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.0-4.0)% more Critical Chance
+	GEM_CHAOSEMBER_WEAPON_CRITCHANCE2
+		Prefix: Stinging [ITEM]
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.5-4.5)% more Critical Chance
+	GEM_CHAOSEMBER_WEAPON_CRITCHANCE3
+		Prefix: Piercing [ITEM]
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.0-5.0)% more Critical Chance
+	GEM_CHAOSEMBER_WEAPON_CRITCHANCE4
+		Prefix: Rupturing [ITEM]
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.5-5.5)% more Critical Chance
+	GEM_CHAOSEMBER_WEAPON_CRITCHANCE5
+		Prefix: Penetrating [ITEM]
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-7.0)% more Critical Chance
+	GEM_CHAOSEMBER_WEAPON_CRITCHANCE6
+		Prefix: Incisive [ITEM]
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.5-6.5)% more Critical Chance
+	GEM_CHAOSEMBER_WEAPON_CRITCHANCE7
+		Prefix: Critical [ITEM]
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-7.0)% more Critical Chance
+
+Group ID -1120944079 (7 affixes)	Affix Type: SOCKETABLE
+Effects: DAMAGE BONUS SECONDARY (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_WEAPON_SPLASH
+		Prefix: Brute's [ITEM]
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (16.0-20.0)% more Damage to Secondary Targets
+	GEM_CHAOSEMBER_WEAPON_SPLASH2
+		Prefix: Wrestler's [ITEM]
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (19.0-23.0)% more Damage to Secondary Targets
+	GEM_CHAOSEMBER_WEAPON_SPLASH3
+		Prefix: Bear's [ITEM]
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: (22.0-26.0)% more Damage to Secondary Targets
+	GEM_CHAOSEMBER_WEAPON_SPLASH4
+		Prefix: Lion's [ITEM]
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (25.0-29.0)% more Damage to Secondary Targets
+	GEM_CHAOSEMBER_WEAPON_SPLASH5
+		Prefix: Gorilla's [ITEM]
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (28.0-32.0)% more Damage to Secondary Targets
+	GEM_CHAOSEMBER_WEAPON_SPLASH6
+		Prefix: Goliath's [ITEM]
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (31.0-35.0)% more Damage to Secondary Targets
+	GEM_CHAOSEMBER_WEAPON_SPLASH7
+		Prefix: Leviathan's [ITEM]
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (34.0-38.0)% more Damage to Secondary Targets
+
+Group ID 858028269 (6 affixes)	Affix Type: SOCKETABLE
+Effects: DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: INFUSED EMBER
+	GEM_ALL_WEAPON_DMGFLAT1
+		Suffix: [ITEM] of the Catalyst
+		Max Level: 60
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(13.0-15.0) all damage
+	GEM_ALL_WEAPON_DMGFLAT2
+		Suffix: [ITEM] of Infusion
+		Level Range: 20-100
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(15.0-17.0) all damage
+	GEM_ALL_WEAPON_DMGFLAT3
+		Suffix: [ITEM] of Empowerment
+		Level Range: 40-100
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(17.0-19.0) all damage
+	GEM_ALL_WEAPON_DMGFLAT4
+		Suffix: [ITEM] of Restrained Power
+		Level Range: 60-120
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(19.0-21.0) all damage
+	GEM_ALL_WEAPON_DMGFLAT5
+		Suffix: [ITEM] of Unleashed Power
+		Minimum Level: 80
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(21.0-23.0) all damage
+	GEM_ALL_WEAPON_DMGFLAT6
+		Suffix: [ITEM] of Overwhelming Power
+		Minimum Level: 100
+		Spawn Weight: 2		Occupies no slots
+		Effects: +(23.0-25.0) all damage
+
+Group ID -686818385 (6 affixes)	Affix Type: SOCKETABLE
+Effects: DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: INFUSED SHOCK EMBER
+	GEM_SPARK_WEAPON_DMGFLAT1
+		Suffix: [ITEM] of Humming
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(13.0-15.0) electric damage
+	GEM_SPARK_WEAPON_DMGFLAT2
+		Suffix: [ITEM] of Buzzing
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(15.0-17.0) electric damage
+	GEM_SPARK_WEAPON_DMGFLAT3
+		Suffix: [ITEM] of Snapping
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(17.0-19.0) electric damage
+	GEM_SPARK_WEAPON_DMGFLAT4
+		Suffix: [ITEM] of Crackling
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(19.0-21.0) electric damage
+	GEM_SPARK_WEAPON_DMGFLAT5
+		Suffix: [ITEM] of Sparking
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(21.0-23.0) electric damage
+	GEM_SPARK_WEAPON_DMGFLAT6
+		Suffix: [ITEM] of Arcing
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(23.0-25.0) electric damage
+
+Group ID -1686636738 (6 affixes)	Affix Type: SOCKETABLE
+Effects: DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: INFUSED FIRE EMBER
+	GEM_FIRE_WEAPON_DMGFLAT1
+		Suffix: [ITEM] of Heat
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(13.0-15.0) fire damage
+	GEM_FIRE_WEAPON_DMGFLAT2
+		Suffix: [ITEM] of Smouldering
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(15.0-17.0) fire damage
+	GEM_FIRE_WEAPON_DMGFLAT3
+		Suffix: [ITEM] of Smoking
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(17.0-19.0) fire damage
+	GEM_FIRE_WEAPON_DMGFLAT4
+		Suffix: [ITEM] of Burning
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(19.0-21.0) fire damage
+	GEM_FIRE_WEAPON_DMGFLAT5
+		Suffix: [ITEM] of Flaming
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(21.0-23.0) fire damage
+	GEM_FIRE_WEAPON_DMGFLAT6
+		Suffix: [ITEM] of Scorching
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(23.0-25.0) fire damage
+
+Group ID -1113458408 (6 affixes)	Affix Type: SOCKETABLE
+Effects: DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: INFUSED ICE EMBER
+	GEM_ICE_WEAPON_DMGFLAT1
+		Suffix: [ITEM] of Frost
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(13.0-15.0) ice damage
+	GEM_ICE_WEAPON_DMGFLAT2
+		Suffix: [ITEM] of Chills
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(15.0-17.0) ice damage
+	GEM_ICE_WEAPON_DMGFLAT3
+		Suffix: [ITEM] of Ice
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(17.0-19.0) ice damage
+	GEM_ICE_WEAPON_DMGFLAT4
+		Suffix: [ITEM] of Frigidity
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(19.0-21.0) ice damage
+	GEM_ICE_WEAPON_DMGFLAT5
+		Suffix: [ITEM] of Freezing
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(21.0-23.0) ice damage
+	GEM_ICE_WEAPON_DMGFLAT6
+		Suffix: [ITEM] of the Glacier
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(23.0-25.0) ice damage
+
+Group ID 486203290 (6 affixes)	Affix Type: SOCKETABLE
+Effects: DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: INFUSED POISON EMBER
+	GEM_VENOM_WEAPON_DMGFLAT1
+		Suffix: [ITEM] of Waning
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(13.0-15.0) poison damage
+	GEM_VENOM_WEAPON_DMGFLAT2
+		Suffix: [ITEM] of Wasting
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(15.0-17.0) poison damage
+	GEM_VENOM_WEAPON_DMGFLAT3
+		Suffix: [ITEM] of Deterioration
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(17.0-19.0) poison damage
+	GEM_VENOM_WEAPON_DMGFLAT4
+		Suffix: [ITEM] of Atrophy
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(19.0-21.0) poison damage
+	GEM_VENOM_WEAPON_DMGFLAT5
+		Suffix: [ITEM] of Disintegration
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(21.0-23.0) poison damage
+	GEM_VENOM_WEAPON_DMGFLAT6
+		Suffix: [ITEM] of Annihilation
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(23.0-25.0) poison damage
+
+Group ID -1671038699 (3 affixes)	Affix Type: SOCKETABLE
+Effects: DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: IRON EMBER
+	GEM_IRONEMBER_WEAPON_DAMAGEBONUS
+		Prefix: Quality [ITEM]
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(27.0-30.0) physical damage
+	GEM_IRONEMBER_WEAPON_DAMAGEBONUS2
+		Prefix: Maiming [ITEM]
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(30.0-33.0) physical damage
+	GEM_IRONEMBER_WEAPON_DAMAGEBONUS3
+		Prefix: Slaying [ITEM]
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(33.0-36.0) physical damage
+
+Group ID -200259643 (3 affixes)	Affix Type: SOCKETABLE
+Effects: DAMAGE REFLECTION (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: IRON EMBER
+	GEM_IRONEMBER_ARMOR_THORNS
+		Suffix: [ITEM] of Thorns
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: (30.0-33.0)% physical damage reflected
+	GEM_IRONEMBER_ARMOR_THORNS2
+		Suffix: [ITEM] of Spikes
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: (33.0-36.0)% physical damage reflected
+	GEM_IRONEMBER_ARMOR_THORNS3
+		Suffix: [ITEM] of Razors
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (36.0-39.0)% physical damage reflected
+
+Group ID -1969107240 (3 affixes)	Affix Type: SOCKETABLE
+Effects: Transfer: DAMAGE (timed) (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: BLOOD EMBER
+	GEM_BLOODEMBER_WEAPON_BLEED
+		Prefix: Bloodletting [ITEM]
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: Inflict on Hit: Does (13-17) physical damage over 5.00 seconds
+	GEM_BLOODEMBER_WEAPON_BLEED2
+		Prefix: Haemophilic [ITEM]
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: Inflict on Hit: Does (16-21) physical damage over 5.00 seconds
+	GEM_BLOODEMBER_WEAPON_BLEED3
+		Prefix: Exsanguinating [ITEM]
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: Inflict on Hit: Does (19-25) physical damage over 5.00 seconds
+
+Group ID -1208293348 (3 affixes)	Affix Type: SOCKETABLE
+Effects: DEGRADE ARMOR (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: IRON EMBER
+	GEM_IRONEMBER_WEAPON_DEGRADEARMOR
+		Prefix: Puncturing [ITEM]
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: Degrade enemy armor by (13-15) on hit
+	GEM_IRONEMBER_WEAPON_DEGRADEARMOR2
+		Prefix: Bashing [ITEM]
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: Degrade enemy armor by (15-17) on hit
+	GEM_IRONEMBER_WEAPON_DEGRADEARMOR3
+		Prefix: Piercing [ITEM]
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: Degrade enemy armor by (17-19) on hit
+
+Group ID -576480627 (7 affixes)	Affix Type: SOCKETABLE
+Effects: DODGE CHANCE BONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_ARMOR_DODGE
+		Suffix: [ITEM] of the Shade
+		Max Level: 23
+		Spawn Weight: 3		Occupies no slots
+		Effects: (1.0-3.0)% more Dodge Chance
+	GEM_CHAOSEMBER_ARMOR_DODGE2
+		Suffix: [ITEM] of the Ghost
+		Level Range: 14-37
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.0-5.0)% more Dodge Chance
+	GEM_CHAOSEMBER_ARMOR_DODGE3
+		Suffix: [ITEM] of the Spectre
+		Level Range: 28-51
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.0-6.0)% more Dodge Chance
+	GEM_CHAOSEMBER_ARMOR_DODGE4
+		Suffix: [ITEM] of the Wraith
+		Level Range: 42-65
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-7.0)% more Dodge Chance
+	GEM_CHAOSEMBER_ARMOR_DODGE5
+		Suffix: [ITEM] of the Phantasm
+		Level Range: 56-79
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-8.0)% more Dodge Chance
+	GEM_CHAOSEMBER_ARMOR_DODGE6
+		Suffix: [ITEM] of the Nightmare
+		Level Range: 70-93
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.5-8.5)% more Dodge Chance
+	GEM_CHAOSEMBER_ARMOR_DODGE7
+		Suffix: [ITEM] of the Mirage
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (6.0-9.0)% more Dodge Chance
+
+Group ID -2138239831 (7 affixes)	Affix Type: SOCKETABLE
+Effects: DUAL WIELDING BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_WEAPON_DUALWIELD
+		Prefix: Lesser Paired [ITEM]
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-7.0)% more Damage while Dual Wielding
+	GEM_CHAOSEMBER_WEAPON_DUALWIELD2
+		Prefix: Paired [ITEM]
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (6.0-8.0)% more Damage while Dual Wielding
+	GEM_CHAOSEMBER_WEAPON_DUALWIELD3
+		Prefix: Greater Paired [ITEM]
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: (7.0-9.0)% more Damage while Dual Wielding
+	GEM_CHAOSEMBER_WEAPON_DUALWIELD4
+		Prefix: Lesser Harmonic [ITEM]
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (8.0-10.0)% more Damage while Dual Wielding
+	GEM_CHAOSEMBER_WEAPON_DUALWIELD5
+		Prefix: Harmonic [ITEM]
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (9.0-11.0)% more Damage while Dual Wielding
+	GEM_CHAOSEMBER_WEAPON_DUALWIELD6
+		Prefix: Greater Harmonic [ITEM]
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (10.0-12.0)% more Damage while Dual Wielding
+	GEM_CHAOSEMBER_WEAPON_DUALWIELD7
+		Prefix: Resonant [ITEM]
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (11.0-13.0)% more Damage while Dual Wielding
+
+Group ID 578647017 (6 affixes)	Affix Type: SOCKETABLE
+Effects: ELECTRICAL DEFENSE (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED SHOCK EMBER
+	GEM_SPARK_ARMOR_FLAT1
+		Prefix: Cloud's [ITEM]
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(13.0-15.0) electrical armor
+	GEM_SPARK_ARMOR_FLAT2
+		Prefix: Squall's [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(15.0-17.0) electrical armor
+	GEM_SPARK_ARMOR_FLAT3
+		Prefix: Storm's [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(17.0-19.0) electrical armor
+	GEM_SPARK_ARMOR_FLAT4
+		Prefix: Thunderhead's [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(19.0-21.0) electrical armor
+	GEM_SPARK_ARMOR_FLAT5
+		Prefix: Tempest's [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(21.0-23.0) electrical armor
+	GEM_SPARK_ARMOR_FLAT6
+		Prefix: Maelstrom's [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(23.0-25.0) electrical armor
+
+Group ID -1611359450 (6 affixes)	Affix Type: SOCKETABLE
+Effects: FIRE DEFENSE (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED FIRE EMBER
+	GEM_FIRE_ARMOR_FLAT1
+		Prefix: Whelpling's [ITEM]
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(13.0-15.0) fire armor
+	GEM_FIRE_ARMOR_FLAT2
+		Prefix: Salamander's [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(15.0-17.0) fire armor
+	GEM_FIRE_ARMOR_FLAT3
+		Prefix: Drake's [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(17.0-19.0) fire armor
+	GEM_FIRE_ARMOR_FLAT4
+		Prefix: Kiln's [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(19.0-21.0) fire armor
+	GEM_FIRE_ARMOR_FLAT5
+		Prefix: Furnace's [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(21.0-23.0) fire armor
+	GEM_FIRE_ARMOR_FLAT6
+		Prefix: Volcano's [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(21.0-23.0) fire armor
+
+Group ID 1820338137 (3 affixes)	Affix Type: SOCKETABLE
+Effects: HP RECHARGE PLAYER (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: BLOOD EMBER
+	GEM_BLOODEMBER_ARMOR_HEALTH_REGEN
+		Suffix: [ITEM] of Regeneration
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(1.0-2.0) HP/Second
+	GEM_BLOODEMBER_ARMOR_HEALTH_REGEN2
+		Suffix: [ITEM] of Tranquility
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(1.5-3.0) HP/Second
+	GEM_BLOODEMBER_ARMOR_HEALTH_REGEN3
+		Suffix: [ITEM] of Nature's Mercy
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(2.5-4.5) HP/Second
+
+Group ID -1124052117 (3 affixes)	Affix Type: SOCKETABLE
+Effects: HP RECHARGE PLAYER (uses default graph)
+Affix can be socketed into: ARMOR, WEAPON, TRINKET
+Affix can spawn on: SOCKETABLE
+	GEM_FISH_BONE3
+		No Level Range
+		Spawn Weight: 0		Occupies no slots
+		Effects: +(3.0-4.0) HP/Second
+	GEM_FISH_BONE
+		No Level Range
+		Spawn Weight: 0		Occupies no slots
+		Effects: +(1.0-2.0) HP/Second
+	GEM_FISH_BONE2
+		No Level Range
+		Spawn Weight: 0		Occupies no slots
+		Effects: +(2.0-3.0) HP/Second
+
+Group ID -894515083 (6 affixes)	Affix Type: SOCKETABLE
+Effects: ICE DEFENSE (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED ICE EMBER
+	GEM_ICE_ARMOR_FLAT1
+		Prefix: Inuit's [ITEM]
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(13.0-15.0) ice armor
+	GEM_ICE_ARMOR_FLAT2
+		Prefix: Seal's [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(15.0-17.0) ice armor
+	GEM_ICE_ARMOR_FLAT3
+		Prefix: Penguin's [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(17.0-19.0) ice armor
+	GEM_ICE_ARMOR_FLAT4
+		Prefix: Yeti's [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(19.0-21.0) ice armor
+	GEM_ICE_ARMOR_FLAT5
+		Prefix: Walrus's [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(21.0-23.0) ice armor
+	GEM_ICE_ARMOR_FLAT6
+		Prefix: Polar Bear's [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(23.0-25.0) ice armor
+
+Group ID 800449916 (7 affixes)	Affix Type: SOCKETABLE
+Effects: KNOCK BACK (timed) (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_WEAPON_KNOCKBACK
+		Prefix: Pushing [ITEM]
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: -12.0 knockback
+	GEM_CHAOSEMBER_WEAPON_KNOCKBACK2
+		Prefix: Pulling [ITEM]
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: -14.0 knockback
+	GEM_CHAOSEMBER_WEAPON_KNOCKBACK3
+		Prefix: Shoving [ITEM]
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: -16.0 knockback
+	GEM_CHAOSEMBER_WEAPON_KNOCKBACK4
+		Prefix: Blowing [ITEM]
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: -18.0 knockback
+	GEM_CHAOSEMBER_WEAPON_KNOCKBACK5
+		Prefix: Galeforce [ITEM]
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: -20.0 knockback
+	GEM_CHAOSEMBER_WEAPON_KNOCKBACK6
+		Prefix: Tornado's [ITEM]
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: -22.0 knockback
+	GEM_CHAOSEMBER_WEAPON_KNOCKBACK7
+		Prefix: Hurricane's [ITEM]
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: -24.0 knockback
+
+Group ID -1491670784 (3 affixes)	Affix Type: SOCKETABLE
+Effects: LIFE STEAL (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: BLOOD EMBER
+	GEM_BLOODEMBER_WEAPON_LIFESTEAL
+		Prefix: Mosquito's [ITEM]
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(230.0-255.0) Life Stolen
+	GEM_BLOODEMBER_WEAPON_LIFESTEAL2
+		Prefix: Hungering [ITEM]
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(250.0-270.0) Life Stolen
+	GEM_BLOODEMBER_WEAPON_LIFESTEAL3
+		Prefix: Vampiric [ITEM]
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(265.0-290.0) Life Stolen
+
+Group ID -552993701 (3 affixes)	Affix Type: SOCKETABLE
+Effects: MAX HP (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: BLOOD EMBER
+	GEM_BLOODEMBER_ARMOR_HEALTH
+		Suffix: [ITEM] of the Hale
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(8.0-12.0) Max HP
+	GEM_BLOODEMBER_ARMOR_HEALTH2
+		Suffix: [ITEM] of the Whale
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(10.0-16.0) Max HP
+	GEM_BLOODEMBER_ARMOR_HEALTH3
+		Suffix: [ITEM] of the Healthy
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(14.0-20.0) Max HP
+
+Group ID -1644999067 (3 affixes)	Affix Type: SOCKETABLE
+Effects: MELEEDAMAGEBONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: IRON EMBER
+	GEM_IRONEMBER_ARMOR_MELEEDAMAGE
+		Suffix: [ITEM] of Worth
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(6.0-10.0) physical Damage with Melee Weapons
+	GEM_IRONEMBER_ARMOR_MELEEDAMAGE2
+		Suffix: [ITEM] of Measure
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(10.0-14.0) physical Damage with Melee Weapons
+	GEM_IRONEMBER_ARMOR_MELEEDAMAGE3
+		Suffix: [ITEM] of Excellence
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(10.0-14.0) physical Damage with Melee Weapons
+
+Group ID -1567231087 (7 affixes)	Affix Type: SOCKETABLE
+Effects: MISSILE RANGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_WEAPON_MISSILERANGE
+		Prefix: Extended [ITEM]
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(0.5-3.0) meters to ranged weapon range
+	GEM_CHAOSEMBER_WEAPON_MISSILERANGE2
+		Prefix: Darting [ITEM]
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(0.8-2.8) meters to ranged weapon range
+	GEM_CHAOSEMBER_WEAPON_MISSILERANGE3
+		Prefix: Flightful [ITEM]
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(1.0-3.0) meters to ranged weapon range
+	GEM_CHAOSEMBER_WEAPON_MISSILERANGE4
+		Prefix: Propelling [ITEM]
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(1.2-3.2) meters to ranged weapon range
+	GEM_CHAOSEMBER_WEAPON_MISSILERANGE5
+		Prefix: Zephyr's [ITEM]
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(1.4-3.4) meters to ranged weapon range
+	GEM_CHAOSEMBER_WEAPON_MISSILERANGE6
+		Prefix: Gale's [ITEM]
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(1.6-3.6) meters to ranged weapon range
+	GEM_CHAOSEMBER_WEAPON_MISSILERANGE7
+		Prefix: Horizon's [ITEM]
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(1.8-3.8) meters to ranged weapon range
+
+Group ID -785680140 (7 affixes)	Affix Type: SOCKETABLE
+Effects: MISSILE REFLECT (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_ARMOR_MISSILEREFLECT
+		Suffix: [ITEM] of Deflection
+		Max Level: 23
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.5-6.0)% more Missile Reflect Chance
+	GEM_CHAOSEMBER_ARMOR_MISSILEREFLECT2
+		Suffix: [ITEM] of Evasion
+		Level Range: 14-37
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.0-7.0)% more Missile Reflect Chance
+	GEM_CHAOSEMBER_ARMOR_MISSILEREFLECT3
+		Suffix: [ITEM] of Protection
+		Level Range: 28-51
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-8.0)% more Missile Reflect Chance
+	GEM_CHAOSEMBER_ARMOR_MISSILEREFLECT4
+		Suffix: [ITEM] of Cover
+		Level Range: 42-65
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.5-8.5)% more Missile Reflect Chance
+	GEM_CHAOSEMBER_ARMOR_MISSILEREFLECT5
+		Suffix: [ITEM] of Asylum
+		Level Range: 56-79
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-9.0)% more Missile Reflect Chance
+	GEM_CHAOSEMBER_ARMOR_MISSILEREFLECT6
+		Suffix: [ITEM] of Refuge
+		Level Range: 70-93
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.5-9.5)% more Missile Reflect Chance
+	GEM_CHAOSEMBER_ARMOR_MISSILEREFLECT7
+		Suffix: [ITEM] of Sanctuary
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (6.0-10.0)% more Missile Reflect Chance
+
+Group ID 1312337698 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT ARMOR BONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED EMBER
+	GEM_ALL_ARMOR_PERC1
+		Prefix: Shimmering [ITEM]
+		Max Level: 60
+		Spawn Weight: 2		Occupies no slots
+		Effects: (1.0-3.0)% more all Armor
+	GEM_ALL_ARMOR_PERC2
+		Prefix: Rainbow [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (3.0-6.0)% more all Armor
+	GEM_ALL_ARMOR_PERC3
+		Prefix: Shimmering [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (6.0-9.0)% more all Armor
+	GEM_ALL_ARMOR_PERC4
+		Prefix: Scintillating [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 2		Occupies no slots
+		Effects: (9.0-12.0)% more all Armor
+	GEM_ALL_ARMOR_PERC5
+		Prefix: Prismatic [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (12.0-15.0)% more all Armor
+	GEM_ALL_ARMOR_PERC6
+		Prefix: Chromatic [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (15.0-18.0)% more all Armor
+
+Group ID -232508956 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT ARMOR BONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED SHOCK EMBER
+	GEM_SPARK_ARMOR_PERC1
+		Prefix: Tangerine [ITEM]
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: (3.0-6.0)% more electric Armor
+	GEM_SPARK_ARMOR_PERC2
+		Prefix: Ocher [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (6.0-9.0)% more electric Armor
+	GEM_SPARK_ARMOR_PERC3
+		Prefix: Coral [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (9.0-12.0)% more electric Armor
+	GEM_SPARK_ARMOR_PERC4
+		Prefix: Amber [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: (12.0-15.0)% more electric Armor
+	GEM_SPARK_ARMOR_PERC5
+		Prefix: Peach [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (15.0-18.0)% more electric Armor
+	GEM_SPARK_ARMOR_PERC6
+		Prefix: Bittersweet [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (18.0-21.0)% more electric Armor
+
+Group ID -1232327309 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT ARMOR BONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED FIRE EMBER
+	GEM_FIRE_ARMOR_PERC1
+		Prefix: Crimson [ITEM]
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: (3.0-6.0)% more fire Armor
+	GEM_FIRE_ARMOR_PERC2
+		Prefix: Russet [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (6.0-9.0)% more fire Armor
+	GEM_FIRE_ARMOR_PERC3
+		Prefix: Garnet [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (9.0-12.0)% more fire Armor
+	GEM_FIRE_ARMOR_PERC4
+		Prefix: Ruby [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: (12.0-15.0)% more fire Armor
+	GEM_FIRE_ARMOR_PERC6
+		Prefix: Cerise [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (18.0-21.0)% more fire Armor
+	GEM_FIRE_ARMOR_PERC5
+		Prefix: Scarlet [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (15.0-18.0)% more fire Armor
+
+Group ID -659148979 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT ARMOR BONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED ICE EMBER
+	GEM_ICE_ARMOR_PERC1
+		Prefix: Azure [ITEM]
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: (3.0-6.0)% more ice Armor
+	GEM_ICE_ARMOR_PERC4
+		Prefix: Sapphire [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: (12.0-15.0)% more ice Armor
+	GEM_ICE_ARMOR_PERC6
+		Prefix: Royal Blue [ITEM]
+		Minimum Level: 10
+		Spawn Weight: 1		Occupies no slots
+		Effects: (18.0-21.0)% more ice Armor
+	GEM_ICE_ARMOR_PERC2
+		Prefix: Lapis [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (6.0-9.0)% more ice Armor
+	GEM_ICE_ARMOR_PERC3
+		Prefix: Cobalt [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (9.0-12.0)% more ice Armor
+	GEM_ICE_ARMOR_PERC5
+		Prefix: Aquamarine [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (15.0-18.0)% more ice Armor
+
+Group ID 940512719 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT ARMOR BONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED POISON EMBER
+	GEM_VENOM_ARMOR_PERC1
+		Prefix: Beryl [ITEM]
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: (3.0-6.0)% more poison Armor
+	GEM_VENOM_ARMOR_PERC2
+		Prefix: Viridian [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (6.0-9.0)% more poison Armor
+	GEM_VENOM_ARMOR_PERC3
+		Prefix: Viridian [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (9.0-12.0)% more poison Armor
+	GEM_VENOM_ARMOR_PERC4
+		Prefix: Emerald [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: (12.0-15.0)% more poison Armor
+	GEM_VENOM_ARMOR_PERC5
+		Prefix: Olive [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (15.0-18.0)% more poison Armor
+	GEM_VENOM_ARMOR_PERC6
+		Prefix: Jade [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (18.0-21.0)% more poison Armor
+
+Group ID -1842290252 (7 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT ARMOR BONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_ARMOR_PERCENTARMOR
+		Suffix: [ITEM] of Thick Skin
+		Max Level: 23
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.0-4.0)% more physical Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTARMOR2
+		Suffix: [ITEM] of Stone Skin
+		Level Range: 14-37
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.0-5.0)% more physical Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTARMOR3
+		Suffix: [ITEM] of Iron Skin
+		Level Range: 28-51
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.5-5.5)% more physical Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTARMOR4
+		Suffix: [ITEM] of Steel Skin
+		Level Range: 42-65
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-6.0)% more physical Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTARMOR5
+		Suffix: [ITEM] of Adamantine Skin
+		Level Range: 56-79
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-5.0)% more physical Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTARMOR6
+		Suffix: [ITEM] of Corundum Skin
+		Level Range: 70-93
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-7.0)% more physical Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTARMOR7
+		Suffix: [ITEM] of Unbreakable Skin
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.5-7.5)% more physical Armor
+
+Group ID 1427238732 (3 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT ARMOR BONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: IRON EMBER
+	GEM_IRONEMBER_ARMOR_ARMOR_PERCENT1
+		Suffix: [ITEM] of the Beetle
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.0-6.0)% more physical Armor
+	GEM_IRONEMBER_ARMOR_ARMOR_PERCENT2
+		Suffix: [ITEM] of the Armadillo
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-8.0)% more physical Armor
+	GEM_IRONEMBER_ARMOR_ARMOR_PERCENT3
+		Suffix: [ITEM] of the Mammoth
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (6.0-10.0)% more physical Armor
+
+Group ID -1060252045 (3 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT ATTACK SPEED (uses default graph)
+Affix can be socketed into: ARMOR, WEAPON, TRINKET
+Affix can spawn on: SOCKETABLE
+	GEM_FISH_DEVIL
+		No Level Range
+		Spawn Weight: 0		Occupies no slots
+		Effects: (2.0-6.0)% more Attack Speed
+	GEM_FISH_DEVIL3
+		No Level Range
+		Spawn Weight: 0		Occupies no slots
+		Effects: (6.0-10.0)% more Attack Speed
+	GEM_FISH_DEVIL2
+		No Level Range
+		Spawn Weight: 0		Occupies no slots
+		Effects: (4.0-8.0)% more Attack Speed
+
+Group ID -201705767 (7 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT ATTACK SPEED (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_WEAPON_ATTACKSPEED2
+		Prefix: Eased [ITEM]
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.5-4.5)% more Attack Speed
+	GEM_CHAOSEMBER_WEAPON_ATTACKSPEED3
+		Prefix: Master's [ITEM]
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.0-5.0)% more Attack Speed
+	GEM_CHAOSEMBER_WEAPON_ATTACKSPEED4
+		Prefix: Renowned [ITEM]
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.5-5.5)% more Attack Speed
+	GEM_CHAOSEMBER_WEAPON_ATTACKSPEED5
+		Prefix: Acclaimed [ITEM]
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-6.0)% more Attack Speed
+	GEM_CHAOSEMBER_WEAPON_ATTACKSPEED6
+		Prefix: Famed [ITEM]
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.5-6.5)% more Attack Speed
+	GEM_CHAOSEMBER_WEAPON_ATTACKSPEED7
+		Prefix: Infamous [ITEM]
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-7.0)% more Attack Speed
+	GEM_CHAOSEMBER_WEAPON_ATTACKSPEED
+		Prefix: Skilled [ITEM]
+		No Level Range
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.0-4.0)% more Attack Speed
+
+Group ID -1042266096 (7 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT CAST SPEED (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_WEAPON_CASTSPEED
+		Prefix: Talented [ITEM]
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.0-4.0)% more Cast Speed
+	GEM_CHAOSEMBER_WEAPON_CASTSPEED2
+		Prefix: Nimble [ITEM]
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.5-4.5)% more Cast Speed
+	GEM_CHAOSEMBER_WEAPON_CASTSPEED3
+		Prefix: Expert's [ITEM]
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.0-5.0)% more Cast Speed
+	GEM_CHAOSEMBER_WEAPON_CASTSPEED4
+		Prefix: Legerdemainer's [ITEM]
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.5-5.5)% more Cast Speed
+	GEM_CHAOSEMBER_WEAPON_CASTSPEED5
+		Prefix: Prestidigitator's [ITEM]
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-6.0)% more Cast Speed
+	GEM_CHAOSEMBER_WEAPON_CASTSPEED6
+		Prefix: Sortilege's [ITEM]
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.5-6.5)% more Cast Speed
+	GEM_CHAOSEMBER_WEAPON_CASTSPEED7
+		Prefix: Finessed [ITEM]
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-7.0)% more Cast Speed
+
+Group ID -1528963260 (7 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT CRITICAL DAMAGE (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_WEAPON_CRITDAMAGE
+		Prefix: Ireful [ITEM]
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (13.0-17.0)% more Critical Damage
+	GEM_CHAOSEMBER_WEAPON_CRITDAMAGE2
+		Prefix: Angry [ITEM]
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (16.0-20.0)% more Critical Damage
+	GEM_CHAOSEMBER_WEAPON_CRITDAMAGE3
+		Prefix: Raging [ITEM]
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: (19.0-23.0)% more Critical Damage
+	GEM_CHAOSEMBER_WEAPON_CRITDAMAGE4
+		Prefix: Furious [ITEM]
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (25.0-29.0)% more Critical Damage
+	GEM_CHAOSEMBER_WEAPON_CRITDAMAGE5
+		Prefix: Ferocious [ITEM]
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (30.0-30.0)% more Critical Damage
+	GEM_CHAOSEMBER_WEAPON_CRITDAMAGE6
+		Prefix: Destructive [ITEM]
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (31.0-35.0)% more Critical Damage
+	GEM_CHAOSEMBER_WEAPON_CRITDAMAGE7
+		Prefix: Hulking [ITEM]
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (34.0-38.0)% more Critical Damage
+
+Group ID 1520090312 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: INFUSED EMBER
+	GEM_ALL_WEAPON_DMGPERC1
+		Suffix: [ITEM] of Worth
+		Max Level: 60
+		Spawn Weight: 2		Occupies no slots
+		Effects: (1.0-3.0)% more all damage
+	GEM_ALL_WEAPON_DMGPERC2
+		Suffix: [ITEM] of Measure
+		Level Range: 20-80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (3.0-6.0)% more all damage
+	GEM_ALL_WEAPON_DMGPERC3
+		Suffix: [ITEM] of Excellence
+		Level Range: 40-100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (6.0-9.0)% more all damage
+	GEM_ALL_WEAPON_DMGPERC4
+		Suffix: [ITEM] of Performance
+		Level Range: 60-120
+		Spawn Weight: 2		Occupies no slots
+		Effects: (9.0-12.0)% more all damage
+	GEM_ALL_WEAPON_DMGPERC5
+		Suffix: [ITEM] of Transcendence
+		Minimum Level: 80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (12.0-15.0)% more all damage
+	GEM_ALL_WEAPON_DMGPERC6
+		Suffix: [ITEM] of Peerlessness
+		Minimum Level: 100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (15.0-18.0)% more all damage
+
+Group ID -24756342 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: INFUSED SHOCK EMBER
+	GEM_SPARK_WEAPON_DMGPERC1
+		Suffix: [ITEM] of Sparks
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: (3.0-6.0)% more electric damage
+	GEM_SPARK_WEAPON_DMGPERC2
+		Suffix: [ITEM] of Static
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (6.0-9.0)% more electric damage
+	GEM_SPARK_WEAPON_DMGPERC3
+		Suffix: [ITEM] of Electricity
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (9.0-12.0)% more electric damage
+	GEM_SPARK_WEAPON_DMGPERC4
+		Suffix: [ITEM] of Voltage
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: (12.0-15.0)% more electric damage
+	GEM_SPARK_WEAPON_DMGPERC5
+		Suffix: [ITEM] of Discharge
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (15.0-18.0)% more electric damage
+	GEM_SPARK_WEAPON_DMGPERC6
+		Suffix: [ITEM] of Arcing
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (18.0-21.0)% more electric damage
+
+Group ID -1024574695 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: INFUSED FIRE EMBER
+	GEM_FIRE_WEAPON_DMGPERC1
+		Suffix: [ITEM] of Embers
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: (3.0-6.0)% more fire damage
+	GEM_FIRE_WEAPON_DMGPERC2
+		Suffix: [ITEM] of Coals
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (6.0-9.0)% more fire damage
+	GEM_FIRE_WEAPON_DMGPERC3
+		Suffix: [ITEM] of Cinders
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (9.0-12.0)% more fire damage
+	GEM_FIRE_WEAPON_DMGPERC4
+		Suffix: [ITEM] of Flames
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: (12.0-15.0)% more fire damage
+	GEM_FIRE_WEAPON_DMGPERC5
+		Suffix: [ITEM] of Immolation
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (15.0-18.0)% more fire damage
+	GEM_FIRE_WEAPON_DMGPERC6
+		Suffix: [ITEM] of Ashes
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (18.0-21.0)% more fire damage
+
+Group ID -451396365 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: INFUSED ICE EMBER
+	GEM_ICE_WEAPON_DMGPERC1
+		Suffix: [ITEM] of Snow
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: (3.0-6.0)% more ice damage
+	GEM_ICE_WEAPON_DMGPERC2
+		Suffix: [ITEM] of Sleet
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (6.0-9.0)% more ice damage
+	GEM_ICE_WEAPON_DMGPERC3
+		Suffix: [ITEM] of Ice
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (9.0-12.0)% more ice damage
+	GEM_ICE_WEAPON_DMGPERC4
+		Suffix: [ITEM] of Rime
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: (12.0-15.0)% more ice damage
+	GEM_ICE_WEAPON_DMGPERC5
+		Suffix: [ITEM] of Floes
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (15.0-18.0)% more ice damage
+	GEM_ICE_WEAPON_DMGPERC6
+		Suffix: [ITEM] of Glaciation
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (18.0-21.0)% more ice damage
+
+Group ID 1148265333 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE BONUS (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: INFUSED POISON EMBER
+	GEM_VENOM_WEAPON_DMGPERC1
+		Suffix: [ITEM] of Blight
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: (3.0-6.0)% more poison damage
+	GEM_VENOM_WEAPON_DMGPERC2
+		Suffix: [ITEM] of Venom
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (6.0-9.0)% more poison damage
+	GEM_VENOM_WEAPON_DMGPERC3
+		Suffix: [ITEM] of Pestilence
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (9.0-12.0)% more poison damage
+	GEM_VENOM_WEAPON_DMGPERC4
+		Suffix: [ITEM] of Anthrax
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: (12.0-15.0)% more poison damage
+	GEM_VENOM_WEAPON_DMGPERC5
+		Suffix: [ITEM] of Toxin
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: (15.0-18.0)% more poison damage
+	GEM_VENOM_WEAPON_DMGPERC6
+		Suffix: [ITEM] of Poison
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: (18.0-21.0)% more poison damage
+
+Group ID -2141988048 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE TAKEN (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED EMBER
+	GEM_ALL_ARMOR_RED1
+		Prefix: Warding [ITEM]
+		Max Level: 60
+		Spawn Weight: 3		Occupies no slots
+		Effects: (1.0-3.0)% less all Damage Taken
+	GEM_ALL_ARMOR_RED2
+		Prefix: Sentinel's [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.0-6.0)% less all Damage Taken
+	GEM_ALL_ARMOR_RED3
+		Prefix: Guarding [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 3		Occupies no slots
+		Effects: (6.0-9.0)% less all Damage Taken
+	GEM_ALL_ARMOR_RED4
+		Prefix: Negating [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 3		Occupies no slots
+		Effects: (9.0-12.0)% less all Damage Taken
+	GEM_ALL_ARMOR_RED5
+		Prefix: Denying [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 3		Occupies no slots
+		Effects: (12.0-15.0)% less all Damage Taken
+	GEM_ALL_ARMOR_RED6
+		Prefix: Forbidding [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 3		Occupies no slots
+		Effects: (15.0-18.0)% less all Damage Taken
+
+Group ID 608132594 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE TAKEN (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED SHOCK EMBER
+	GEM_SPARK_ARMOR_RED1
+		Prefix: Grounded [ITEM]
+		Max Level: 60
+		Spawn Weight: 2		Occupies no slots
+		Effects: (3.0-6.0)% less electric Damage Taken
+	GEM_SPARK_ARMOR_RED2
+		Prefix: Earthing [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (6.0-9.0)% less electric Damage Taken
+	GEM_SPARK_ARMOR_RED3
+		Prefix: Non-conductive [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (9.0-12.0)% less electric Damage Taken
+	GEM_SPARK_ARMOR_RED4
+		Prefix: Draining [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 2		Occupies no slots
+		Effects: (12.0-15.0)% less electric Damage Taken
+	GEM_SPARK_ARMOR_RED5
+		Prefix: Lightningrod [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (15.0-17.0)% less electric Damage Taken
+	GEM_SPARK_ARMOR_RED6
+		Prefix: Nullspark [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (17.0-19.0)% less electric Damage Taken
+
+Group ID -391685759 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE TAKEN (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED FIRE EMBER
+	GEM_FIRE_ARMOR_RED1
+		Prefix: Cooling [ITEM]
+		Max Level: 60
+		Spawn Weight: 2		Occupies no slots
+		Effects: (3.0-6.0)% less fire Damage Taken
+	GEM_FIRE_ARMOR_RED2
+		Prefix: Numbing [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (6.0-9.0)% less fire Damage Taken
+	GEM_FIRE_ARMOR_RED3
+		Prefix: Flame-Dampening [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (9.0-12.0)% less fire Damage Taken
+	GEM_FIRE_ARMOR_RED4
+		Prefix: Extinguishing [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 2		Occupies no slots
+		Effects: (12.0-15.0)% less fire Damage Taken
+	GEM_FIRE_ARMOR_RED5
+		Prefix: Flame-voiding [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (15.0-17.0)% less fire Damage Taken
+	GEM_FIRE_ARMOR_RED6
+		Prefix: Nullfire [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (17.0-19.0)% less fire Damage Taken
+
+Group ID 181492571 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE TAKEN (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED ICE EMBER
+	GEM_ICE_ARMOR_RED1
+		Prefix: Warming [ITEM]
+		Max Level: 60
+		Spawn Weight: 2		Occupies no slots
+		Effects: (3.0-6.0)% less ice Damage Taken
+	GEM_ICE_ARMOR_RED2
+		Prefix: Insulated [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (6.0-9.0)% less ice Damage Taken
+	GEM_ICE_ARMOR_RED3
+		Prefix: Defrosting [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (9.0-12.0)% less ice Damage Taken
+	GEM_ICE_ARMOR_RED4
+		Prefix: Melting [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 2		Occupies no slots
+		Effects: (12.0-15.0)% less ice Damage Taken
+	GEM_ICE_ARMOR_RED5
+		Prefix: Salted [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (15.0-17.0)% less ice Damage Taken
+	GEM_ICE_ARMOR_RED6
+		Prefix: Nullfrost [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (17.0-19.0)% less ice Damage Taken
+
+Group ID 1781154269 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE TAKEN (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED POISON EMBER
+	GEM_VENOM_ARMOR_RED1
+		Prefix: Curing [ITEM]
+		Max Level: 60
+		Spawn Weight: 2		Occupies no slots
+		Effects: (3.0-6.0)% less poison Damage Taken
+	GEM_VENOM_ARMOR_RED2
+		Prefix: Neutralizing [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (6.0-9.0)% less poison Damage Taken
+	GEM_VENOM_ARMOR_RED3
+		Prefix: Anti-venom [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (9.0-12.0)% less poison Damage Taken
+	GEM_VENOM_ARMOR_RED4
+		Prefix: Restorative [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 2		Occupies no slots
+		Effects: (12.0-15.0)% less poison Damage Taken
+	GEM_VENOM_ARMOR_RED5
+		Prefix: Immune [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 2		Occupies no slots
+		Effects: (15.0-17.0)% less poison Damage Taken
+	GEM_VENOM_ARMOR_RED6
+		Prefix: Nullvenom [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 2		Occupies no slots
+		Effects: (17.0-19.0)% less poison Damage Taken
+
+Group ID -1001648702 (7 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DAMAGE TAKEN (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_ARMOR_PERCENTDAMAGE
+		Suffix: [ITEM] of Least Resistance
+		Max Level: 23
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.0-4.0)% less physical Damage Taken
+	GEM_CHAOSEMBER_ARMOR_PERCENTDAMAGE2
+		Suffix: [ITEM] of Lesser Resistance
+		Level Range: 14-37
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.5-4.5)% less physical Damage Taken
+	GEM_CHAOSEMBER_ARMOR_PERCENTDAMAGE3
+		Suffix: [ITEM] of Resistance
+		Level Range: 28-51
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.0-5.0)% less physical Damage Taken
+	GEM_CHAOSEMBER_ARMOR_PERCENTDAMAGE4
+		Suffix: [ITEM] of Improved Resistance
+		Level Range: 42-65
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.5-5.5)% less physical Damage Taken
+	GEM_CHAOSEMBER_ARMOR_PERCENTDAMAGE5
+		Suffix: [ITEM] of Greater Resistance
+		Level Range: 56-79
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-6.0)% less physical Damage Taken
+	GEM_CHAOSEMBER_ARMOR_PERCENTDAMAGE6
+		Suffix: [ITEM] of Major Resistance
+		Level Range: 70-93
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.5-6.5)% less physical Damage Taken
+	GEM_CHAOSEMBER_ARMOR_PERCENTDAMAGE7
+		Suffix: [ITEM] of Mythical Resistance
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-7.0)% less physical Damage Taken
+
+Group ID 1251862647 (7 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT DUAL WIELDING ATTACK (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_WEAPON_EXECTUE
+		Prefix: Lesser Merciful [ITEM]
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (8.0-10.0)% more Execute Chance
+	GEM_CHAOSEMBER_WEAPON_EXECTUE2
+		Prefix: Merciful [ITEM]
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (9.5-11.5)% more Execute Chance
+	GEM_CHAOSEMBER_WEAPON_EXECTUE3
+		Prefix: Greater Merciful [ITEM]
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: (11.0-13.0)% more Execute Chance
+	GEM_CHAOSEMBER_WEAPON_EXECTUE4
+		Prefix: Lesser Executioner's [ITEM]
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (12.5-14.5)% more Execute Chance
+	GEM_CHAOSEMBER_WEAPON_EXECTUE5
+		Prefix: Executioner's [ITEM]
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (14.0-16.0)% more Execute Chance
+	GEM_CHAOSEMBER_WEAPON_EXECTUE6
+		Prefix: Greater Executioner's [ITEM]
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (15.5-17.5)% more Execute Chance
+	GEM_CHAOSEMBER_WEAPON_EXECTUE7
+		Prefix: Sanson's [ITEM]
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (18.0-18.0)% more Execute Chance
+
+Group ID -620600678 (3 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT HP (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: BLOOD EMBER
+	GEM_BLOODEMBER_ARMOR_HEALTH_PERCENT
+		Suffix: [ITEM] of Fortitude
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: (1.0-4.0)% more HP
+	GEM_BLOODEMBER_ARMOR_HEALTH_PERCENT2
+		Suffix: [ITEM] of Tenacity
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.0-6.0)% more HP
+	GEM_BLOODEMBER_ARMOR_HEALTH_PERCENT3
+		Suffix: [ITEM] of Endurance
+		Minimum Level: 55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-8.0)% more HP
+
+Group ID -346389156 (7 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT KNOCK BACK RESISTANCE (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_ARMOR_PERCENTKNOCKBACKRESIST
+		Suffix: [ITEM] of the Rock
+		Max Level: 23
+		Spawn Weight: 3		Occupies no slots
+		Effects: -12.0% knockback resistance
+	GEM_CHAOSEMBER_ARMOR_PERCENTKNOCKBACKRESIST2
+		Suffix: [ITEM] of the Boulder
+		Level Range: 14-37
+		Spawn Weight: 3		Occupies no slots
+		Effects: -14.0% knockback resistance
+	GEM_CHAOSEMBER_ARMOR_PERCENTKNOCKBACKRESIST3
+		Suffix: [ITEM] of the Hill
+		Level Range: 28-51
+		Spawn Weight: 3		Occupies no slots
+		Effects: -16.0% knockback resistance
+	GEM_CHAOSEMBER_ARMOR_PERCENTKNOCKBACKRESIST4
+		Suffix: [ITEM] of the Mountain
+		Level Range: 42-65
+		Spawn Weight: 3		Occupies no slots
+		Effects: -18.0% knockback resistance
+	GEM_CHAOSEMBER_ARMOR_PERCENTKNOCKBACKRESIST5
+		Suffix: [ITEM] of the Lesser Bulwark
+		Level Range: 56-79
+		Spawn Weight: 3		Occupies no slots
+		Effects: -20.0% knockback resistance
+	GEM_CHAOSEMBER_ARMOR_PERCENTKNOCKBACKRESIST6
+		Suffix: [ITEM] of the Bulwark
+		Level Range: 70-93
+		Spawn Weight: 3		Occupies no slots
+		Effects: -22.0% knockback resistance
+	GEM_CHAOSEMBER_ARMOR_PERCENTKNOCKBACKRESIST7
+		Suffix: [ITEM] of the Juggernaut
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: -24.0% knockback resistance
+
+Group ID 915223941 (3 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT LIFE STOLEN (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: BLOOD EMBER
+	GEM_BLOODEMBER_WEAPON_LIFESTEAL_PERCENT
+		Prefix: Locust's [ITEM]
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: (1.0-4.0)% more HP stolen
+	GEM_BLOODEMBER_WEAPON_LIFESTEAL_PERCENT2
+		Prefix: Lamprey's [ITEM]
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.0-7.0)% more HP stolen
+	GEM_BLOODEMBER_WEAPON_LIFESTEAL_PERCENT3
+		Prefix: Leech's [ITEM]
+		Minimum Level: 66
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-9.0)% more HP stolen
+
+Group ID -638372876 (7 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT PET ARMOR (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETARMOR
+		Suffix: [ITEM] of the Lesser Guardian
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-7.0)% more Minion/Pet Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETARMOR2
+		Suffix: [ITEM] of the Guardian
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (6.0-8.0)% more Minion/Pet Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETARMOR3
+		Suffix: [ITEM] of the Greater Guardian
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: (7.0-9.0)% more Minion/Pet Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETARMOR4
+		Suffix: [ITEM] of the Lesser Master
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (8.0-10.0)% more Minion/Pet Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETARMOR5
+		Suffix: [ITEM] of the Master
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (9.0-11.0)% more Minion/Pet Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETARMOR6
+		Suffix: [ITEM] of the Greater Master
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (10.0-12.0)% more Minion/Pet Armor
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETARMOR7
+		Suffix: [ITEM] of the Shephard
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (11.0-13.0)% more Minion/Pet Armor
+
+Group ID 1798808060 (7 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT PET DAMAGE (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETDAMAGE
+		Suffix: [ITEM] of the Lesser Ranger
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-7.0)% more Minion/Pet Damage
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETDAMAGE2
+		Suffix: [ITEM] of the Ranger
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (6.0-8.0)% more Minion/Pet Damage
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETDAMAGE3
+		Suffix: [ITEM] of the Greater Ranger
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: (7.0-9.0)% more Minion/Pet Damage
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETDAMAGE4
+		Suffix: [ITEM] of the Lesser Hunter
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (8.0-10.0)% more Minion/Pet Damage
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETDAMAGE5
+		Suffix: [ITEM] of the Hunter
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (9.0-11.0)% more Minion/Pet Damage
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETDAMAGE6
+		Suffix: [ITEM] of the Greater Hunter
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (10.0-12.0)% more Minion/Pet Damage
+	GEM_CHAOSEMBER_ARMOR_PERCENTPETDAMAGE7
+		Suffix: [ITEM] of the Commander
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (11.0-13.0)% more Minion/Pet Damage
+
+Group ID -248062691 (6 affixes)	Affix Type: SOCKETABLE
+Effects: PERCENT SPEED (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_ARMOR_SPEED
+		Suffix: [ITEM] of the Runner
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.0-4.0)% more Movement Speed
+	GEM_CHAOSEMBER_ARMOR_SPEED2
+		Suffix: [ITEM] of the Sprinter
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (2.5-4.5)% more Movement Speed
+	GEM_CHAOSEMBER_ARMOR_SPEED4
+		Suffix: [ITEM] of the Thoroughbred
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (3.5-5.5)% more Movement Speed
+	GEM_CHAOSEMBER_ARMOR_SPEED5
+		Suffix: [ITEM] of the Gazelle
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-6.0)% more Movement Speed
+	GEM_CHAOSEMBER_ARMOR_SPEED6
+		Suffix: [ITEM] of the Cheetah
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.5-6.5)% more Movement Speed
+	GEM_CHAOSEMBER_ARMOR_SPEED7
+		Suffix: [ITEM] of the Hellion
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-7.0)% more Movement Speed
+
+Group ID -201842476 (6 affixes)	Affix Type: SOCKETABLE
+Effects: POISON DEFENSE (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: INFUSED POISON EMBER
+	GEM_VENOM_ARMOR_FLAT1
+		Prefix: Lost [ITEM]
+		Max Level: 60
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(13.0-15.0) poison armor
+	GEM_VENOM_ARMOR_FLAT2
+		Prefix: Banished [ITEM]
+		Level Range: 20-80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(15.0-17.0) poison armor
+	GEM_VENOM_ARMOR_FLAT3
+		Prefix: Evicted [ITEM]
+		Level Range: 40-100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(17.0-19.0) poison armor
+	GEM_VENOM_ARMOR_FLAT4
+		Prefix: Expelled [ITEM]
+		Level Range: 60-120
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(19.0-21.0) poison armor
+	GEM_VENOM_ARMOR_FLAT5
+		Prefix: Expulsive [ITEM]
+		Minimum Level: 80
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(21.0-23.0) poison armor
+	GEM_VENOM_ARMOR_FLAT6
+		Prefix: Exiled [ITEM]
+		Minimum Level: 100
+		Spawn Weight: 1		Occupies no slots
+		Effects: +(23.0-25.0) poison armor
+
+Group ID 1992686663 (7 affixes)	Affix Type: SOCKETABLE
+Effects: POTION EFFICIENCY (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_ARMOR_POTIONEFFICIENCY
+		Suffix: [ITEM] of Refills
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: (4.0-8.0)% more Effectiveness of Potions
+	GEM_CHAOSEMBER_ARMOR_POTIONEFFICIENCY2
+		Suffix: [ITEM] of Overflow
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: (5.0-9.0)% more Effectiveness of Potions
+	GEM_CHAOSEMBER_ARMOR_POTIONEFFICIENCY3
+		Suffix: [ITEM] of Sipping
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: (6.0-10.0)% more Effectiveness of Potions
+	GEM_CHAOSEMBER_ARMOR_POTIONEFFICIENCY4
+		Suffix: [ITEM] of Savouring
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: (7.0-11.0)% more Effectiveness of Potions
+	GEM_CHAOSEMBER_ARMOR_POTIONEFFICIENCY5
+		Suffix: [ITEM] of Recovery
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: (8.0-12.0)% more Effectiveness of Potions
+	GEM_CHAOSEMBER_ARMOR_POTIONEFFICIENCY6
+		Suffix: [ITEM] of Chemistry
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: (9.0-13.0)% more Effectiveness of Potions
+	GEM_CHAOSEMBER_ARMOR_POTIONEFFICIENCY7
+		Suffix: [ITEM] of Alchemy
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: (10.0-14.0)% more Effectiveness of Potions
+
+Group ID 976696658 (3 affixes)	Affix Type: SOCKETABLE
+Effects: RANGEDDAMAGEBONUS (uses default graph)
+Affix can be socketed into: ARMOR, TRINKET
+Affix can spawn on: IRON EMBER
+	GEM_IRONEMBER_ARMOR_MISSILEDAMAGE
+		Suffix: [ITEM] of the Fletcher
+		Max Level: 33
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(6.0-10.0) physical damage with ranged weapons
+	GEM_IRONEMBER_ARMOR_MISSILEDAMAGE3
+		Suffix: [ITEM] of the Archer
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(10.0-14.0) physical damage with ranged weapons
+	GEM_IRONEMBER_ARMOR_MISSILEDAMAGE2
+		Suffix: [ITEM] of the Bowyer
+		Level Range: 25-66
+		Spawn Weight: 3		Occupies no slots
+		Effects: +(8.0-12.0) physical damage with ranged weapons
+
+Group ID 526288420 (7 affixes)	Affix Type: SOCKETABLE
+Effects: Transfer: SILENCE (timed) (uses default graph)
+Affix can be socketed into: WEAPON
+Affix can spawn on: CHAOS EMBER
+	GEM_CHAOSEMBER_WEAPON_SILENCE
+		Prefix: Quiet [ITEM]
+		Max Level: 13
+		Spawn Weight: 3		Occupies no slots
+		Effects: Inflict on Hit: (45.0-55.0)% chance to Silence for 2.0 seconds.
+	GEM_CHAOSEMBER_WEAPON_SILENCE2
+		Prefix: Muffled [ITEM]
+		Level Range: 14-27
+		Spawn Weight: 3		Occupies no slots
+		Effects: Inflict on Hit: (50.0-60.0)% chance to Silence for 2.4 seconds.
+	GEM_CHAOSEMBER_WEAPON_SILENCE3
+		Prefix: Muted [ITEM]
+		Level Range: 28-41
+		Spawn Weight: 3		Occupies no slots
+		Effects: Inflict on Hit: (55.0-65.0)% chance to Silence for 2.8 seconds.
+	GEM_CHAOSEMBER_WEAPON_SILENCE4
+		Prefix: Shushing [ITEM]
+		Level Range: 42-55
+		Spawn Weight: 3		Occupies no slots
+		Effects: Inflict on Hit: (60.0-70.0)% chance to Silence for 3.2 seconds.
+	GEM_CHAOSEMBER_WEAPON_SILENCE5
+		Prefix: Librarian's [ITEM]
+		Level Range: 56-69
+		Spawn Weight: 3		Occupies no slots
+		Effects: Inflict on Hit: (65.0-75.0)% chance to Silence for 3.6 seconds.
+	GEM_CHAOSEMBER_WEAPON_SILENCE6
+		Prefix: Silencing [ITEM]
+		Level Range: 70-83
+		Spawn Weight: 3		Occupies no slots
+		Effects: Inflict on Hit: (70.0-80.0)% chance to Silence for 3.8 seconds.
+	GEM_CHAOSEMBER_WEAPON_SILENCE7
+		Prefix: Vacuum [ITEM]
+		Minimum Level: 84
+		Spawn Weight: 3		Occupies no slots
+		Effects: Inflict on Hit: (75.0-85.0)% chance to Silence for 4.0 seconds.
+
