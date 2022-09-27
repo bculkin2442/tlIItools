@@ -80,6 +80,8 @@ public class NameFileReader {
 	 *
 	 * @param r The input source to read from. */
 	public void readFrom(Reader r) {
+		// the caller will take care of it
+		@SuppressWarnings("resource")
 		Scanner scn = new Scanner(r);
 
 		while (scn.hasNextLine()) {

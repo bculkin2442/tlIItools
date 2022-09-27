@@ -32,6 +32,11 @@ public class EffectGroup {
     /** Whether or not this effect is a 'transfer' effect (Applied to the enemy on a hit). */
     public boolean isTransfer;
     
+    /**
+     * Retrieve a summary of this effect group.
+     * 
+     * @return A summary of the effect group
+     */
 	public String summary() {
 		StringBuilder sb = new StringBuilder();
 		

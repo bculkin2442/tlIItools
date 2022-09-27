@@ -12,6 +12,9 @@ import tlIItools.Affix.*;
  *
  * @author Ben Culkin */
 public class AffixGroup implements Comparable<AffixGroup> {
+    /**
+     * Contains all of the effects in this affix group
+     */
     public List<EffectGroup> effects;
     /** The types of enchanters who can add this. */
     public List<String> enchantSources;
@@ -50,6 +53,11 @@ public class AffixGroup implements Comparable<AffixGroup> {
         return afx.toAffixGroup().equals(this);
     }
     
+    /**
+     * Get a summary of the effects of this group.
+     * 
+     * @return A string summarizing the effects in this group
+     */
 	public String groupSummary() {
 		StringBuilder sb = new StringBuilder();
 
